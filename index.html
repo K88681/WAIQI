@@ -1,0 +1,2606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外企英语进阶工作台 · From Zero to Business English</title>
+<!-- SECTION: head-styles -->
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#17233f;--muted:#6b7a99;--line:#e8ecf3;--brand:#2454e0;--brand2:#7f5af0;--ok:#18b37a;--warn:#f2a53c;--err:#e5484d;--radius:16px;--shadow:0 1px 2px rgba(23,35,63,.04),0 8px 24px rgba(23,35,63,.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;background-image:radial-gradient(1200px 500px at 85% -10%,rgba(127,90,240,.08),transparent 60%),radial-gradient(900px 420px at -10% 0,rgba(36,84,224,.06),transparent 55%);background-attachment:fixed}
+.wrap{max-width:1080px;margin:0 auto;padding:20px 20px 48px}
+/* header */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:11px}
+.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:17px;box-shadow:0 6px 18px rgba(36,84,224,.3)}
+.brand h1{font-size:18px;font-weight:800;letter-spacing:.2px;line-height:1.25}
+.brand p{font-size:11.5px;color:var(--muted)}
+.topbtns{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);font-size:13px;font-weight:600;cursor:pointer;color:var(--ink);white-space:nowrap}
+button.pill:hover{border-color:var(--brand);color:var(--brand)}
+.dot{width:9px;height:9px;border-radius:50%;background:#c7d0e2}
+.dot.hot{background:var(--ok);box-shadow:0 0 0 4px rgba(24,179,122,.15)}
+/* nav */
+nav{display:flex;gap:5px;background:rgba(255,255,255,.75);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:5px;margin-bottom:18px;overflow-x:auto;position:sticky;top:10px;z-index:30}
+nav button{border:0;background:transparent;padding:8px 14px;border-radius:10px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+nav button.active{background:linear-gradient(135deg,var(--brand),#4a72ea);color:#fff;box-shadow:0 4px 12px rgba(36,84,224,.3)}
+/* sections */
+section{display:none}
+section.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:16px;border:1px solid #f0f2f7}
+.card h3{font-size:15px;font-weight:800;margin-bottom:5px}
+.meta{font-size:12px;color:var(--muted);margin-bottom:10px}
+/* hero */
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.hero-top h2{font-size:19px;font-weight:800}
+.hero-top>div:first-child>p{color:var(--muted);font-size:12.5px;margin-top:2px}
+.badges{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.badge{font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;background:rgba(36,84,224,.08);color:var(--brand)}
+.badge.soft{background:#f1f3f9;color:var(--muted)}
+.ringwrap{flex-shrink:0}
+.ringbg{fill:none;stroke:#eef1f8;stroke-width:10}
+.ringfg{fill:none;stroke:url(#gradRing);stroke-width:10;stroke-linecap:round;transform:rotate(-90deg);transform-origin:65px 65px;transition:stroke-dashoffset .5s ease}
+.ringtxt{fill:var(--ink);font-size:19px;font-weight:800}
+.minbar{height:8px;background:#eef1f8;border-radius:99px;overflow:hidden;margin:12px 0 6px}
+.barfill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .5s ease}
+.mstat{font-size:12.5px;color:var(--muted)}
+.taskhead{display:flex;justify-content:space-between;align-items:center;margin:14px 0 8px}
+.taskhead b{font-size:14px}
+/* 周任务 */
+.weekcard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:linear-gradient(160deg,#fbfcff,#f4f7ff);margin-top:12px}
+.wc-head{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:800;margin-bottom:8px}
+.wc-head b{color:var(--brand)}
+.wc-head>span:not(.wc-prog){font-size:11.5px;color:var(--muted);font-weight:600}
+.wk-tag{font-size:11px;font-weight:800;color:var(--brand2);background:rgba(127,90,240,.1);border-radius:99px;padding:2px 10px;white-space:nowrap}
+.wc-prog{margin-left:auto;font-size:12px;font-weight:800;color:var(--ok)}
+.weeklist{display:flex;flex-direction:column;gap:6px}
+.wtask{display:flex;align-items:flex-start;gap:10px;border:1px solid #e8edf8;border-radius:10px;padding:8px 12px;background:#fff;cursor:pointer;transition:all .15s}
+.wtask:hover{border-color:#c9d4f5}
+.wtask.done{background:#f2faf6;border-color:rgba(24,179,122,.35)}
+.wtask .check{width:18px;height:18px;margin-top:2px}
+.wtask .tbd b{font-size:13px}
+.wtask .tbd span{font-size:11.5px;color:var(--muted)}
+.wc-note{font-size:11px;color:var(--muted);margin-top:8px}
+.mini{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 11px;font-size:12px;cursor:pointer;color:var(--muted)}
+.mini:hover{color:var(--brand);border-color:var(--brand)}
+.tasklist{display:flex;flex-direction:column;gap:7px}
+.task{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:11px;padding:9px 13px;cursor:pointer;transition:all .2s;background:#fff}
+.task:hover{border-color:#c9d4f5;box-shadow:0 4px 14px rgba(36,84,224,.08)}
+.task.done{background:linear-gradient(90deg,rgba(24,179,122,.07),transparent);border-color:rgba(24,179,122,.35)}
+.check{width:22px;height:22px;border-radius:50%;border:2px solid #cdd5e6;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;flex-shrink:0;background:#fff}
+.task.done .check{background:var(--ok);border-color:var(--ok)}
+.tag{font-size:10.5px;font-weight:800;letter-spacing:.5px;padding:3px 8px;border-radius:6px;flex-shrink:0}
+.tag.words{background:rgba(36,84,224,.1);color:var(--brand)}
+.tag.listen{background:rgba(127,90,240,.1);color:var(--brand2)}
+.tag.speak{background:rgba(24,179,122,.12);color:#0d8f61}
+.tag.read{background:rgba(242,165,60,.15);color:#c67f12}
+.tag.write{background:rgba(229,72,77,.1);color:var(--err)}
+.tag.scene{background:rgba(23,164,196,.12);color:#0b7d97}
+  .tag.x{background:#f1f3f9;color:#55648a}
+  .tag.x.image{background:rgba(127,90,240,.1);color:var(--brand2)}
+  .tag.x.think{background:rgba(36,84,224,.1);color:var(--brand)}
+  .tag.x.expr{background:rgba(24,179,122,.12);color:#0d8f61}
+  .tag.x.etiq{background:rgba(242,165,60,.15);color:#c67f12}
+  .tag.x.mgmt{background:rgba(127,90,240,.1);color:var(--brand2)}
+  .tag.x.drive{background:rgba(229,72,77,.1);color:var(--err)}
+  .tag.x.tools{background:rgba(23,164,196,.12);color:#0b7d97}
+  .tag.x.team{background:rgba(127,90,240,.1);color:var(--brand2)}
+  .tag.x.cult{background:rgba(36,84,224,.1);color:var(--brand)}
+  .tag.x.sales{background:rgba(24,179,122,.12);color:#0d8f61}
+  .tag.x.money{background:rgba(242,165,60,.15);color:#c67f12}
+  .tag.x.biz{background:rgba(229,72,77,.1);color:var(--err)}
+  .tag.x.psy{background:rgba(23,164,196,.12);color:#0b7d97}
+  .tag.x.hist{background:rgba(127,90,240,.1);color:var(--brand2)}
+  .tag.x.soc{background:rgba(36,84,224,.1);color:var(--brand)}
+  .tag.x.poli{background:rgba(229,72,77,.1);color:var(--err)}
+.tbd{flex:1;min-width:0}
+.tbd b{display:block;font-size:14px}
+.tbd span{font-size:12px;color:var(--muted)}
+.tmin{font-size:12px;color:var(--muted);white-space:nowrap;font-weight:600}
+.primary{border:0;background:linear-gradient(135deg,var(--brand),#4a72ea);color:#fff;padding:11px 26px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(36,84,224,.28);margin-top:12px;width:100%}
+.primary:hover{filter:brightness(1.06)}
+.ghost{border:1px solid var(--line);background:#fff;padding:9px 16px;border-radius:11px;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--ink)}
+.ghost:hover{border-color:var(--brand);color:var(--brand)}
+.ghost.danger:hover{border-color:var(--err);color:var(--err)}
+.tip{font-size:12px;color:#7a86a8;background:#f7f8fc;border-left:3px solid var(--brand);padding:9px 13px;border-radius:8px;margin-top:12px}
+/* plan */
+.phase-item{display:flex;gap:12px;padding:11px 6px;border-bottom:1px solid #f0f2f7}
+.phase-item:last-child{border-bottom:0}
+.pc{width:30px;height:30px;border-radius:50%;background:#f1f3f9;color:var(--muted);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;margin-top:2px}
+.phase-item.cur .pc{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff}
+.pb{flex:1}
+.pt{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.pt b{font-size:14.5px}
+.pt span{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.pb>p{font-size:12px;color:var(--muted);margin:2px 0 6px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chips i{font-style:normal;font-size:11px;background:#f1f3f9;color:#55648a;padding:2px 9px;border-radius:99px}
+.phase-item.cur{background:linear-gradient(90deg,rgba(36,84,224,.05),transparent);border-radius:10px;padding-left:10px}
+.wk{display:inline-block;width:calc(20% - 8px);min-width:140px;border:1px solid var(--line);border-radius:9px;padding:6px 10px;font-size:11.5px;color:var(--muted);margin:0 6px 6px 0;background:#fff}
+.wk b{display:block;color:var(--ink);font-size:12px;margin-bottom:1px}
+.wk.cur{border-color:var(--brand);color:var(--brand);background:rgba(36,84,224,.05)}
+/* vocab */
+.chips{margin-bottom:12px}
+#topicChips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+#topicChips button{border:1px solid var(--line);background:#fff;padding:5px 12px;border-radius:999px;font-size:12.5px;cursor:pointer;color:var(--ink);font-weight:600}
+#topicChips button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.vcard{perspective:900px;cursor:pointer}
+.vc{position:relative;width:100%;height:136px;transform-style:preserve-3d;transition:transform .5s ease}
+.vcard.flip .vc{transform:rotateY(180deg)}
+.vface{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid var(--line);border-radius:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;text-align:center;background:#fff}
+.vface.front{background:linear-gradient(160deg,#fff,#f6f8ff)}
+.vface.front b{font-size:18px;color:var(--brand);letter-spacing:.5px}
+.vface.front span{font-size:11.5px;color:var(--muted);margin-top:3px}
+.vface.back{transform:rotateY(180deg);justify-content:flex-start;overflow:auto}
+.vface.back p{font-size:13.5px;font-weight:700}
+.vface.back small{font-size:11px;color:var(--muted);margin-top:2px}
+.vface.back .op{display:flex;gap:7px;margin-top:8px}
+.vface.back .op button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 10px;font-size:11.5px;cursor:pointer;font-weight:600}
+.vface.back .op .know{color:var(--ok);border-color:rgba(24,179,122,.4)}
+.vface.back .op .know:hover{background:var(--ok);color:#fff}
+.vface.back .op .rel{color:var(--warn);border-color:rgba(242,165,60,.4)}
+.vface.back .op .rel:hover{background:var(--warn);color:#fff}
+.row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.row .primary{width:auto;margin-top:0;flex:1;min-width:140px}
+.quiz{display:none;margin-top:14px;border:1px dashed #cfd8f2;border-radius:14px;padding:14px;background:#fafbff}
+.qstat{font-size:12.5px;font-weight:700;color:var(--brand);margin-bottom:6px}
+.qq{font-size:15px;font-weight:700;margin-bottom:10px}
+.qopts{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:10px}
+.qopts button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px;font-size:13.5px;font-weight:600;cursor:pointer}
+.qopts button:hover:not(:disabled){border-color:var(--brand);color:var(--brand)}
+.qopts button.ok{background:rgba(24,179,122,.1);border-color:var(--ok);color:#0d8f61}
+.qopts button.bad{background:rgba(229,72,77,.1);border-color:var(--err);color:var(--err)}
+.qopts button:disabled{cursor:default}
+/* scenes */
+.scn{border:1px solid var(--line);border-radius:11px;margin-bottom:8px;overflow:hidden;background:#fff}
+.sh{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer}
+.sh .st{font-size:10.5px;font-weight:700;background:#eef1fb;color:var(--brand);padding:2px 8px;border-radius:6px;white-space:nowrap}
+.sh b{flex:1;font-size:14px;min-width:0}
+.arr{color:var(--muted);font-size:12px;transition:transform .2s}
+.scn.open .arr{transform:rotate(180deg)}
+.scnmaster{display:none;font-size:11.5px;font-weight:700;color:var(--ok)}
+.scn.mastered .scnmaster{display:inline}
+.scn.mastered{border-color:rgba(24,179,122,.4);background:linear-gradient(90deg,rgba(24,179,122,.04),#fff)}
+.body{display:none;padding:2px 14px 12px}
+.scn.open .body{display:block}
+.ln{border-left:3px solid #dde4f7;padding:3px 0 3px 10px;margin:8px 0;background:#fafbff;border-radius:0 8px 8px 0}
+.ln em{display:block;font-style:normal;font-size:13.5px;color:var(--ink);font-weight:600}
+.ln span{font-size:11.5px;color:var(--muted)}
+.tips{font-size:11.5px;color:#7a86a8;background:#f7f8fc;border-radius:8px;padding:8px 11px;margin-top:10px}
+.how{margin-top:12px;padding-top:10px;border-top:1px dashed #e3e9f5}
+.how-h{font-size:12.5px;font-weight:800;color:var(--ink);margin-bottom:8px}
+.how .cstep{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:#4a5778;background:#fafbff;border-radius:8px;padding:8px 10px;line-height:1.5;margin-bottom:6px}
+.how .cstep span{flex-shrink:0;font-size:10.5px;font-weight:800;background:var(--brand);color:#fff;border-radius:6px;padding:2px 8px;margin-top:1px}
+/* stats */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:14px}
+.kpi{background:linear-gradient(160deg,#fbfcff,#f4f7ff);border:1px solid #eef1fa;border-radius:14px;padding:12px;text-align:center}
+.kpi b{display:block;font-size:26px;font-weight:800;color:var(--brand)}
+.kpi span{font-size:12px;color:var(--muted)}
+.heatgrid{display:grid;grid-template-columns:repeat(auto-fill,24px);gap:4px;justify-content:flex-start;margin-top:8px;min-width:max-content}
+.cell{width:24px;height:24px;border-radius:5px;background:#eef1f8}
+.cell.l1{background:#cdd9fa}
+.cell.l2{background:#7f9cf5}
+.cell.l3{background:#4a6ef0}
+.cell.l4{background:#2454e0}
+.cell.today{outline:2px solid var(--brand2);outline-offset:1px}
+.chart{width:100%}
+/* modal */
+.mask{display:none;position:fixed;inset:0;background:rgba(20,28,50,.45);backdrop-filter:blur(3px);z-index:100;align-items:center;justify-content:center;padding:20px}
+.mask.on{display:flex}
+.modal{background:#fff;border-radius:18px;padding:26px;width:100%;max-width:440px;max-height:88vh;overflow:auto;box-shadow:0 24px 60px rgba(0,0,0,.2)}
+.modal h3{margin-bottom:16px}
+.modal label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin:14px 0 6px}
+.modal select,.modal input{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px;background:#fff;color:var(--ink)}
+.mtip{font-size:12px;color:#9aa6c0;margin:14px 0}
+.mrow{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+/* toast */
+.toastbox{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:200;align-items:center}
+.toast{background:#23304f;color:#fff;font-size:13px;padding:10px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.18);max-width:86vw}
+.toast.ok{background:var(--ok)}
+.toast.warn{background:var(--warn)}
+/* route */
+.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.route-item{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;position:relative;transition:all .2s}
+.route-item.cur{border-color:var(--brand);box-shadow:0 8px 24px rgba(36,84,224,.12);background:linear-gradient(160deg,#fbfcff,#f2f6ff)}
+.route-item.cur:before{content:'当前阶段';position:absolute;top:-9px;left:14px;background:var(--brand);color:#fff;font-size:10.5px;font-weight:700;padding:2px 10px;border-radius:99px}
+.route-item.done{border-color:rgba(24,179,122,.4);background:linear-gradient(160deg,#f6fdf9,#fff)}
+.ri-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ri-top .ico{display:inline-flex;width:34px;height:34px;border-radius:10px;background:rgba(36,84,224,.08);align-items:center;justify-content:center;color:var(--brand);flex-shrink:0}
+.ri-top .ico .ic{width:18px;height:18px}
+.ri-top b{font-size:15px}
+.ri-top .st{font-size:11px;font-weight:700;color:var(--brand);background:rgba(36,84,224,.08);padding:2px 8px;border-radius:99px;margin-left:auto}
+.route-item.done .ri-top .st{color:var(--ok);background:rgba(24,179,122,.1)}
+.ri-level{font-size:12px;font-weight:700;color:var(--brand2);margin-bottom:6px}
+.ri-desc{font-size:12px;color:var(--muted);margin-bottom:8px}
+.ri-chip{font-size:11.5px;background:#f1f3f9;color:#55648a;padding:3px 9px;border-radius:99px;margin:0 6px 6px 0;display:inline-block}
+/* resources */
+.res-wrap{display:flex;flex-direction:column;gap:10px}
+.res-wrap .acc{overflow:hidden}
+.res-wrap .acc-h{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;font-weight:800;font-size:14.5px;background:#fff;user-select:none}
+.res-wrap .acc-h:hover{background:#f7f8fc}
+.res-wrap .acc-h .ico.has{display:inline-flex;width:28px;height:28px;border-radius:8px;background:rgba(36,84,224,.08);align-items:center;justify-content:center;color:var(--brand);flex-shrink:0}
+.res-wrap .acc-h .ico.has .ic{width:15px;height:15px}
+.res-count{font-weight:600;color:var(--muted);font-size:11.5px;flex-shrink:0}
+.res-wrap .acc-h>.ic:last-child{width:16px;height:16px;color:var(--muted);margin-left:auto;transition:transform .2s;flex-shrink:0}
+.res-wrap .acc.open .acc-h>.ic:last-child{transform:rotate(180deg)}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;padding:14px}
+.res-item{border:1px solid #eef1f8;border-radius:10px;padding:10px 12px;background:#fff}
+.res-item .rt{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:var(--brand2);margin-bottom:3px}
+.res-item .rt .ic{width:12px;height:12px}
+.res-item b{display:block;font-size:13.5px;margin-bottom:2px}
+.res-item span{font-size:11.5px;color:var(--muted)}
+/* career */
+.cgrid{display:grid;grid-template-columns:1fr;gap:14px}
+.citem{border:1px solid var(--line);border-radius:16px;padding:18px 20px;cursor:pointer;background:#fff;transition:all .2s}
+.citem:hover{border-color:#c9d4f5;box-shadow:0 6px 18px rgba(36,84,224,.08)}
+.citem.open{border-color:var(--brand);box-shadow:0 8px 26px rgba(36,84,224,.1)}
+.citem .ct{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.citem .ct .ico{font-size:24px}
+.citem .ct b{font-size:16px}
+.citem .cg{font-size:11px;color:var(--muted);background:#f1f3f9;border-radius:99px;padding:2px 10px;margin-left:auto}
+.cintro{font-size:12.5px;color:var(--muted);margin:6px 0 10px;line-height:1.55}
+.cprog{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.cprogbar{flex:1;height:7px;background:#eef1f8;border-radius:99px;overflow:hidden;display:block}
+.cprogbar i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));border-radius:99px;transition:width .4s}
+.cprog em{font-style:normal;font-size:11.5px;color:var(--muted);white-space:nowrap}
+.cbody{display:none;margin-top:14px;border-top:1px dashed #e3e9f5;padding-top:12px}
+.citem.open .cbody{display:block}
+.csec{margin-bottom:16px}
+.cs-h{font-size:13px;font-weight:800;margin-bottom:8px;color:var(--ink)}
+.cs-h em{font-weight:500;font-size:11px;color:var(--muted);margin-left:6px}
+.csec ul{list-style:none}
+.csec ul li{font-size:12.5px;color:#4a5778;padding:3px 0 3px 18px;position:relative}
+.csec ul li:before{content:'✓';position:absolute;left:0;color:var(--ok);font-weight:800}
+.csteps{display:flex;flex-direction:column;gap:6px}
+.cstep{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:#4a5778;background:#fafbff;border-radius:8px;padding:8px 10px}
+.cstep span{flex-shrink:0;font-size:10.5px;font-weight:800;background:var(--brand);color:#fff;border-radius:6px;padding:2px 8px;margin-top:1px}
+.cprac{display:grid;grid-template-columns:1fr;gap:8px}
+.cdo{display:flex;gap:10px;align-items:flex-start;border:1px solid #eef1f8;border-radius:10px;padding:10px 12px;cursor:pointer;background:#fff;transition:all .15s}
+.cdo:hover{border-color:#c9d4f5}
+.cdo input[type=checkbox]{margin-top:3px;accent-color:var(--brand);width:15px;height:15px;flex-shrink:0}
+.cdo b{font-size:12px;color:var(--brand);flex-shrink:0;width:58px}
+.cdo span{font-size:12.5px;color:#4a5778;line-height:1.5}
+.cdo.done{background:#f2faf6;border-color:rgba(24,179,122,.35)}
+.cdo.done span{color:var(--muted)}
+.cdo.done b{color:var(--ok)}
+.cres{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.cres span{display:inline-flex;align-items:center;font-size:12px;line-height:1.5;background:#f1f3f9;color:#55648a;padding:6px 12px;border-radius:8px;text-align:left}
+.cres.bad span{background:#fdf1f1;color:#c0553f}
+.citem .ctip{font-size:12.5px;color:#55648a;background:#f7f8fc;border-left:3px solid var(--brand);padding:9px 12px;border-radius:6px;margin-top:4px}
+.citem.has{border-left:4px solid var(--ok)}
+/* 并列栏目 */
+.col-head{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.col-head .ico{font-size:30px;flex-shrink:0}
+.col-t{flex:1}
+.col-t h3{font-size:20px;font-weight:800;margin-bottom:2px}
+.col-t p{font-size:12.5px;color:var(--muted);line-height:1.55}
+.col-head .cg{font-size:11px;color:var(--muted);background:#f1f3f9;border-radius:99px;padding:3px 12px;white-space:nowrap}
+.pribadge{font-size:10.5px;font-weight:800;border-radius:99px;padding:3px 10px;white-space:nowrap}
+.pribadge.p1{background:rgba(229,72,77,.12);color:var(--err)}
+.pribadge.p2{background:rgba(36,84,224,.1);color:var(--brand)}
+.pribadge.p3{background:rgba(242,165,60,.15);color:#c67f12}
+.pribadge.p4{background:#f1f3f9;color:var(--muted)}
+.cguide{display:flex;flex-direction:column;gap:8px}
+.cguide .cstep{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#4a5778;background:#fafbff;border-radius:8px;padding:10px 12px;line-height:1.55}
+.cguide .cstep span{flex-shrink:0;font-size:10.5px;font-weight:800;background:var(--ok);color:#fff;border-radius:6px;padding:2px 8px;margin-top:1px}
+.colprog{display:flex;align-items:center;gap:10px;margin:12px 0 6px}
+.colprog .cprogbar{flex:1;height:8px;background:#eef1f8;border-radius:99px;overflow:hidden;display:block}
+.colprog .cprogbar i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));border-radius:99px;transition:width .4s}
+.colprog em{font-style:normal;font-size:12px;color:var(--muted);white-space:nowrap}
+.colsec{margin:20px 0}
+.colsec .cs-h{font-size:14px;font-weight:800;margin-bottom:12px;color:var(--ink)}
+.colsec .cs-h em{font-weight:500;font-size:11.5px;color:var(--muted);margin-left:6px}
+.colsec ul{list-style:none}
+.colsec ul li{font-size:13px;color:#4a5778;padding:4px 0 4px 22px;position:relative}
+.colsec ul li:before{content:'✓';position:absolute;left:0;color:var(--ok);font-weight:800}
+/* 12个月路线 */
+.yearline{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;align-items:stretch}
+.ymo{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;transition:all .2s;text-align:left;font:inherit;cursor:pointer;color:inherit;width:100%;min-height:130px;align-items:stretch;justify-content:flex-start;gap:3px}
+.ymo:hover{border-color:var(--brand);box-shadow:0 4px 14px rgba(36,84,224,.08)}
+.ymo b{display:block;font-size:12px;font-weight:800;color:var(--brand);margin-bottom:1px;white-space:nowrap}
+.ymo em{display:block;font-style:normal;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:1px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ymo span{font-size:11.5px;color:var(--muted);line-height:1.5}
+.ymo.done{border-color:var(--ok);background:linear-gradient(160deg,#f2faf6,#fff)}
+.ymo.done b{color:var(--ok)}
+.ymo.done:after{content:'已达成';display:inline-block;margin-top:auto;font-size:10.5px;font-weight:700;color:var(--ok);background:rgba(24,179,122,.1);border-radius:99px;padding:2px 8px;align-self:flex-start}
+/* SVG 图标 */
+.ic{width:1em;height:1em;vertical-align:-0.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.col-head .ico{display:inline-flex;width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,rgba(36,84,224,.1),rgba(127,90,240,.1));align-items:center;justify-content:center;color:var(--brand);flex-shrink:0}
+.col-head .ico .ic{width:24px;height:24px}
+/* 折叠引用式章节 */
+.cols{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.acc{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
+.acc-h{display:flex;align-items:center;gap:10px;padding:12px 16px;cursor:pointer;font-size:14px;font-weight:800;color:var(--ink);user-select:none;background:#fff;transition:background .15s}
+.acc-h:hover{background:#f7f8fc}
+.acc-h .ic{width:18px;height:18px;color:var(--brand);margin-left:auto;transition:transform .2s}
+.acc.open .acc-h .ic{transform:rotate(180deg)}
+.acc-b{display:none;padding:4px 16px 16px;border-top:1px dashed #eef1f8}
+.acc.open .acc-b{display:block}
+.acc-note{font-size:11.5px;color:var(--muted);margin-top:10px}
+.acc-b ul{list-style:none}
+.acc-b ul li{font-size:13px;color:#4a5778;padding:4px 0 4px 22px;position:relative}
+.acc-b ul li:before{content:'✓';position:absolute;left:0;color:var(--ok);font-weight:800}
+.ctip{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#55648a;background:#f7f8fc;border-left:3px solid var(--brand);padding:9px 12px;border-radius:6px;margin-top:14px}
+.ctip .ic{width:16px;height:16px;color:var(--brand);margin-top:2px}
+/* 季度计划 */
+.qline{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.qitem{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;position:relative}
+.qitem.cur{border-color:var(--brand);background:linear-gradient(160deg,#fbfcff,#f2f6ff)}
+.qitem b{display:block;font-size:13px;font-weight:800;color:var(--brand);margin-bottom:4px}
+.qitem em{display:block;font-style:normal;font-size:12px;color:var(--ink);font-weight:700;margin-bottom:2px}
+.qitem span{font-size:11.5px;color:var(--muted)}
+/* 优先级总览 */
+.prio-group{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:10px;background:#fff}
+.prio-h{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:8px}
+.prio-items{display:flex;flex-wrap:wrap;gap:8px}
+.prio-item{display:inline-flex;align-items:center;gap:5px;font-size:12px;background:#f5f7fc;color:#4a5778;border-radius:99px;padding:5px 12px}
+.prio-item .ic{width:13px;height:13px;color:var(--brand)}
+/* daily vocab */
+.dhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:14px 0 10px;flex-wrap:wrap}
+.dhead b{font-size:14px}
+.dhead span{font-size:11.5px;color:var(--muted)}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:6px}
+.dgrid .vcard{perspective:900px;cursor:pointer;height:150px}
+@media(max-width:768px){.dgrid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+/* responsive */
+@media(max-width:768px){
+.wrap{padding:18px 14px 48px}
+.hero-top h2{font-size:18px}
+.vgrid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.kpis{grid-template-columns:repeat(2,1fr)}
+nav{top:8px}
+.res-grid{grid-template-columns:1fr}
+.cgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+  <symbol id="i-dollar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-circle-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+  <symbol id="i-head" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-graduation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+  <symbol id="i-case" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-photo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+</svg>
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">EN</div>
+      <div><h1>外企职场能力工作台</h1><p>英语 · 素养 · 管理，16 大板块系统进阶</p></div>
+    </div>
+    <div class="topbtns">
+      <span class="pill"><span class="dot" id="streakDot"></span><span id="streakLabel">连续打卡 0 天</span></span>
+      <button class="pill" id="btnSettings"><svg class="ic"><use href="#i-gear"/></svg> 设置</button>
+    </div>
+  </header>
+
+  <nav id="nav">
+    <button data-tab="today" class="active">今日任务</button>
+    <button data-tab="plan">目标计划</button>
+    <button data-tab="eng">英语</button>
+    <button data-tab="image">形象管理</button>
+    <button data-tab="think">结构化思维</button>
+    <button data-tab="expr">表达沟通</button>
+    <button data-tab="etiq">商务礼仪</button>
+    <button data-tab="mgmt">管理能力</button>
+    <button data-tab="drive">自驱抗压</button>
+    <button data-tab="tools">办公工具</button>
+    <button data-tab="team">团队协作</button>
+    <button data-tab="cult">跨文化视野</button>
+    <button data-tab="sales">销售思维</button>
+    <button data-tab="biz">商业通识</button>
+    <button data-tab="money">个人理财</button>
+    <button data-tab="psy">心理学</button>
+    <button data-tab="hist">历史学</button>
+    <button data-tab="soc">社会学</button>
+    <button data-tab="poli">政治时势</button>
+    <button data-tab="stats">成长统计</button>
+  </nav>
+
+  <!-- SECTION: today -->
+  <section id="sec-today" class="on">
+    <div class="card">
+      <div class="hero-top">
+        <div>
+          <h2 id="greetTitle"></h2>
+          <p id="dateLabel"></p>
+          <div class="badges">
+            <span class="badge" id="phaseBadge"></span>
+            <span class="badge soft" id="taskDate"></span>
+          </div>
+        </div>
+        <div class="ringwrap">
+          <svg width="132" height="132" viewBox="0 0 132 132">
+            <defs><linearGradient id="gradRing" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2454e0"/><stop offset="1" stop-color="#7f5af0"/></linearGradient></defs>
+            <circle class="ringbg" cx="66" cy="66" r="55"></circle>
+            <circle class="ringfg" id="ringFg" cx="66" cy="66" r="55" style="stroke-dasharray:345.6;stroke-dashoffset:345.6"></circle>
+            <text x="66" y="72" text-anchor="middle" class="ringtxt" id="ringPct">0%</text>
+          </svg>
+        </div>
+      </div>
+      <div class="minbar"><div class="barfill" id="mbarFill"></div></div>
+      <p class="mstat" id="mstat"></p>
+      <div class="weekcard">
+        <div class="wc-head"><b>本周任务 · 第 <span id="wkNo">1</span> 周</b><span id="wkRouteTag" class="wk-tag"></span><span id="wkRange"></span><span class="wc-prog" id="wkProg">0/0</span></div>
+        <div id="weekTaskList" class="weeklist"></div>
+        <p class="wc-note">周任务按周推进，覆盖核心板块的周级目标；与每日任务互补，打卡纳入周进度</p>
+      </div>
+      <div class="taskhead"><b>今日任务 · 多板块科学轮换</b><button class="mini" id="btnRefresh"><svg class="ic"><use href="#i-refresh"/></svg> 换一批任务</button></div>
+      <div id="taskList" class="tasklist"></div>
+      <button class="primary" id="btnCheckin"><svg class="ic"><use href="#i-check"/></svg> 完成今日学习，打卡</button>
+      <div class="tip" id="tipBox"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: plan -->
+  <section id="sec-plan">
+    <div class="card">
+      <h3>三大目标 · 进阶路线图</h3>
+      <p class="meta">从零基础到外企，三大里程碑一一达成 · 当前阶段高亮显示，每日任务自动对齐</p>
+      <div id="routeTimeline" class="route"></div>
+    </div>
+    <div class="card">
+      <h3>学习板块 · 优先级总览</h3>
+      <p class="meta">按「投入产出比」排序：先打地基（P1），再添砖瓦（P2），后拓视野（P3-P4）。日常任务与精力分配建议以此为准。</p>
+      <div id="prioOverview"></div>
+    </div>
+    <div class="card">
+      <div class="acc">
+        <div class="acc-h" data-acc>分阶段学习路径<svg class="ic"><use href="#i-chev"/></svg></div>
+        <div class="acc-b"><p class="meta" id="planMeta"></p><div id="phaseTimeline"></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="acc">
+        <div class="acc-h" data-acc>每周主题安排<svg class="ic"><use href="#i-chev"/></svg></div>
+        <div class="acc-b"><div id="weekTopics"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: eng（英语栏目） -->
+  <section id="sec-eng">
+    <div class="card">
+      <h3>英语 · 12 个月全景进阶路线</h3>
+      <p class="meta">从零基础到外企自如沟通，按月推进，每月有明确主题与产出</p>
+      <div id="engYearline"></div>
+    </div>
+    <div class="card">
+      <h3>商务词汇 · 翻转词卡</h3>
+      <p class="meta" id="vocabMeta"></p>
+      <div class="row" style="margin-top:0;margin-bottom:14px">
+        <button class="ghost" id="btnReview" style="flex:0 0 auto"><svg class="ic"><use href="#i-refresh"/></svg> 今日复习（艾宾浩斯）</button>
+        <span id="reviewCount" style="align-self:center;font-size:12.5px;color:var(--muted)"></span>
+      </div>
+      <div id="dailyBox"></div>
+      <div id="topicChips"></div>
+      <div id="vocabGrid" class="vgrid"></div>
+      <div class="row">
+        <button class="primary" id="btnQuiz">开始自测</button>
+        <button class="ghost" id="btnErrReview">错词复习</button>
+      </div>
+      <div id="quizBox" class="quiz">
+        <p class="qstat" id="quizStat"></p>
+        <p class="qq" id="quizQ"></p>
+        <div id="quizOpts" class="qopts"></div>
+        <button class="ghost" id="btnQuizNext" style="display:none">下一题 →</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>外企商务场景 · 开口模板</h3>
+      <p class="meta" id="sceneMeta"></p>
+      <div id="sceneGrid"></div>
+    </div>
+    <div class="card">
+      <h3>英语学习资源库</h3>
+      <p class="meta">按三阶段（考研/雅思/外企）经典资料，按需采买</p>
+      <div class="res-wrap" id="resSeries"></div>
+    </div>
+  </section>
+
+  <!-- SECTION: 8 项外企能力并列栏目 -->
+  <section id="sec-image"><div class="card" id="col-image"></div></section>
+  <section id="sec-think"><div class="card" id="col-think"></div></section>
+  <section id="sec-expr"><div class="card" id="col-expr"></div></section>
+  <section id="sec-etiq"><div class="card" id="col-etiq"></div></section>
+  <section id="sec-mgmt"><div class="card" id="col-mgmt"></div></section>
+  <section id="sec-drive"><div class="card" id="col-drive"></div></section>
+  <section id="sec-tools"><div class="card" id="col-tools"></div></section>
+  <section id="sec-team"><div class="card" id="col-team"></div></section>
+  <section id="sec-cult"><div class="card" id="col-cult"></div></section>
+  <section id="sec-sales"><div class="card" id="col-sales"></div></section>
+  <section id="sec-money"><div class="card" id="col-money"></div></section>
+  <section id="sec-biz"><div class="card" id="col-biz"></div></section>
+  <section id="sec-psy"><div class="card" id="col-psy"></div></section>
+  <section id="sec-hist"><div class="card" id="col-hist"></div></section>
+  <section id="sec-soc"><div class="card" id="col-soc"></div></section>
+  <section id="sec-poli"><div class="card" id="col-poli"></div></section>
+
+  <!-- SECTION: stats -->
+  <section id="sec-stats">
+    <div class="card">
+      <h3>学习数据总览</h3>
+      <div class="kpis">
+        <div class="kpi"><b id="kpiDays">0</b><span>打卡天数</span></div>
+        <div class="kpi"><b id="kpiMin">0</b><span>累计分钟</span></div>
+        <div class="kpi"><b id="kpiWords">0</b><span>掌握词汇</span></div>
+        <div class="kpi"><b id="kpiStreak">0</b><span>连续天数</span></div>
+        <div class="kpi"><b id="kpiRoute">0/0</b><span>学习路线完成</span></div>
+      </div>
+      <p class="meta">近 53 天学习热力图，颜色越深当天投入越多</p>
+      <div id="heatGrid" class="heatgrid"></div>
+    </div>
+    <div class="card"><div id="chartBar" data-chart="true" style="width:100%;height:340px"></div></div>
+    <div class="card"><div id="chartRadar" data-chart="true" style="width:100%;height:360px"></div></div>
+  </section>
+</div>
+
+<!-- modal -->
+<div id="mask" class="mask">
+  <div class="modal">
+    <h3>学习设置</h3>
+    <label for="fLevel">当前英语水平</label>
+    <select id="fLevel">
+      <option value="zero">零基础 · 从音标单词开始</option>
+      <option value="starter">有基础 · 能简单交流</option>
+      <option value="inter">四级左右 · 需强化商务听说</option>
+      <option value="advanced">六级以上 · 目标流利表达</option>
+    </select>
+    <label for="fTarget">近期目标场景</label>
+    <select id="fTarget">
+      <option value="interview">应聘英文面试</option>
+      <option value="meeting">适应英文会议</option>
+      <option value="email">地道商务邮件</option>
+      <option value="negotiation">谈判与说服</option>
+    </select>
+    <label for="fDaily">每日目标时长（分钟）</label>
+    <input type="number" id="fDaily" min="15" max="300" value="40">
+    <label for="fWeeks">学习总周期</label>
+    <select id="fWeeks">
+      <option value="52">1 年 · 快速进阶（52 周）</option>
+      <option value="105">2 年 · 稳扎稳打（105 周）</option>
+      <option value="156" selected>3 年 · 系统沉淀（156 周）</option>
+    </select>
+    <label for="fStart">计划开始日期（从该日起记录）</label>
+    <input type="date" id="fStart">
+    <p class="mtip">数据保存在当前浏览器本地，不会上传到任何服务器。本版本已清空历史演示记录，从现在开始持续记录你的真实学习进度。</p>
+    <div class="mrow">
+      <button class="ghost danger" id="btnReset">清空所有记录</button>
+      <button class="ghost danger" id="btnReset2" style="display:none">确定清空？此操作不可恢复</button>
+      <button class="ghost" id="btnCancelReset" style="display:none">再想想</button>
+      <button class="ghost" id="btnClose">取消</button>
+      <button class="primary" id="btnSave" style="width:auto;margin-top:0">保存设置</button>
+    </div>
+  </div>
+</div>
+
+<div id="toastBox" class="toastbox"></div>
+<script>
+/* SECTION: data */
+var VOCAB_TOPICS=[
+ {key:'starter',name:'起步'},
+ {key:'meeting',name:'会议'},
+ {key:'email',name:'邮件'},
+ {key:'interview',name:'面试'},
+ {key:'presentation',name:'汇报'},
+ {key:'negotiation',name:'谈判'},
+ {key:'phone',name:'电话'},
+ {key:'smalltalk',name:'闲聊'},
+ {key:'worklife',name:'职场日常'},
+ {key:'kaoyan',name:'考研核心'},
+ {key:'ielts',name:'雅思高频'},
+ {key:'management',name:'管理'},
+ {key:'career',name:'求职'},
+ {key:'daily',name:'生活'}
+];
+var VOCAB=[
+['starter',[
+ {w:'hello',p:'/həˈləʊ/',m:'used to greet someone',cn:'你好',eg:'Hello! Nice to meet you.'},
+ {w:'thank you',p:'/θæŋk juː/',m:'used to show gratitude',cn:'谢谢',eg:'Thank you for your help.'},
+ {w:'please',p:'/pliːz/',m:'used to ask politely',cn:'请',eg:'Please sit down.'},
+ {w:'sorry',p:'/ˈsɒri/',m:'used to apologize',cn:'对不起',eg:'Sorry, I am late.'},
+ {w:'yes / no',p:'/jes / nəʊ/',m:'to agree or disagree',cn:'是 / 不是',eg:'Yes, I can. No, I cannot.'},
+ {w:'good morning',p:'/ɡʊd ˈmɔːnɪŋ/',m:'a morning greeting',cn:'早上好',eg:'Good morning, everyone.'},
+ {w:'nice to meet you',p:'/naɪs tə miːt juː/',m:'a greeting when you first meet someone',cn:'很高兴认识你',eg:'Nice to meet you, I am Amy.'},
+ {w:'name',p:'/neɪm/',m:'what someone is called',cn:'名字',eg:'My name is Tom.'}
+]],
+['meeting',[
+ {w:'agenda',p:'/ə\'dʒendə/',m:'a list of items to discuss in a meeting',cn:'议程',eg:"Please review the agenda before the meeting."},
+ {w:'action item',p:'/ˈækʃn ˌaɪtəm/',m:'a task assigned during a meeting',cn:'行动项',eg:"Let's write down the action items."},
+ {w:'wrap up',p:'/ræp ʌp/',m:'to bring a meeting to a close',cn:'收尾、结束',eg:"Let's wrap up and summarize the decisions."},
+ {w:'follow up',p:'/ˈfɒləʊ ʌp/',m:'to check on progress after something',cn:'跟进',eg:"I'll follow up with the team by email."},
+ {w:'minutes',p:'/ˈmɪnɪts/',m:'written notes of a meeting',cn:'会议纪要',eg:'Who will take the minutes today?'},
+ {w:'consensus',p:'/kənˈsensəs/',m:'general agreement among a group',cn:'共识',eg:'We reached a consensus on the budget.'},
+ {w:'stakeholder',p:'/ˈsteɪkhəʊldə/',m:'a person with an interest in a project',cn:'利益相关方',eg:'We need to align all stakeholders.'},
+ {w:'defer',p:'/dɪˈfɜː/',m:'to delay something to a later time',cn:'推迟',eg:"Let's defer this topic to next week."}
+]],
+['email',[
+ {w:'attachment',p:'/əˈtætʃmənt/',m:'a file sent along with an email',cn:'附件',eg:'Please find the report in the attachment.'},
+ {w:'per',p:'/pɜː/',m:'according to',cn:'按照',eg:"Per your request, I've revised the draft."},
+ {w:'deadline',p:'/ˈdedlaɪn/',m:'the time by which work must be done',cn:'截止日期',eg:'The deadline is Friday noon.'},
+ {w:'cc',p:'/ˌsiːˈsiː/',m:'to copy someone into an email',cn:'抄送',eg:"I'll cc my manager on this email."},
+ {w:'regarding',p:'/rɪˈɡɑːdɪŋ/',m:'about; concerning',cn:'关于',eg:'I am writing regarding the contract.'},
+ {w:'revert',p:'/rɪˈvɜːt/',m:'to reply or get back to someone',cn:'回复、答复',eg:"I'll revert to you with the details."},
+ {w:'loop in',p:'/luːp ɪn/',m:'to include someone in a conversation',cn:'拉入同步',eg:"Let's loop in the legal team."},
+ {w:'out of office',p:'/ˌaʊt əv ˈɒfɪs/',m:'not at work, usually without email access',cn:'休假中',eg:"I'll be out of office next Monday."}
+]],
+['interview',[
+ {w:'strength',p:'/streŋθ/',m:'something you are good at',cn:'优势',eg:"My biggest strength is problem solving."},
+ {w:'weakness',p:'/ˈwiːknəs/',m:'an area where you need to improve',cn:'不足',eg:"I'm working on my public speaking weakness."},
+ {w:'achievement',p:'/əˈtʃiːvmənt/',m:'something you did successfully',cn:'成就',eg:'One of my key achievements was leading this project.'},
+ {w:'career goal',p:'/kəˈrɪə ɡəʊl/',m:'what you want to achieve in your career',cn:'职业目标',eg:'My career goal is to grow into a team leader.'},
+ {w:'teamwork',p:'/ˈtiːmwɜːk/',m:'working well with others',cn:'团队合作',eg:'I value teamwork and open communication.'},
+ {w:'deadline-driven',p:'/ˈdedlaɪn drɪvn/',m:'motivated by meeting deadlines',cn:'结果导向、守时',eg:"I'm deadline-driven and well organized."},
+ {w:'proactive',p:'/prəʊˈæktɪv/',m:'acting before being asked',cn:'积极主动的',eg:'I try to be proactive in solving issues.'},
+ {w:'take ownership',p:'/teɪk ˈəʊnəʃɪp/',m:'to take full responsibility',cn:'主动担责',eg:"I take ownership of every task I'm given."}
+]],
+['presentation',[
+ {w:'overview',p:'/ˈəʊvəvjuː/',m:'a general summary of a topic',cn:'概览',eg:'Let me give you a quick overview.'},
+ {w:'key point',p:'/kiː pɔɪnt/',m:'the most important idea',cn:'要点',eg:'The key point is cost reduction.'},
+ {w:'takeaway',p:'/ˈteɪkəweɪ/',m:'the main message to remember',cn:'核心收获',eg:'The main takeaway is faster delivery.'},
+ {w:'go through',p:'/ɡəʊ θruː/',m:'to explain something step by step',cn:'逐步讲解',eg:"Let's go through the numbers."},
+ {w:'visual',p:'/ˈvɪʒuəl/',m:'a chart, image or slide',cn:'视觉材料',eg:'This visual shows our growth.'},
+ {w:'Q&A',p:'/ˌkjuː ənd ˈeɪ/',m:'questions and answers',cn:'问答环节',eg:"We'll have Q&A at the end."},
+ {w:'summarize',p:'/ˈsʌməraɪz/',m:'to state the main points briefly',cn:'总结',eg:"To summarize, we're on track."},
+ {w:'audience',p:'/ˈɔːdiəns/',m:'the people listening to you',cn:'听众',eg:'Keep the audience engaged.'}
+]],
+['negotiation',[
+ {w:'offer',p:'/ˈɒfə/',m:'a proposal of a price or terms',cn:'报价、提议',eg:'Our offer is valid for two weeks.'},
+ {w:'counter-offer',p:'/ˈkaʊntə ˌɒfə/',m:'a response offering different terms',cn:'还价',eg:"I'd like to make a counter-offer."},
+ {w:'budget',p:'/ˈbʌdʒɪt/',m:'the money available for something',cn:'预算',eg:'We have a limited budget.'},
+ {w:'compromise',p:'/ˈkɒmprəmaɪz/',m:'an agreement where each side gives in',cn:'折中',eg:'Can we find a compromise?'},
+ {w:'terms',p:'/tɜːmz/',m:'the conditions of an agreement',cn:'条款',eg:"Let's review the terms again."},
+ {w:'concession',p:'/kənˈseʃn/',m:'something you give up to reach agreement',cn:'让步',eg:'We can make a small concession on delivery.'},
+ {w:'win-win',p:'/ˌwɪn ˈwɪn/',m:'beneficial for both sides',cn:'双赢',eg:'I believe this plan is win-win.'},
+ {w:'leverage',p:'/ˈliːvərɪdʒ/',m:'power used to get what you want',cn:'筹码、影响力',eg:'We have strong leverage in this deal.'}
+]],
+['phone',[
+ {w:'hold on',p:'/həʊld ɒn/',m:'to wait a moment',cn:'稍等',eg:'Please hold on a second.'},
+ {w:'transfer',p:'/trænsˈfɜː/',m:'to pass a call to someone else',cn:'转接',eg:'Let me transfer you to the sales team.'},
+ {w:'message',p:'/ˈmesɪdʒ/',m:'information left for someone',cn:'留言',eg:'Can I leave a message?'},
+ {w:'call back',p:'/kɔːl bæk/',m:'to return a call',cn:'回电',eg:"I'll call you back in an hour."},
+ {w:'extension',p:'/ɪkˈstenʃn/',m:'the extra number to reach a person',cn:'分机',eg:'The extension is 2301.'},
+ {w:'availability',p:'/əˌveɪləˈbɪləti/',m:'the times when you are free',cn:'可约时间',eg:"What's your availability this week?"},
+ {w:'missed call',p:'/mɪst kɔːl/',m:'a call you did not answer',cn:'未接来电',eg:'I saw your missed call.'},
+ {w:'speak up',p:'/spiːk ʌp/',m:'to speak louder',cn:'大声一点',eg:'Sorry, could you speak up?'}
+]],
+['smalltalk',[
+ {w:'weekend',p:'/ˌwiːkˈend/',m:'Saturday and Sunday',cn:'周末',eg:'Any plans for the weekend?'},
+ {w:'recommend',p:'/ˌrekəˈmend/',m:'to suggest something good',cn:'推荐',eg:'Can you recommend a good restaurant?'},
+ {w:'hobby',p:'/ˈhɒbi/',m:'something you enjoy in free time',cn:'爱好',eg:'My hobby is hiking.'},
+ {w:'get together',p:'/ɡet təˈɡeðə/',m:'to meet socially',cn:'聚一聚',eg:"Let's get together for coffee."},
+ {w:'exciting',p:'/ɪkˈsaɪtɪŋ/',m:'interesting and full of energy',cn:'令人兴奋的',eg:'That sounds exciting!'},
+ {w:'catch up',p:'/kætʃ ʌp/',m:'to talk about recent news',cn:'聊聊近况',eg:'We should catch up sometime.'},
+ {w:'culture',p:'/ˈkʌltʃə/',m:'the ideas and habits of a group',cn:'文化',eg:'I love learning about local culture.'},
+ {w:'plan',p:'/plæn/',m:'something you intend to do',cn:'计划',eg:'Do you have any plans for the holiday?'}
+]],
+['worklife',[
+ {w:'onboarding',p:'/ˈɒnbɔːdɪŋ/',m:'the process of welcoming new employees',cn:'入职培训',eg:'Onboarding will take three days.'},
+ {w:'performance review',p:'/pəˈfɔːməns rɪˈvjuː/',m:'a meeting to discuss your work',cn:'绩效评估',eg:'My performance review is next week.'},
+ {w:'overtime',p:'/ˈəʊvətaɪm/',m:'working extra hours',cn:'加班',eg:'I did two hours of overtime today.'},
+ {w:'annual leave',p:'/ˈænjuəl liːv/',m:'paid vacation days each year',cn:'年假',eg:"I'm saving my annual leave for May."},
+ {w:'benefits',p:'/ˈbenɪfɪts/',m:'extra things the company provides',cn:'福利',eg:'Our benefits include health insurance.'},
+ {w:'promotion',p:'/prəˈməʊʃn/',m:'moving to a higher position',cn:'晋升',eg:'She got a promotion to manager.'},
+ {w:'work-life balance',p:'/ˌwɜːk laɪf ˈbæləns/',m:'time divided between work and life',cn:'工作生活平衡',eg:'I value my work-life balance.'},
+ {w:'mentor',p:'/ˈmentɔː/',m:'an experienced person who guides you',cn:'导师',eg:'My mentor gave me great advice.'}
+]],
+['kaoyan',[
+ {w:'analyze',p:'/ˈænəlaɪz/',m:'to examine something in detail',cn:'分析',eg:'We need to analyze the data carefully.'},
+ {w:'significant',p:'/sɪɡˈnɪfɪkənt/',m:'important; noticeable',cn:'重要的、显著的',eg:'There was a significant increase in sales.'},
+ {w:'economy',p:'/ɪˈkɒnəmi/',m:'the system of producing and trading goods',cn:'经济',eg:'The global economy is recovering.'},
+ {w:'environment',p:'/ɪnˈvaɪrənmənt/',m:'the world around us; conditions',cn:'环境',eg:'Protecting the environment matters.'},
+ {w:'strategy',p:'/ˈstrætədʒi/',m:'a plan to reach a goal',cn:'战略、策略',eg:'We need a clear marketing strategy.'},
+ {w:'policy',p:'/ˈpɒləsi/',m:'official rules or plans',cn:'政策',eg:'The new policy takes effect next month.'},
+ {w:'evidence',p:'/ˈevɪdəns/',m:'facts that prove something',cn:'证据',eg:'The evidence supports this idea.'},
+ {w:'individual',p:'/ˌɪndɪˈvɪdʒuəl/',m:'a single person',cn:'个人、个体',eg:'Each individual has a different view.'},
+ {w:'invest',p:'/ɪnˈvest/',m:'to put money into something',cn:'投资',eg:'They decided to invest in education.'},
+ {w:'innovation',p:'/ˌɪnəˈveɪʃn/',m:'a new idea or method',cn:'创新',eg:'Innovation drives company growth.'},
+ {w:'potential',p:'/pəˈtenʃl/',m:'possible ability in the future',cn:'潜力',eg:'This market has huge potential.'},
+ {w:'priority',p:'/praɪˈɒrəti/',m:'something most important first',cn:'优先事项',eg:'Safety is our top priority.'}
+]],
+['ielts',[
+ {w:'accommodate',p:'/əˈkɒmədeɪt/',m:'to provide space for someone',cn:'容纳、为…提供住处',eg:'The hotel can accommodate 200 guests.'},
+ {w:'contemporary',p:'/kənˈtemprəri/',m:'modern; of the present time',cn:'当代的',eg:'Contemporary art is very creative.'},
+ {w:'diversity',p:'/daɪˈvɜːsəti/',m:'the state of being varied',cn:'多样性',eg:'Cultural diversity enriches society.'},
+ {w:'facilitate',p:'/fəˈsɪlɪteɪt/',m:'to make something easier',cn:'促进、使便利',eg:'Technology facilitates communication.'},
+ {w:'inevitable',p:'/ɪnˈevɪtəbl/',m:'certain to happen',cn:'不可避免的',eg:'Change is inevitable.'},
+ {w:'phenomenon',p:'/fəˈnɒmɪnən/',m:'an observable fact or event',cn:'现象',eg:'This is a common social phenomenon.'},
+ {w:'sustainable',p:'/səˈsteɪnəbl/',m:'able to continue without harm',cn:'可持续的',eg:'We need sustainable development.'},
+ {w:'significant',p:'/sɪɡˈnɪfɪkənt/',m:'large or important enough to notice',cn:'显著的',eg:'It had a significant impact.'},
+ {w:'contribute',p:'/kənˈtrɪbjuːt/',m:'to give or add to something',cn:'贡献',eg:'Everyone can contribute ideas.'},
+ {w:'percentage',p:'/pəˈsentɪdʒ/',m:'an amount expressed as parts of 100',cn:'百分比',eg:'A large percentage of users agree.'},
+ {w:'advantage',p:'/ədˈvɑːntɪdʒ/',m:'a benefit; a helpful quality',cn:'优势',eg:'This method has many advantages.'},
+ {w:'adverse',p:'/ˈædvɜːs/',m:'harmful; unfavourable',cn:'不利的',eg:'The plan had adverse effects.'}
+]],
+['management',[
+ {w:'delegate',p:'/ˈdelɪɡeɪt/',m:'to give tasks to others',cn:'授权、委派',eg:'You should delegate routine work.'},
+ {w:'empower',p:'/ɪmˈpaʊə/',m:'to give someone power or confidence',cn:'赋能',eg:'Good leaders empower their teams.'},
+ {w:'prioritize',p:'/praɪˈɒrətaɪz/',m:'to put things in order of importance',cn:'排序、优先处理',eg:'Prioritize tasks by urgency.'},
+ {w:'milestone',p:'/ˈmaɪlstəʊn/',m:'an important stage in a project',cn:'里程碑',eg:'We hit the first milestone on time.'},
+ {w:'deliverable',p:'/dɪˈlɪvərəbl/',m:'a tangible result to deliver',cn:'交付物',eg:'The report is the key deliverable.'},
+ {w:'feedback',p:'/ˈfiːdbæk/',m:'comments on performance',cn:'反馈',eg:'Please give me feedback on this draft.'},
+ {w:'allocate',p:'/ˈæləkeɪt/',m:'to assign resources to tasks',cn:'分配、调配',eg:'We need to allocate budget carefully.'},
+ {w:'coordinate',p:'/kəʊˈɔːdɪneɪt/',m:'to organize people to work together',cn:'协调',eg:'She coordinates the whole project.'},
+ {w:'streamline',p:'/ˈstriːmlaɪn/',m:'to make a process simpler',cn:'精简、优化流程',eg:'We streamlined our approval process.'},
+ {w:'motivate',p:'/ˈməʊtɪveɪt/',m:'to make someone want to do well',cn:'激励',eg:'Rewards motivate the team.'},
+ {w:'evaluate',p:'/ɪˈvæljueɪt/',m:'to judge the value of something',cn:'评估',eg:'Let us evaluate the results first.'},
+ {w:'taskforce',p:'/ˈtɑːskfɔːs/',m:'a group formed for a special task',cn:'专项小组',eg:'The taskforce meets every Monday.'}
+]],
+['career',[
+ {w:'resume',p:'/ˈrezjumeɪ/',m:'a document listing your experience',cn:'简历',eg:'Please update your resume.'},
+ {w:'cover',p:'/ˈkʌvə/',m:'a letter introducing your application',cn:'求职信附件（cover letter）',eg:'Attach your cover letter.'},
+ {w:'portfolio',p:'/pɔːtˈfəʊliəʊ/',m:'a collection of your work samples',cn:'作品集',eg:'Show your portfolio in the interview.'},
+ {w:'vacancy',p:'/ˈveɪkənsi/',m:'a job position that is open',cn:'职位空缺',eg:'There is a vacancy in marketing.'},
+ {w:'probation',p:'/prəˈbeɪʃn/',m:'a trial period for new staff',cn:'试用期',eg:'My probation lasts three months.'},
+ {w:'salary',p:'/ˈsæləri/',m:'the money you earn each period',cn:'薪资',eg:'What salary range do you expect?'},
+ {w:'commute',p:'/kəˈmjuːt/',m:'to travel between home and work',cn:'通勤',eg:'I commute by metro every day.'},
+ {w:'supervisor',p:'/ˈsuːpəvaɪzə/',m:'a person who manages your work',cn:'主管',eg:'Report to your supervisor weekly.'},
+ {w:'reference',p:'/ˈrefrəns/',m:'a person who can speak for your ability',cn:'推荐人',eg:'List two references on the form.'},
+ {w:'headhunter',p:'/ˈhedhʌntə/',m:'a recruiter who finds senior talent',cn:'猎头',eg:'A headhunter contacted me yesterday.'},
+ {w:'transfer',p:'/trænsˈfɜː/',m:'to move to another position',cn:'调动、转岗',eg:'She got a transfer to Shanghai.'},
+ {w:'relocate',p:'/ˌriːləʊˈkeɪt/',m:'to move to live in another place',cn:'搬迁、移居',eg:'The job requires you to relocate.'}
+]],
+['daily',[
+ {w:'grocery',p:'/ˈɡrəʊsəri/',m:'food and goods you buy regularly',cn:'日用品杂货',eg:'I buy groceries on weekends.'},
+ {w:'laundry',p:'/ˈlɔːndri/',m:'washing clothes',cn:'洗衣服',eg:'I do my laundry on Sunday.'},
+ {w:'appointment',p:'/əˈpɔɪntmənt/',m:'a planned meeting at a set time',cn:'预约',eg:'I have a dentist appointment at 3.'},
+ {w:'delivery',p:'/dɪˈlɪvəri/',m:'the act of bringing goods to you',cn:'配送、快递',eg:'The delivery will arrive today.'},
+ {w:'reservation',p:'/ˌrezəˈveɪʃn/',m:'a booking for a table or room',cn:'预订',eg:'I made a reservation for two.'},
+ {w:'checkout',p:'/ˈtʃekaʊt/',m:'the place where you pay',cn:'结账、收银台',eg:'Pay at the checkout counter.'},
+ {w:'receipt',p:'/rɪˈsiːt/',m:'a paper showing you paid',cn:'收据、小票',eg:'Keep the receipt for a refund.'},
+ {w:'refund',p:'/ˈriːfʌnd/',m:'money returned for a purchase',cn:'退款',eg:'I asked for a full refund.'},
+ {w:'maintenance',p:'/ˈmeɪntənəns/',m:'keeping things in good condition',cn:'维修、保养',eg:'Call maintenance for the leak.'},
+ {w:'utility',p:'/juːˈtɪləti/',m:'services like water and electricity',cn:'水电气等公用事业',eg:'Pay your utilities before the 10th.'},
+ {w:'landlord',p:'/ˈlændlɔːd/',m:'a person who owns and rents property',cn:'房东',eg:'My landlord is very friendly.'},
+ {w:'subway',p:'/ˈsʌbweɪ/',m:'an underground train system',cn:'地铁',eg:'The subway is faster than driving.'}
+]]];
+var TOTAL_WORDS=132;
+var SCENE_POOL=["视频会议","自我介绍","商务邮件","电话沟通","日常闲聊","项目汇报","谈判报价","绩效面谈"];
+var PHASES=[
+ {name:'基础奠基',goal:'建立发音与拼读习惯，掌握高频词汇，能听懂慢速英语',focus:['自然拼读与音标','高频 1200 词','简单句型造句','晨间朗读 15 分钟']},
+ {name:'日常听说',goal:'能进行 5 分钟日常对话，理解语速较慢的英语内容',focus:['影子跟读训练','日常对话场景','播客泛听','每天记录生词']},
+ {name:'商务入门',goal:'能读写基础商务邮件，熟悉办公室常用表达',focus:['商务高频词汇','邮件结构与模板','会议预约与答复','办公室日常用语']},
+ {name:'外企实战',goal:'能参与英文会议并表达观点，完成英文面试演练',focus:['会议发言框架','PPT 汇报表达','面试高频问答','谈判与说服']},
+ {name:'精进打磨',goal:'能独立处理复杂工作沟通，语气得体、逻辑清晰',focus:['邮件语气与细节','跨文化沟通禁忌','观点论证结构']},
+ {name:'冲刺达标',goal:'达到外企日常沟通自如的水平，从容应对各类场景',focus:['全真场景演练','弱项专项训练','时间管理与复盘']}
+];
+/* 按目标阶段（考研/雅思/外企）区分的每日任务模板 */
+var GOAL_TASKS={
+ kaoyan:[
+  {t:'words',label:'考研词汇',desc:'背 {n} 个考研核心词（红宝书/闪过任选），滚动复习',min:15},
+  {t:'read',label:'真题精读',desc:'精读 1 篇英语二真题阅读，拆 3 个长难句并翻译',min:20},
+  {t:'listen',label:'磨耳朵',desc:'听考研真题音频或 BBC 10 分钟，默写 5 个核心词',min:10},
+  {t:'write',label:'写作仿写',desc:'仿写 2 个真题作文句，用上今天学的词组',min:15}
+ ],
+ ielts:[
+  {t:'words',label:'雅思词汇',desc:'背 {n} 个雅思高频词（雅思词汇真经）',min:15},
+  {t:'listen',label:'听力精听',desc:'剑桥听力 Section 精听 1 篇，跟读连读弱读',min:20},
+  {t:'speak',label:'口语打卡',desc:'雅思口语 Part1/2 练 1 题，录音回放找不足',min:15},
+  {t:'write',label:'写作结构',desc:'写 Task2 一个主体段（观点+论据+例子）',min:15}
+ ],
+ career:[
+  {t:'words',label:'商务词汇',desc:'背 {n} 个商务表达，会读会用',min:12},
+  {t:'listen',label:'商务听力',desc:'听商务播客/会议 10 分钟，记下表达',min:12},
+  {t:'speak',label:'开口说',desc:'练熟「{scene}」场景对话，录音回听',min:14},
+  {t:'scene',label:'场景演练',desc:'完成「{scene}」场景 1 个完整对话',min:14}
+ ]
+};
+/* 综合任务库：按星期轮换覆盖全部板块，保证每日任务融合多板块 */
+var DAILY_POOL=[
+ {tab:'image',label:'形象管理',t:'形象',desc:'按当前月份主题完成 1 项形象练习（如整理穿搭清单）',min:10},
+ {tab:'think',label:'结构化思维',t:'思维',desc:'练 1 个思维模型（金字塔/四象限），拆解一个日常问题',min:10},
+ {tab:'expr',label:'表达沟通',t:'表达',desc:'录 2 分钟自述，回放找 1 个改进点',min:10},
+ {tab:'etiq',label:'商务礼仪',t:'礼仪',desc:'复习一个礼仪要点（邮件/称呼/用餐）并演练一次',min:10},
+ {tab:'mgmt',label:'管理能力',t:'管理',desc:'完成一个管理小练习（目标拆解/任务分配/一对一说辞）',min:10},
+ {tab:'drive',label:'自驱抗压',t:'自驱',desc:'用四象限规划今日事项，番茄钟完成 2 个时段',min:10},
+ {tab:'tools',label:'办公工具',t:'工具',desc:'练一个办公技能（Excel/PPT/协同工具）15 分钟',min:10},
+ {tab:'team',label:'团队协作',t:'协作',desc:'主动给同伴一条建设性反馈或帮一件事',min:10},
+ {tab:'cult',label:'跨文化视野',t:'跨文化',desc:'精读一篇国际观察笔记，记录 1 个文化差异点',min:10},
+ {tab:'sales',label:'销售思维',t:'销售',desc:'用 SPIN 法设计 3 个提问，练习价值主张表述',min:10},
+ {tab:'money',label:'个人理财',t:'理财',desc:'记账并复盘当日支出，读 5 页理财书',min:10},
+ {tab:'biz',label:'商业通识',t:'商业',desc:'拆一个商业模式片段（画布/护城河/财报数字）',min:10},
+ {tab:'psy',label:'心理学素养',t:'心理',desc:'记录 1 个认知偏差或情绪觉察案例',min:10},
+ {tab:'hist',label:'历史学素养',t:'历史',desc:'读一段历史脉络，画一条因果链笔记',min:10},
+ {tab:'soc',label:'社会学素养',t:'社会',desc:'用一个社会学概念观察身边一个现象',min:10},
+ {tab:'poli',label:'政治时势',t:'时政',desc:'精读一篇时政要闻，做「事实-观点-影响」拆解',min:10}
+];
+var TASK_LIB={
+ zero:[
+  {t:'words',label:'认新词',desc:'看 5 个新词卡，跟读 3 遍就算完成',min:8},
+  {t:'listen',label:'磨耳朵',desc:'听慢速英语 10 分钟，能听出几个词就行',min:10},
+  {t:'speak',label:'开口说',desc:'跟着语音读 5 个句子，录下来给自己听',min:10},
+  {t:'scene',label:'场景跟读',desc:'跟读「{scene}」3 个句型，读顺就行',min:12}
+ ],
+ starter:[
+  {t:'words',label:'认新词',desc:'看 6 个新词，会读、知道意思就过',min:10},
+  {t:'listen',label:'磨耳朵',desc:'听慢速对话 10 分钟，记下 3 个听懂的词',min:12},
+  {t:'speak',label:'开口说',desc:'用 3 个新词各说 1 句简单的话，录音回听',min:10},
+  {t:'scene',label:'场景练习',desc:'跟读「{scene}」主题 3 个句子并复述',min:12}
+ ],
+ inter:[
+  {t:'words',label:'学场景词',desc:'学 6 个商务表达，会读会用就算完成',min:12},
+  {t:'listen',label:'听商务对话',desc:'听商务英语 10 分钟，摘出 3 个表达',min:12},
+  {t:'speak',label:'开口说',desc:'用模板说一段 1 分钟自我介绍并录音',min:12},
+  {t:'scene',label:'场景练习',desc:'练熟「{scene}」场景 4 个句型，替换练习',min:14}
+ ],
+ advanced:[
+  {t:'words',label:'学表达',desc:'学 6 个高级表达（搭配 + 例句）',min:12},
+  {t:'listen',label:'听真实语料',desc:'听一段会议/访谈，用中文复述大意',min:12},
+  {t:'speak',label:'观点表达',desc:'围绕「{scene}」用「观点+理由+例子」说 2 分钟',min:14},
+  {t:'scene',label:'场景演练',desc:'完整演练「{scene}」场景，扮演一方',min:14}
+ ],
+ polish:[
+  {t:'words',label:'错词复习',desc:'复习错词本，再学 6 个易混词',min:12},
+  {t:'listen',label:'逐句精听',desc:'精听一段 2 分钟演讲并跟读',min:15},
+  {t:'speak',label:'即兴表达',desc:'挑个话题连续说 2 分钟，录音回放',min:14},
+  {t:'scene',label:'场景模拟',desc:'完成「{scene}」模拟并复盘 2 个改进点',min:14}
+ ],
+ sprint:[
+  {t:'words',label:'总复习',desc:'高频词快速过一遍，标记没掌握的',min:15},
+  {t:'listen',label:'听力冲刺',desc:'真实语速材料精听 15 分钟并做笔记',min:15},
+  {t:'speak',label:'全真模拟',desc:'模拟面试/汇报 3 分钟并录音回放',min:15},
+  {t:'scene',label:'综合演练',desc:'全流程模拟 2 个综合场景，计时完成',min:15}
+ ]
+};
+var N_NEW=[8,10,12,14,16,20];
+var ABILITY_GAIN={words:{voc:3},listen:{lis:2.2},speak:{spe:2.5},read:{rea:2.2},write:{wri:2.5},scene:{bus:2.8}};
+var ABILITY_KEYS=['lis','spe','rea','wri','voc','bus'];
+var ABILITY_NAMES=['听力理解','口语表达','阅读理解','商务写作','词汇量','商务应用'];
+var TARGET_ABILITY=[88,86,84,85,90,86];
+var TIPS=[
+ '影子跟读法：播放原音，延迟 0.5 秒模仿，重点是语调和节奏而非生词。',
+ '输入要可理解：选择能听懂约 70% 的材料，太难的内容效率反而低。',
+ '开口比准确更重要：先让自己说得流利、敢说，再逐步修正语法。',
+ '把英语用起来：每天强迫自己用英语记录 3 件今天的事。',
+ '错词本是最好的教材：每隔 1/3/7 天复习，记忆更牢固。',
+ '商务英语重在得体：语气、礼貌、结构性表达比华丽词藻更重要。',
+ '用「费曼学习法」：把今天学的内容用英语讲给假想的同事听。',
+ '场景浸泡：把工作场景一个个攻克，比泛泛而学进步更快。',
+ '间隔重复：新词当天、第 3 天、第 7 天各复习一次。',
+ '听力磨耳朵：通勤、午休用碎片时间泛听，不追求听懂每个词。',
+ '口语录音回放：录下自己的表达，回听语调和节奏，进步看得见。',
+ '邮件先模仿再创造：背熟 10 封优秀范文，量变产生质变。'
+];
+var SCENES=[
+ {t:'自我介绍第一句话',tag:'面试 · 新同事',lines:[
+   {en:"I'm a results-driven professional with 5 years of experience in project management.",cn:"我是一名以结果为导向的专业人士，在项目管理方面有 5 年经验。"},
+   {en:"I'm currently responsible for leading a team of 8 people.",cn:"目前我负责带领一支 8 人团队。"},
+   {en:"I'm excited about this opportunity because it aligns with my career goals.",cn:"我对这个机会很感兴趣，因为它与我的职业目标一致。"}
+ ],tips:['用 responsible for 说明职责范围','把经验与对方需求挂钩更有说服力','结尾表达热情：I\'m excited / very interested'],how:['第 1 步：大声朗读例句 3 遍，模仿录音语调；','第 2 步：换自己的真实信息（专业/经验/项目）重写一次；','第 3 步：对着手机摄像头讲 1 分钟，回放检查眼神与卡顿。']},
+ {t:'视频会议开场',tag:'会议',lines:[
+   {en:"Good morning, everyone. Thanks for joining the call.",cn:"大家早上好，感谢参会。"},
+   {en:"Let's start by going through today's agenda.",cn:"我们先过一遍今天的议程。"},
+   {en:"Before we dive in, any updates from last week's action items?",cn:"进入正题前，上周的行动项有更新吗？"}
+ ],tips:['先寒暄 30 秒再进入正题','用 dive in 显得自然地道','没听懂就说：Could you repeat that, please?'],how:['第 1 步：跟读 3 遍开场句子，注意语速放慢；','第 2 步：模拟进入会议室，自然地说出这三句话；','第 3 步：请朋友扮演参会者回应你，练习 3 轮。']},
+ {t:'商务邮件完整模板',tag:'邮件',lines:[
+   {en:"Subject: Proposal for the Q3 Marketing Campaign",cn:"主题：Q3 营销活动提案"},
+   {en:"Dear Sarah, I hope this email finds you well.",cn:"亲爱的莎拉，见信好。"},
+   {en:"I'm writing to follow up on our meeting about the campaign budget.",cn:"我写信是跟进我们关于活动预算的会议。"},
+   {en:"Please find the draft in the attachment. Let me know your thoughts.",cn:"草稿见附件，请多提意见。"},
+   {en:"Looking forward to your reply. Best regards, Alex",cn:"期待您的回复。此致敬礼，亚历克斯"}
+ ],tips:['主题行写清「关于什么 + 要对方做什么」','正式场合用 I hope this email finds you well','请求反馈用 Let me know your thoughts'],how:['第 1 步：先抄写一遍模板，熟悉结构与语气；','第 2 步：替换成你自己的产品/项目，写一封完整邮件；','第 3 步：发给朋友请 TA 挑 3 个不合理处，修改后再发。']},
+ {t:'绩效面谈表达',tag:'绩效',lines:[
+   {en:"I'd like to start by reviewing my achievements this quarter.",cn:"我想先回顾一下本季度的成绩。"},
+   {en:"One thing I'm proud of is delivering the project two weeks early.",cn:"让我自豪的一件事是提前两周交付了项目。"},
+   {en:"In the next quarter, I'd like to develop my leadership skills.",cn:"下个季度，我想提升自己的领导力。"}
+ ],tips:['先说成绩再谈改进','用 STAR 法则讲案例：情境-任务-行动-结果','表达成长意愿：I\'d like to develop…'],how:['第 1 步：用自己的一个真实成绩，按 STAR 法则写 5 句话；','第 2 步：录音讲一遍，控制在 90 秒内；','第 3 步：回放找「成绩-行为-结果」是否清晰，调整再讲一遍。']},
+ {t:'电话沟通话术',tag:'电话',lines:[
+   {en:"Hello, you've reached the sales department. How may I help you?",cn:"你好，这里是销售部，有什么可以帮您？"},
+   {en:"Could you hold on for a moment, please? I'll transfer you.",cn:"请稍等，我帮您转接。"},
+   {en:"Would you like to leave a message, or have John call you back?",cn:"您想留言，还是让约翰给您回电？"}
+ ],tips:['数字与姓名要重复确认','没听清用 Could you speak up, please?','约时间用 What\'s your availability? 更地道'],how:['第 1 步：跟读 3 遍例句，特别注意数字与姓名的发音；','第 2 步：和伙伴模拟打电话场景，练习转接与留言；','第 3 步：故意让伙伴说快一点，练习听不清时的礼貌追问。']},
+ {t:'项目进度汇报',tag:'会议 · 汇报',lines:[
+   {en:"Here's a quick status update on the project.",cn:"这里是项目的简要进展汇报。"},
+   {en:"We're currently ahead of schedule on phase one.",cn:"第一阶段我们目前超前于计划。"},
+   {en:"However, we're facing a potential risk with the supplier.",cn:"不过，我们在供应商方面面临潜在风险。"},
+   {en:"To address this, we plan to bring in a backup supplier.",cn:"为应对这一点，我们计划引入备选供应商。"}
+ ],tips:['汇报公式：进度 + 风险 + 对策','进度三句话：ahead of schedule / on track / behind schedule','风险不藏掖：we\'re facing… / there\'s a hiccup'],how:['第 1 步：用模板写出自己手头一件事的进度汇报；','第 2 步：计时 2 分钟讲给朋友听，包含进度+风险+对策；','第 3 步：根据反馈修改，再讲一遍直到流畅。']},
+ {t:'跨文化闲聊安全话题',tag:'闲聊',lines:[
+   {en:"How was your weekend? Did you do anything fun?",cn:"周末过得怎么样？有做什么好玩的事吗？"},
+   {en:"I hear there's a new restaurant nearby. Have you tried it?",cn:"听说附近有家新餐厅，你去过吗？"},
+   {en:"Do you have any plans for the upcoming holiday?",cn:"即将到来的假期你有什么计划吗？"}
+ ],tips:['安全话题：周末、天气、美食、旅行','避开敏感话题：政治、宗教、薪酬','回应后再接一个开放问题保持对话'],how:['第 1 步：记住 3 个安全开场题（周末/美食/假期）；','第 2 步：在小组/线上会议里主动问同伴一次；','第 3 步：对方回答后，用「回应+追问」把对话接下去。']},
+ {t:'谈判与报价',tag:'谈判',lines:[
+   {en:"Thank you for the offer. May I ask how flexible you are on the price?",cn:"谢谢您的报价。请问价格方面有多大灵活空间？"},
+   {en:"We could accept 10% off if you agree to a two-year contract.",cn:"如果您同意签两年合同，我们可以接受九折。"},
+   {en:"If we move forward, we'd appreciate a shorter payment term.",cn:"如果合作推进，我们希望付款周期能更短。"}
+ ],tips:['还价用条件式：If you… we could…','多用 we 表示团队立场','让步要换回报：concession for concession'],how:['第 1 步：角色扮演：你报价 → 朋友还价，练习 3 轮；','第 2 步：用「If you… we could…」句式练习让步条件；','第 3 步：录音回放，检查语气是否坚定又留有回旋。']}
+];
+
+/* 三大里程碑目标 */
+var MILESTONES=[
+ {id:'kaoyan',name:'考研英语二',target:'2026年12月',level:'过国家线 → 冲 70+',icon:'i-graduation',
+  desc:'学术阅读为主，词汇约5500词。12月中旬考试，当前处于冲刺阶段。',
+  needs:['长难句拆解','学术阅读速读','写作模板定型','真题精研']},
+ {id:'ielts',name:'雅思 7.5',target:'2027年6月',level:'总分 7.5（小分≥6.5）',icon:'i-send',
+  desc:'听说读写全面考核，词汇量需 8000-10000。考研后无缝衔接，重点补听说缺口。',
+  needs:['口语素材库','听力精听','学术写作结构','机考模考']},
+ {id:'career',name:'外企水平',target:'长期 · 持续达标',level:'日常商务沟通自如',icon:'i-case',
+  desc:'能开会、写邮件、做汇报、有效谈判。雅思达标后转入真实工作场景浸泡。',
+  needs:['商务词汇','会议表达','邮件得体','跨文化沟通']}
+];
+
+/* 推荐学习资源：书籍 / 课程 / 视频 */
+var RESOURCES=[
+ {id:'kaoyan',name:'考研英语二 · 阶段资源',items:[
+   {type:'书籍',name:'《张剑黄皮书（英语二）历年真题解析》',why:'真题逐句精解 + 语篇逻辑分析，最经典真题书'},
+   {type:'书籍',name:'《考研圣经（英语二）》',why:'逐句图解，适合基础一般考生'},
+   {type:'书籍',name:'《句句真研》（田静）',why:'长难句拆解，零基础友好'},
+   {type:'书籍',name:'《红宝书考研英语词汇》',why:'约6600词按考频分类，全程词汇主力'},
+   {type:'书籍',name:'《恋练有词》（朱伟）',why:'词根词缀 + 词群记忆，配视频课'},
+   {type:'书籍',name:'《阅读的逻辑》（唐迟）',why:'阅读方法论，强调逻辑分析'},
+   {type:'视频',name:'唐迟 · 阅读真题精讲',why:'考研阅读提分首选，分基础/强化/冲刺'},
+   {type:'视频',name:'王江涛 · 考研英语写作',why:'高分写作，作文模板与语料'},
+   {type:'视频',name:'田静 · 长难句课程',why:'从简单句到长难句系统拆解'}
+ ]},
+ {id:'ielts',name:'雅思 7.5 · 阶段资源',items:[
+   {type:'书籍',name:'《剑桥雅思官方真题集》（剑15-18）',why:'官方真题，考前限时模拟首选'},
+   {type:'书籍',name:'《雅思王听力真题语料库》（王陆）',why:'听力反应与拼写专项，重点刷3/4/5/11/15章'},
+   {type:'书籍',name:'《雅思阅读真经总纲》（刘洪波）',why:'平行阅读法，机考友好'},
+   {type:'书籍',name:'《顾家北手把手教你雅思写作》',why:'ABC法 + 话题框架，写作提分明星'},
+   {type:'书籍',name:'《雅思词汇真经》（刘洪波）',why:'3600核心词按22场景分类，词群记忆'},
+   {type:'书籍',name:'《慎小嶷十天突破雅思口语》',why:'口语素材与地道表达'},
+   {type:'视频',name:'Simon · 雅思写作范文系列',why:'前雅思考官范文，观点与句式积累'},
+   {type:'视频',name:'雅思口语新题季题库解析',why:'每年1/5/9月口语换题，新旧题别踩坑'},
+   {type:'工具',name:'IELTS 官方机考模拟',why:'2026年9月起大陆全面机考，考前务必练机考'}
+ ]},
+ {id:'career',name:'外企阶段 · 资源',items:[
+   {type:'书籍',name:'《商务英语写作》系列',why:'邮件、报告、提案的职场写作范本'},
+   {type:'书籍',name:'《The Culture Map》（跨文化地图）',why:'外企跨文化沟通经典'},
+   {type:'视频',name:'TED / 商务英语演讲',why:'真实演讲语料，练听力和结构表达'},
+   {type:'视频',name:'BBC Business English 系列',why:'办公室场景地道表达'},
+   {type:'工具',name:'LinkedIn 英文职场社区',why:'真实外企环境浸泡 + 人脉积累'},
+   {type:'播客',name:'Business English Pod',why:'商务场景听力友好，通勤磨耳朵'},
+   {type:'播客',name:'The Economist Podcast',why:'商业与金融英语，进阶阅读听力'},
+   {type:'书籍',name:'《Merriam-Webster 商务词典》',why:'地道商务词汇随时查'}
+ ]}
+];
+
+/* 英语 · 12 个月全景进阶路线 */
+var ENG_YEAR=[
+ {m:'第 1 月',t:'零基础破冰',d:'音标+自然拼读，掌握 200 个高频单词，开口读 30 个短句'},
+ {m:'第 2 月',t:'日常口语起步',d:'学会自我介绍、问路、点餐等 20 个生活场景，每天 10 分钟晨读'},
+ {m:'第 3 月',t:'听力磨耳朵',d:'慢速英语精听 40 篇，泛听播客 20 小时，能抓大意与数字'},
+ {m:'第 4 月',t:'基础写作入门',d:'掌握 5 种基本句型，每天写 3 句话日记，完成 5 篇 100 词短文'},
+ {m:'第 5 月',t:'商务词汇扩充',d:'积累 300 个商务高频词，熟悉会议/邮件/电话三大场景表达'},
+ {m:'第 6 月',t:'会议英语实战',d:'能听懂 30 分钟英文会议纪要，掌握 15 个会议发言模板'},
+ {m:'第 7 月',t:'商务邮件进阶',d:'能独立写 10 种外贸/职场邮件，语气得体、结构清晰'},
+ {m:'第 8 月',t:'英文面试准备',d:'打磨自我陈述 STAR 案例，完成 3 轮模拟面试问答'},
+ {m:'第 9 月',t:'PPT 汇报表达',d:'会用 8 大汇报句式，独立完成 1 场 10 分钟英文产品演示'},
+ {m:'第 10 月',t:'谈判与说服',d:'掌握 12 个谈判高频表达，练习让步与还价话术'},
+ {m:'第 11 月',t:'跨文化沟通',d:'理解中英美文化差异，能适应不同口音与沟通风格'},
+ {m:'第 12 月',t:'外企全场景达标',d:'全流程模拟：会议+邮件+汇报+谈判，达到外企日常自如水平'}
+];
+
+/* 8 个能力并列栏目 · 元数据 + 各自 12 个月学习路线 */
+var COLUMNS=[
+ {tab:'image',icon:'i-user',name:'形象管理',ability:0,priority:1,year:[
+  {m:'第 1 月',t:'形象认知',d:'了解外企 Dress Code 与个人形象定位，拍一套专业简历照'},
+  {m:'第 2 月',t:'衣橱基础',d:'建立基础衣橱：3 套商务休闲 + 2 套正装，学会叠穿与配色'},
+  {m:'第 3 月',t:'仪表细节',d:'发型、指甲、鞋子、香水等细节管理，形成每日出门检查清单'},
+  {m:'第 4 月',t:'姿态气质',d:'练习站姿坐姿走姿，眼神交流与微笑，录视频自评每周 1 次'},
+  {m:'第 5 月',t:'场合着装',d:'面试/入职/日常/团建/晚宴五类场合，各配好 1 套不出错方案'},
+  {m:'第 6 月',t:'线上形象',d:'视频会议画面、光线、背景、着装管理；头像与领英形象统一'},
+  {m:'第 7 月',t:'季节性穿搭',d:'四季穿搭方案更新，学会用配饰提升精致度而不喧宾夺主'},
+  {m:'第 8 月',t:'跨行业适配',d:'按行业风格调试（tech/金融/咨询/快消），理解行业审美差异'},
+  {m:'第 9 月',t:'形象与表达结合',d:'形象配表达：演讲着装、商务宴请着装与言谈的协调'},
+  {m:'第 10 月',t:'形象预算管理',d:'建立季度形象预算，聪明购物清单：一衣多穿、经典款优先'},
+  {m:'第 11 月',t:'个人风格建立',d:'在规范内找到个人风格记忆点，形成稳定的职场形象标签'},
+  {m:'第 12 月',t:'形象体系复盘',d:'全年形象照片/反馈复盘，形成个人形象手册并持续迭代'}
+ ]},
+ {tab:'think',icon:'i-grid',name:'结构化思维',ability:1,priority:1,year:[
+  {m:'第 1 月',t:'结论先行',d:'学金字塔原理，每天 1 次「先结论后展开」的刻意表达'},
+  {m:'第 2 月',t:'分组归类',d:'MECE 分类练习：把杂乱信息按互斥穷尽原则重新归类'},
+  {m:'第 3 月',t:'逻辑递进',d:'按时间/重要性/结构三种顺序组织信息，改写 20 段混乱表达'},
+  {m:'第 4 月',t:'数据支撑',d:'学用数据说话：模糊表达改写为带数字的精确表达，练 30 条'},
+  {m:'第 5 月',t:'总分总结构',d:'邮件/汇报/发言统一总分总，用模板练 10 篇完整输出'},
+  {m:'第 6 月',t:'问题拆解',d:'学 MECE 拆解问题：把大问题拆成 3 层子问题，练 10 个案例'},
+  {m:'第 7 月',t:'分析与决策',d:'学 SWOT/四象限/利弊对比，用框架分析 10 个真实决策'},
+  {m:'第 8 月',t:'总结归纳',d:'读完文章/开完会 3 句话归纳要点，坚持 30 天打卡'},
+  {m:'第 9 月',t:'思维导图',d:'用思维导图整理学习/工作内容，形成自己的知识体系'},
+  {m:'第 10 月',t:'结构化汇报',d:'完整练习「背景-进展-风险-计划」四段式周报与项目汇报'},
+  {m:'第 11 月',t:'快速思考',d:'限时 1 分钟电梯陈述训练，每天 1 题，录音复盘'},
+  {m:'第 12 月',t:'思维模型库',d:'整理个人思维模型工具箱（至少 10 个模型）并持续应用'}
+ ]},
+ {tab:'expr',icon:'i-chat',name:'表达沟通',ability:2,priority:1,year:[
+  {m:'第 1 月',t:'表达体检',d:'录 3 分钟自述评估四大维度，找到首要提升点'},
+  {m:'第 2 月',t:'声音训练',d:'练语速、音量、停顿与重音，每天 5 分钟跟读绕口令'},
+  {m:'第 3 月',t:'口语逻辑',d:'用「观点-理由-例子-总结」四步法回答即兴问题，每日 1 题'},
+  {m:'第 4 月',t:'讲故事力',d:'用 STAR 法则讲 5 个真实经历故事，录视频复盘'},
+  {m:'第 5 月',t:'书面表达',d:'邮件/纪要/短消息三类书面表达各练 10 篇，注意语气'},
+  {m:'第 6 月',t:'汇报表达',d:'学 PPT 汇报口头稿写法，完成 1 场 8 分钟口头汇报'},
+  {m:'第 7 月',t:'倾听与回应',d:'练倾听复述：听完对方 2 分钟发言后准确复述核心并回应'},
+  {m:'第 8 月',t:'提问力',d:'学会开放式/封闭式/澄清式提问，在讨论中主动提问 20 次'},
+  {m:'第 9 月',t:'说服力',d:'学影响力六原则，用「利益+证据+例证」说服练习 10 次'},
+  {m:'第 10 月',t:'即兴表达',d:'随机话题连说 3 分钟，每日 1 练，录 30 条复盘'},
+  {m:'第 11 月',t:'幽默与温度',d:'学适度幽默与共情表达，让沟通有温度而不失专业'},
+  {m:'第 12 月',t:'表达全场景',d:'综合演练：汇报+会议+闲聊+谈判，形成个人表达风格'}
+ ]},
+ {tab:'etiq',icon:'i-heart',name:'商务礼仪',ability:3,priority:1,year:[
+  {m:'第 1 月',t:'礼仪总纲',d:'理解礼仪本质=尊重与边界，建立四大场景礼仪清单'},
+  {m:'第 2 月',t:'邮件礼仪',d:'主题/称呼/语气/附件/时效五要素，练 15 封标准邮件'},
+  {m:'第 3 月',t:'会议礼仪',d:'会前确认、准时、议程准备、会中发言、会后纪要全流程演练'},
+  {m:'第 4 月',t:'称呼与敬语',d:'中英称呼体系，Mr/Ms/Dr/头衔何时用，整理对照表'},
+  {m:'第 5 月',t:'用餐礼仪',d:'西餐/中餐/自助餐礼仪，餐具使用与交流分寸'},
+  {m:'第 6 月',t:'商务社交',d:'名片（或电子名片）、握手、介绍顺序、寒暄安全话题'},
+  {m:'第 7 月',t:'线上礼仪',d:'视频会议礼仪、消息回复时效、群聊分寸、文件命名规范'},
+  {m:'第 8 月',t:'跨文化礼仪',d:'英美日欧商务习惯差异，称呼、时间观、礼物与禁忌'},
+  {m:'第 9 月',t:'面试礼仪',d:'面试全程礼仪：到场、着装、握手、问答、感谢信、后续跟进'},
+  {m:'第 10 月',t:'接待与拜访',d:'客户接待与登门拜访的礼仪细节，含座次与引导'},
+  {m:'第 11 月',t:'危机场景',d:'迟到、说错话、群发失误等尴尬场景的得体补救'},
+  {m:'第 12 月',t:'礼仪自如',d:'全年礼仪复盘，形成个人礼仪手册，做到得体而不刻意'}
+ ]},
+ {tab:'mgmt',icon:'i-star',name:'管理能力',ability:4,priority:1,year:[
+  {m:'第 1 月',t:'管理认知',d:'理解管理与领导的区别，明确管理者角色与职责边界'},
+  {m:'第 2 月',t:'目标管理',d:'学 OKR/SMART 目标制定，练习把大目标拆解为团队可执行任务'},
+  {m:'第 3 月',t:'任务分配',d:'学任务分配原则（能力匹配/授权边界），演练 3 次任务分派'},
+  {m:'第 4 月',t:'进度管理',d:'学项目管理基础：里程碑、看板、周例会节奏管理'},
+  {m:'第 5 月',t:'反馈与辅导',d:'学绩效反馈与教练式辅导（GROW 模型），练 5 次一对一'},
+  {m:'第 6 月',t:'激励艺术',d:'理解内在/外在激励，学会认可与激励团队成员的方法'},
+  {m:'第 7 月',t:'冲突调解',d:'学团队冲突调解流程，演练 3 个冲突场景'},
+  {m:'第 8 月',t:'会议管理',d:'学高效会议组织：目标-议程-参与-纪要-跟进闭环'},
+  {m:'第 9 月',t:'向上管理',d:'学与上级对齐预期、汇报节奏与资源争取的方法'},
+  {m:'第 10 月',t:'跨团队协同',d:'学跨部门推动项目：利益对齐、信息透明、责任共担'},
+  {m:'第 11 月',t:'决策能力',d:'学团队决策方法（共识/咨询/授权），练习重要决策流程'},
+  {m:'第 12 月',t:'管理者素养',d:'复盘全年管理实践，形成个人管理风格与原则清单'}
+ ]},
+ {tab:'drive',icon:'i-zap',name:'自驱抗压',ability:5,priority:2,year:[
+  {m:'第 1 月',t:'目标管理',d:'学 OKR/目标拆解，制定个人年度目标并拆到每周'},
+  {m:'第 2 月',t:'时间管理',d:'番茄钟+四象限，建立每日三件事与晚间复盘习惯'},
+  {m:'第 3 月',t:'执行力',d:'先完成再完美，刻意训练立即开始的 5 分钟启动法'},
+  {m:'第 4 月',t:'主动汇报',d:'学「进度-风险-下一步」汇报模版，每周主动汇报 1 次'},
+  {m:'第 5 月',t:'抗压基础',d:'压力识别与身体调节：运动、睡眠、呼吸法建立抗压基线'},
+  {m:'第 6 月',t:'情绪管理',d:'学情绪 ABC 理论，记录触发事件与情绪反应 30 天'},
+  {m:'第 7 月',t:'接受反馈',d:'把批评当数据：练习「先记录-再提问-后行动」三步回应'},
+  {m:'第 8 月',t:'Deadline 管理',d:'倒排期计划法，模拟 3 次真实 Deadline 冲刺并复盘'},
+  {m:'第 9 月',t:'多任务并行',d:'学任务切换与批次处理，用项目管理工具管 3 个项目'},
+  {m:'第 10 月',t:'韧性训练',d:'设定 21 天微习惯挑战（晨读/健身/写作），练持续力'},
+  {m:'第 11 月',t:'自我激励',d:'建立个人激励系统：阶段里程碑、小奖励、正反馈记录'},
+  {m:'第 12 月',t:'自驱体系',d:'形成个人自驱操作系统：目标-计划-执行-复盘-激励闭环'}
+ ]},
+ {tab:'tools',icon:'i-tool',name:'办公工具',ability:6,priority:2,year:[
+  {m:'第 1 月',t:'Excel 基础',d:'函数、单元格操作、快捷键体系，完成入门课+20 个练习'},
+  {m:'第 2 月',t:'Excel 进阶',d:'VLOOKUP/SUMIF/数据透视表/条件格式，真实表格练 10 份'},
+  {m:'第 3 月',t:'PPT 基础',d:'母版、版式、配色、排版规范，做一份 10 页完整 PPT'},
+  {m:'第 4 月',t:'PPT 进阶',d:'图表可视化、逻辑页面设计、演示技巧，打磨 3 份作品'},
+  {m:'第 5 月',t:'Word/文档',d:'长文档排版、样式、目录、协同编辑，完成 1 份正式文档'},
+  {m:'第 6 月',t:'会议协作工具',d:'Zoom/Teams/腾讯会议全流程：预定、共享、录制、字幕'},
+  {m:'第 7 月',t:'IM 与文档协作',d:'Slack/飞书/钉钉 + 共享文档/表格/白板，模拟项目协作'},
+  {m:'第 8 月',t:'邮件高效管理',d:'规则、标签、自动归档、搜索语法，收件箱清零训练'},
+  {m:'第 9 月',t:'AI 办公',d:'用 AI 工具写周报/邮件/摘要/PPT 大纲，人机协作提效'},
+  {m:'第 10 月',t:'数据思维',d:'基础数据分析：指标意识、图表选择、简单可视化结论'},
+  {m:'第 11 月',t:'效率工具箱',d:'搭建个人工具箱：笔记/待办/知识库/密码管理器一站式'},
+  {m:'第 12 月',t:'工具素养',d:'信息安全、命名规范、备份习惯；综合项目全流程演练'}
+ ]},
+ {tab:'team',icon:'i-network',name:'团队协作',ability:7,priority:2,year:[
+  {m:'第 1 月',t:'团队认知',d:'理解团队角色分工与协作模式，明确团队目标与个人贡献点'},
+  {m:'第 2 月',t:'主动沟通',d:'需求同步、进度更新、求助表达，主动发起沟通 10 次'},
+  {m:'第 3 月',t:'反馈艺术',d:'学 constructive feedback 公式，练反馈 10 条，先肯定再具体再建议'},
+  {m:'第 4 月',t:'会议参与',d:'会上敢发言：学发言句式，主动表达观点 20 次'},
+  {m:'第 5 月',t:'跨部门协作',d:'理解对方部门目标，学换位沟通，完成 1 次模拟跨部门协作'},
+  {m:'第 6 月',t:'文档协作',d:'共享文档/评论/版本管理，与伙伴合作完成 1 份共写文档'},
+  {m:'第 7 月',t:'冲突处理',d:'学非暴力沟通，练习意见分歧时的得体表达与化解'},
+  {m:'第 8 月',t:'项目管理基础',d:'用 Trello/Notion 建项目看板，拆任务、派活、跟踪进度'},
+  {m:'第 9 月',t:'帮助与求助',d:'建立互助习惯：主动帮 1 人 + 敢于求助 1 次，各复盘'},
+  {m:'第 10 月',t:'团队决策',d:'参与决策讨论，学「先发散后收敛」的讨论方法'},
+  {m:'第 11 月',t:'领导力萌芽',d:'主动牵头 1 个小项目，练习组织、协调与责任承担'},
+  {m:'第 12 月',t:'协作风格',d:'形成个人团队协作风格：可信赖、透明、建设性'}
+ ]},
+ {tab:'cult',icon:'i-globe',name:'跨文化视野',ability:8,priority:2,year:[
+  {m:'第 1 月',t:'文化框架',d:'读《The Culture Map》建立文化维度框架（时间观/沟通/决策）'},
+  {m:'第 2 月',t:'低语境解码',d:'理解高语境 vs 低语境沟通差异，分析 10 个沟通案例'},
+  {m:'第 3 月',t:'英美商务风格',d:'学习美式 vs 英式商务风格：直接性、幽默、敬语差异'},
+  {m:'第 4 月',t:'东亚商务风格',d:'理解日韩商务习惯：层级、礼仪、决策方式与沉默意义'},
+  {m:'第 5 月',t:'欧洲商务风格',d:'德法北欧风格速览：守时、流程、会议文化差异'},
+  {m:'第 6 月',t:'全球商业新闻',d:'每周精读 BBC/FT/The Economist 商业新闻，积累全球议题词'},
+  {m:'第 7 月',t:'英语口音适应',d:'适应英美澳印等口音，每日听不同口音材料 10 分钟'},
+  {m:'第 8 月',t:'跨文化沟通演练',d:'角色扮演：与美国客户/日本上级/印度同事沟通各 2 次'},
+  {m:'第 9 月',t:'文化禁忌清单',d:'整理各文化禁忌：手势、话题、礼物、数字，形成避坑手册'},
+  {m:'第 10 月',t:'全球化视野',d:'关注产业全球化趋势，读一本商业史/全球化著作并输出笔记'},
+  {m:'第 11 月',t:'文化对比输出',d:'做一张「中英美日商务对照表」并在真实交流中验证'},
+  {m:'第 12 月',t:'跨文化成熟度',d:'综合演练 + 形成个人跨文化沟通原则，自信得体应对多元环境'}
+ ]},
+ {tab:'sales',icon:'i-trend',name:'销售思维',ability:9,priority:2,year:[
+  {m:'第 1 月',t:'销售认知',d:'理解销售=价值传递与决策帮助，破除对销售的刻板印象'},
+  {m:'第 2 月',t:'价值主张',d:'学会讲清产品/服务的价值主张，练 3 个熟悉对象的 1 分钟陈述'},
+  {m:'第 3 月',t:'提问挖掘',d:'学 SPIN 提问法（背景-难点-暗示-需求），设计 10 组提问'},
+  {m:'第 4 月',t:'产品与客户匹配',d:'练习把产品特性翻译成客户利益，做 5 个匹配练习'},
+  {m:'第 5 月',t:'异议处理',d:'掌握「认同-澄清-转机」三步法，演练 10 个常见异议'},
+  {m:'第 6 月',t:'谈判成交',d:'学成交信号与收尾话术，练习 5 轮完整模拟对话'},
+  {m:'第 7 月',t:'客户维护',d:'学客户生命周期管理：跟进、回访、复购、转介绍'},
+  {m:'第 8 月',t:'自我销售',d:'把个人经历包装成卖点，打磨 3 条核心竞争力表达'},
+  {m:'第 9 月',t:'销售表达',d:'把销售话术迁移到汇报与面试，练习说服性表达'},
+  {m:'第 10 月',t:'数据与转化',d:'学销售漏斗与转化率思维，用数据优化自己的沟通'},
+  {m:'第 11 月',t:'信任建立',d:'学信任公式（可信度×可靠度×亲近度/自我导向），刻意练习'},
+  {m:'第 12 月',t:'销售思维内化',d:'形成「客户视角+价值思维」习惯，综合演练全流程'}
+ ]},
+ {tab:'money',icon:'i-dollar',name:'个人理财',ability:10,priority:3,year:[
+  {m:'第 1 月',t:'现金流体检',d:'连续记账 21 天，摸清收入支出结构，识别月光点'},
+  {m:'第 2 月',t:'预算管理',d:'建立月度预算表，学「50/30/20」法则分配收入'},
+  {m:'第 3 月',t:'储蓄与应急金',d:'建立先储蓄后消费习惯，设置 3-6 个月支出应急金目标'},
+  {m:'第 4 月',t:'保障配置',d:'了解社保、商业保险基础，评估自身保障缺口'},
+  {m:'第 5 月',t:'投资入门',d:'理解存款/货币基金/债券基础，学风险与收益匹配'},
+  {m:'第 6 月',t:'基金投资',d:'学指数基金定投逻辑，用模拟盘做 3 个月定投实验'},
+  {m:'第 7 月',t:'资产配置',d:'学「应急金-保障-增值」三笔钱配置，制定个人资产方案'},
+  {m:'第 8 月',t:'复利与长期思维',d:'学复利原理与长期投资纪律，设定 3 年理财目标'},
+  {m:'第 9 月',t:'负债管理',d:'理解消费贷/信用卡陷阱，建立健康负债观'},
+  {m:'第 10 月',t:'消费主义批判',d:'认清消费主义陷阱，学「需要vs想要」决策法'},
+  {m:'第 11 月',t:'财务目标规划',d:'设定五年财务愿景：买房/教育/自由目标拆解'},
+  {m:'第 12 月',t:'理财体系复盘',d:'年度资产复盘，形成个人理财手册并持续迭代'}
+ ]},
+ {tab:'biz',icon:'i-chart',name:'商业通识',ability:11,priority:2,year:[
+  {m:'第 1 月',t:'商业语言',d:'理解商业模式、营收、利润、现金流等基础概念'},
+  {m:'第 2 月',t:'商业模式画布',d:'为 3 家公司画商业模式画布（9 个格子）'},
+  {m:'第 3 月',t:'竞争分析',d:'学五力模型与竞争格局，分析一个行业的竞争态势'},
+  {m:'第 4 月',t:'护城河',d:'理解品牌/成本/网络效应/转换成本等护城河类型'},
+  {m:'第 5 月',t:'财务三表',d:'读通资产负债表、利润表、现金流量表的基本含义'},
+  {m:'第 6 月',t:'读年报',d:'精读一家上市公司年报摘要，找出关键数字与逻辑'},
+  {m:'第 7 月',t:'行业研究',d:'选一个赛道做 3 个月跟踪，输出行业概览笔记'},
+  {m:'第 8 月',t:'公司分析',d:'用商业模式+竞争+财务框架完整分析一家公司'},
+  {m:'第 9 月',t:'商业案例',d:'拆解 3 个商业成败案例（增长/转型/失败）'},
+  {m:'第 10 月',t:'价值链与战略',d:'学价值链分析与定位战略，理解公司如何盈利'},
+  {m:'第 11 月',t:'商业新闻精读',d:'每周精读 2 篇商业深度报道，用框架做拆解'},
+  {m:'第 12 月',t:'商业思维内化',d:'形成独立商业分析能力，能就公司/行业输出观点'}
+ ]},
+ {tab:'psy',icon:'i-bulb',name:'心理学素养',ability:12,priority:3,year:[
+  {m:'第 1 月',t:'心理学入门',d:'读 1 本入门书，理解心理学研究什么、不研究什么'},
+  {m:'第 2 月',t:'认知偏差',d:'学 10 个常见认知偏差（锚定/确认偏误等），每天记录 1 例'},
+  {m:'第 3 月',t:'情绪管理',d:'学情绪识别与调节：情绪日记 21 天，建立调节工具箱'},
+  {m:'第 4 月',t:'动机与目标',d:'学内在/外在动机理论，优化自己的目标设定方式'},
+  {m:'第 5 月',t:'习惯科学',d:'学「提示-行为-奖励」习惯回路，设计 1 个新习惯'},
+  {m:'第 6 月',t:'沟通心理',d:'学倾听、共情与非暴力沟通，练 5 次关键对话'},
+  {m:'第 7 月',t:'社会心理',d:'理解从众、服从、群体决策，分析 3 个社会现象'},
+  {m:'第 8 月',t:'自我认知',d:'用大五人格/价值观等工具做自我探索，形成画像'},
+  {m:'第 9 月',t:'决策心理学',d:'学启发式与决策陷阱，建立自己的决策清单'},
+  {m:'第 10 月',t:'压力与韧性',d:'学压力应对与心理韧性训练，建立日常复原习惯'},
+  {m:'第 11 月',t:'积极心理学',d:'学心流、感恩与优势使用，提升幸福感与效能'},
+  {m:'第 12 月',t:'心理学应用',d:'把心理学应用于工作与生活，形成自我洞察体系'}
+ ]},
+ {tab:'hist',icon:'i-book',name:'历史学素养',ability:13,priority:4,year:[
+  {m:'第 1 月',t:'历史视野',d:'理解为什么学历史：因果思维与长周期视角'},
+  {m:'第 2 月',t:'中国通史线',d:'用时间轴梳理从先秦到明清的关键节点与朝代更替逻辑'},
+  {m:'第 3 月',t:'世界近代史线',d:'梳理地理大发现-工业革命-两次大战的世界进程'},
+  {m:'第 4 月',t:'人物传记',d:'精读 1 本历史人物传记，提炼决策逻辑与成败教训'},
+  {m:'第 5 月',t:'制度演化',d:'学制度的形成与变迁（科举/公司法/民主等）'},
+  {m:'第 6 月',t:'战争与变革',d:'深度理解 1 场关键战争/革命的因果链与影响'},
+  {m:'第 7 月',t:'经济史',d:'学商业与金融史：从大航海到硅谷的财富逻辑'},
+  {m:'第 8 月',t:'科技史',d:'理解技术革命如何重塑社会与商业（蒸汽/电力/信息）'},
+  {m:'第 9 月',t:'文化史',d:'横向比较中西文明在思想、艺术、制度上的差异'},
+  {m:'第 10 月',t:'史料辨析',d:'学多源对照与史料批判，做 2 个历史叙述的比较分析'},
+  {m:'第 11 月',t:'以史为鉴',d:'把历史因果思维应用到当下商业与社会议题'},
+  {m:'第 12 月',t:'历史素养内化',d:'形成自己的历史分析框架，持续拓展阅读疆域'}
+ ]},
+ {tab:'soc',icon:'i-users',name:'社会学素养',ability:14,priority:4,year:[
+  {m:'第 1 月',t:'社会学入门',d:'读 1 本入门书，理解个体与社会结构的张力'},
+  {m:'第 2 月',t:'社会化与角色',d:'学社会化/角色/身份概念，分析自己的多重角色'},
+  {m:'第 3 月',t:'规范与越轨',d:'理解社会规范的形成与功能，观察身边的潜规则'},
+  {m:'第 4 月',t:'阶层与流动',d:'学阶层的形成机制与社会流动，理解职场层级'},
+  {m:'第 5 月',t:'组织社会学',d:'学组织行为：科层制、组织文化、权力结构'},
+  {m:'第 6 月',t:'消费与生活方式',d:'用社会学视角看消费、品味与身份认同'},
+  {m:'第 7 月',t:'城市化与社区',d:'理解城市变迁与社区关系，观察身边社区'},
+  {m:'第 8 月',t:'全球化与社会',d:'学全球化对工作、文化、不平等的影响'},
+  {m:'第 9 月',t:'舆论与网络社会',d:'理解网络社会、信息茧房与舆论形成机制'},
+  {m:'第 10 月',t:'调查方法',d:'学访谈与观察基础方法，做 1 个小型社会观察'},
+  {m:'第 11 月',t:'社会政策',d:'理解社保、教育、劳动等政策的社会背景'},
+  {m:'第 12 月',t:'社会学思维内化',d:'形成「个人困惑→结构视角」的习惯，应用与职场'}
+ ]},
+ {tab:'poli',icon:'i-flag',name:'政治时势',ability:15,priority:4,year:[
+  {m:'第 1 月',t:'信息源建设',d:'固定 2-3 个高质量时政信源，建立每日 20 分钟阅读习惯'},
+  {m:'第 2 月',t:'事实与观点',d:'学把新闻拆成「事实-观点-影响」三层，练习 20 篇'},
+  {m:'第 3 月',t:'中国经济政策',d:'理解产业政策、货币财政等基本概念与近期重点'},
+  {m:'第 4 月',t:'国际关系基础',d:'梳理中美欧及周边关系格局与核心议题'},
+  {m:'第 5 月',t:'地缘政治',d:'学地缘政治基本盘：能源、供应链、区域冲突'},
+  {m:'第 6 月',t:'政策-行业连接',d:'把政策变化连接到具体行业与公司，写 5 篇分析'},
+  {m:'第 7 月',t:'政府与市场',d:'理解政府对市场的角色：监管、补贴、国家战略'},
+  {m:'第 8 月',t:'全球治理与机制',d:'了解联合国、WTO 等国际组织与全球治理议题'},
+  {m:'第 9 月',t:'选举与政治周期',d:'理解选举政治与经济周期，关注主要经济体大选'},
+  {m:'第 10 月',t:'时事周报',d:'每周输出 200 字时事简报，坚持 4 周'},
+  {m:'第 11 月',t:'多源对照',d:'对同一事件读立场不同信源，练习独立思考'},
+  {m:'第 12 月',t:'时政素养内化',d:'形成自己的时政分析框架，理性而不偏激'}
+ ]}
+];
+
+/* 外企人才能力素质全图 */
+var CAREER_ABILITIES=[
+ {icon:'i-user',name:'职业形象管理',group:'形象',
+  intro:'外企对你的第一印象从简历照片、面试着装到日常仪表层层递进，形象传递的是专业度与可信度。',
+  guide:[
+   '每周日做 15 分钟「形象自检」：检查指甲、发型、衣领、鞋面、香水浓淡，拍一张全身照存档，坚持 4 周对比变化',
+   '为你的目标行业建立「3 套不出错穿搭模板」（正式/半正式/日常），每套配好单品清单，面试周直接从模板取用，不再临时纠结',
+   '用手机录一段 30 秒自我介绍 + 正坐姿态，逐帧回放检查眼神是否游离、肩膀是否打开，每两周重录一次对比进步'
+  ],
+  standard:['简历照片专业正式、光线干净、着装规范','面试/入职日着装得体，符合行业 Dress Code','日常通勤穿着整洁，无明显褶皱污渍','言谈举止从容，眼神接触自然'],
+  practice:[
+   {t:'拍一张专业简历照',d:'去照相馆或自制：米白/浅蓝纯色背景 + 衬衫，正面照，微笑自然。'}, 
+   {t:'建立一周穿搭清单',d:'按目标行业（tech/金融/咨询/快消）各配 3 套不出错搭配，拍照存档。'},
+   {t:'检查指甲/发型/香水',d:'指甲修剪干净、发型清爽、香水淡雅不上头，拍 3 张细节照自评。'},
+   {t:'练习 30 秒自我介绍+坐姿',d:'对镜演练 5 遍，注意坐姿挺拔、自然微笑、眼神稳定。'},
+   {t:'了解目标公司 Dress Code',d:'研究公司官网/领英员工照片，确定商务正式 or 商务休闲。'}
+  ],
+  process:[
+   {s:'第一步',d:'定行业基调：查目标公司的 Dress Code 与员工穿搭。'},
+   {s:'第二步',d:'备物料：专业照片、2-3 套合格穿搭、基础仪表护理。'},
+   {s:'第三步',d:'模拟实战：面试及入职前一周每天按标准着装演练。'},
+   {s:'第四步',d:'复盘优化：每次正式场合后记录得体/失分点，形成个人形象清单。'}
+  ],
+  resources:['LinkedIn 目标公司员工照片分析','「商务休闲穿搭」小红书/领英指南','职业形象咨询视频（仪态/着装）'],
+  pitfalls:['用力过猛：正装三件套去互联网公司反而失分','忽略细节：鞋脏、领口皱、香水过浓','误区：形象只等于衣服，忽略体态与表情'],
+  tips:'形象是信任的第一张名片。第一印象 7 秒形成，正式入职前先备好 2-3 套不出错的职业装。'},
+ {icon:'i-grid',name:'结构化思维',group:'思维',
+  intro:'外企最看重"能不能把事讲清楚"。任何信息用「结论先行 → 论据支撑 → 提炼行动」组织，沟通效率翻倍。',
+  guide:[
+   '每天挑一件真实琐事（如「为什么这周地铁特别挤」），用「结论→理由→证据」三段式说给手机录音，坚持 21 天形成肌肉记忆',
+   '学会 MECE 分组：把混乱待办清单按「必须做/可推迟/可委托/可删除」四类重排，每周五执行一次，练到不假思索',
+   '给每篇汇报/邮件先写 3 行大纲再动笔：第一行结论、第二行证据、第三行行动请求，坚持一个月后自然形成习惯'
+  ],
+  standard:['表达任何观点都能先给结论再展开','汇报用总分总结构，3 分钟内讲清一件事','能用数据/事实支撑观点，而非仅凭感觉','面对复杂问题能拆解出关键变量'],
+  practice:[
+   {t:'金字塔原理练习',d:'任选日常话题（如"为什么想进外企"），用结论-论据-例子三段式写 200 字。'},
+   {t:'1 分钟电梯陈述',d:'用手机录音讲清"你最近的成果"，限时 1 分钟，回放检查是否结论先行。'},
+   {t:'汇报大纲整理',d:'把最近一次工作/学习成果整理成「背景-进展-问题-计划」四段大纲。'},
+   {t:'数据化表达',d:'把一个模糊描述（"进步很大"）改写为带数字的表述（"Q3 提升 23%"）。'},
+   {t:'思维导图拆解',d:'任选一个项目，用 XMind/手绘拆解为 3 层子问题。'}
+  ],
+  process:[
+   {s:'第一步',d:'学模型：读《金字塔原理》前 4 章，掌握结论先行与 MECE。'},
+   {s:'第二步',d:'日常套用：每天把 1 件小事用「结论-论据-行动」口头表达。'},
+   {s:'第三步',d:'刻意练习：每周 2 次 1 分钟电梯陈述 + 录音回放。'},
+   {s:'第四步',d:'实战迁移：把结构套用于邮件、汇报、面试自我介绍。'}
+  ],
+  resources:['《金字塔原理》（芭芭拉·明托）','《结构思考力》（李忠秋）','腾讯/字节公开的汇报框架模板'],
+  pitfalls:['想到哪说到哪，长篇大论无重点','结论藏在最后，听众失去耐心','只给观点不给数据支撑'],
+  tips:'外企最看重"能不能把事讲清楚"。学《金字塔原理》，任何观点用「结论-论据-例子」三段式。'},
+ {icon:'i-chat',name:'表达与沟通',group:'表达',
+  intro:'表达力 = 结构化思维 + 语言能力 + 非语言信号。口头要说清，书面要得体，肢体要自然。',
+  guide:[
+   '建立「3 分钟自述」模板：开场一句话说结论，主体讲一个 STAR 故事，收尾提行动请求。每周录 2 次，回放只改 1 个点（语速/停顿/手势）',
+   '每天用英语自言自语 2 分钟描述当天发生的事，录音回听把卡壳处写下来，不会的说法当天查好，积累成自己的口语语料库',
+   '练习「复述 + 提问」式倾听：别人说完后先复述对方核心观点，再提一个追问，在任何对话里刻意用，提升表达深度与亲和力'
+  ],
+  standard:['能在 3 分钟内条理清晰陈述一个观点','英语表达流利，停顿自然，不必逐词翻译','书面表达（邮件/纪要）语法正确、语气得体','语速、语调、眼神、手势配合自然'],
+  practice:[
+   {t:'3 分钟自述录音',d:'自选话题连续讲 3 分钟（可中英混合），录音回放找语速与卡顿点。'},
+   {t:'英语每日热身',d:'每天用英语自言自语 2 分钟（描述今天做了什么），能明显降低开口紧张。'},
+   {t:'邮件仿写',d:'找一封外企真实商务邮件，仿写一封，重点模仿语气与结构。'},
+   {t:'复述练习',d:'看完一段视频/文章后用 3 句话复述核心，检验信息组织能力。'},
+   {t:'肢体语言观察',d:'录一段自己发言的视频，观察眼神、手势、站姿，改进 1 个点。'}
+  ],
+  process:[
+   {s:'第一步',d:'摸底：录一段 3 分钟中英自述，找核心短板（内容/语言/仪态）。'},
+   {s:'第二步',d:'输入：每天 15 分钟英语听读，积累表达素材。'},
+   {s:'第三步',d:'输出：每周 3 次录音练习，每次只改进 1 个点。'},
+   {s:'第四步',d:'实战：主动在会议/微信群用英语发言，形成反馈闭环。'}
+  ],
+  resources:['TED 演讲（结构+语速范本）','Business English Pod 播客','《Speaking of Speech》（商务演讲）'],
+  pitfalls:['追求完美语法而不敢开口','语速过快或全程一个语调','只练口语忽视书面与听力输入'],
+  tips:'表达力 = 结构化思维 + 语言能力。每周录 2 次 3 分钟自我陈述，复盘语调和停顿。'},
+ {icon:'i-heart',name:'商务礼仪',group:'礼仪',
+  intro:'礼仪的本质是"尊重他人的时间与感受"。会议、邮件、用餐、跨文化称呼都有约定俗成的规则。',
+  guide:[
+   '建立四类礼仪清单（邮件/会议/用餐/称呼）各 10 条，每天抽 1 条在真实场景演练，晚上回顾打分并把踩坑记进清单',
+   '邮件按「主题-问候-来意-细节-行动-收尾」六段式写，发前检查 30 秒：收件人是否有遗漏、主题是否写清请求、语气是否得体、有无错别字',
+   '为自己设计 5 个「礼仪暗号」提醒：进会议室前深呼吸一次、发邮件前读一遍收件人姓名、用餐时刀叉摆放默念规则，用暗号把礼仪变成自动反应'
+  ],
+  standard:['会议准时，议程提前准备好','邮件 24 小时内回复，语气得体、主题明确','商务用餐基本礼仪（入座/餐具/交流）得体','跨文化背景下称呼与敬语不出错'],
+  practice:[
+   {t:'写一封完整商务邮件',d:'按「主题-问候-来意-细节-行动请求-收尾」写一封正式邮件。'},
+   {t:'模拟会议礼仪',d:'和朋友模拟一场 30 分钟会议：准时、议程、记录、感谢。'},
+   {t:'商务用餐演练',d:'熟悉西餐基本礼仪：入座、点餐、刀叉、结账（可看视频+实地演练一次）。'},
+   {t:'称呼与敬语清单',d:'整理中英称呼表：Mr/Ms/Dr 及避免直呼全名的场合。'},
+   {t:'回复时效训练',d:'给自己设 24 小时回复硬指标，坚持一周并记录达标率。'}
+  ],
+  process:[
+   {s:'第一步',d:'建清单：会议/邮件/用餐/称呼四类礼仪要点各记 10 条。'},
+   {s:'第二步',d:'邮件先行：先练好最常用的邮件礼仪（回复时效+语气）。'},
+   {s:'第三步',d:'场景演练：会议与用餐礼仪找朋友对口练习一次。'},
+   {s:'第四步',d:'跨文化校验：入职后快速打听目标公司特有礼节，及时调整。'}
+  ],
+  resources:['《商务礼仪》（金正昆）','LinkedIn 上商务邮件模板','YouTube 商务用餐礼仪视频'],
+  pitfalls:['邮件事无巨细长篇大论','称呼不确定时乱猜（宁可问也不猜）','餐桌上谈工作或过度饮酒'],
+  tips:'外企礼仪核心是"尊重他人时间"。邮件 24 小时内回复，约定不迟到，敬语心存敬畏。'},
+ {icon:'i-star',name:'管理能力',group:'管理',
+  intro:'管理是借他人之手达成目标的能力：定方向、派任务、给反馈、带成长。即使不做管理者，向上管理与自我管理同样受益无穷。',
+  guide:[
+   '每周用 OKR 拆解法把一个大目标拆到周任务：目标→关键结果→每周行动，坚持 4 周建立节奏',
+   '学「一对一反馈四步法」：肯定具体表现→指出具体改进点→说明原因→共同定下一步，每周找机会练 1 次',
+   '用「进展-风险-支持」结构做 3 分钟向上汇报，每次沟通前先打草稿，练 10 次形成习惯'
+  ],
+  standard:['能制定清晰的团队/项目目标并能拆解到可执行任务','会合理分工授权，能跟进进度并识别风险','能给建设性反馈并辅导他人成长','能组织高效会议并推动跨团队协作'],
+  practice:[
+   {t:'目标拆解练习',d:'选一个年度目标，用 OKR 法拆解为季度-月度-周度可执行任务。'},
+   {t:'任务授权演练',d:'想象一次任务分派：写清目标、边界、资源、检查点，模拟沟通一遍。'},
+   {t:'一对一反馈脚本',d:'为某位同伴写一份一对一反馈脚本（肯定-具体改进-支持），演练表达。'},
+   {t:'会议主持模拟',d:'组织一次 30 分钟会议模拟：定议程、控时间、收结论、发纪要。'},
+   {t:'向上沟通练习',d:'用「进展-风险-需要支持」结构向假想上级做一次 3 分钟汇报。'}
+  ],
+  process:[
+   {s:'第一步',d:'学认知：理解管理者角色（而不是高级执行者），读 1 本管理入门书。'},
+   {s:'第二步',d:'建工具：掌握目标拆解、任务分配、进度跟进三件套。'},
+   {s:'第三步',d:'练反馈：掌握一对一与辅导式沟通（GROW 模型），每周练 1 次。'},
+   {s:'第四步',d:'实战迁移：在小组/项目中主动牵头，把管理动作做成习惯。'}
+  ],
+  resources:['《卓有成效的管理者》（德鲁克）','《管理学》（罗宾斯）','《高绩效教练》（GROW 模型）'],
+  pitfalls:['把管理当命令，不会倾听与授权','只管结果不管过程，出问题才介入','给反馈只批评不给方法，挫伤积极性'],
+  tips:'管理的第一课：从「自己做好」转向「帮别人做好」。先学会提问，再学会给方法。'},
+ {icon:'i-zap',name:'自驱与抗压',group:'软实力',
+  intro:'外企崇尚 Ownership（主人翁意识）：主动推进、接受反馈、扛住 Deadline。这是最被看重的底层素质之一。',
+  guide:[
+   '每天早上写下今天最重要的 3 件事（用「重要-紧急」四象限只留第一象限），晚上花 3 分钟核对完成度并写下明天第一件事',
+   '遇到被批评时执行「24 小时法则」：先记录对方说的三点事实，24 小时内不辩解、不内耗，只写改进清单，之后再决定是否沟通',
+   '每周用一次「番茄钟冲刺」：25 分钟只专注一项任务，连续 4 个周期后 20 分钟彻底休息，训练 Deadline 下的专注力与抗压韧性'
+  ],
+  standard:['任务不用催，主动汇报进度与风险','收到批评先记录再行动，不情绪化','Deadline 前能稳定输出，不崩溃','能同时管理 2-3 个并行任务'],
+  practice:[
+   {t:'每日三件事计划',d:'每天早上写当天最重要的 3 件事，下班核对完成度。'},
+   {t:'主动汇报模拟',d:'把近期一件工作用「进度-风险-下一步」向朋友口头汇报一遍。'},
+   {t:'批评复盘日记',d:'记录一次被批评的经历，写出 3 条可改进行动，冷静 24h 后回看。'},
+   {t:'番茄钟抗压训练',d:'用番茄钟高强度工作 25 分钟×4 循环，训练 Deadline 专注力。'},
+   {t:'优先级矩阵',d:'把近期任务填入「重要-紧急」四象限，练习抓大放小。'}
+  ],
+  process:[
+   {s:'第一步',d:'建立每日计划习惯：每天 3 件事 + 晚上复盘。'},
+   {s:'第二步',d:'学优先级：用四象限管理任务，砍掉低价值事项。'},
+   {s:'第三步',d:'训练抗压：用番茄钟与限时任务模拟 Deadline 场景。'},
+   {s:'第四步',d:'形成闭环：主动周报/汇报，把 Ownership 变成可见行为。'}
+  ],
+  resources:['《高效能人士的七个习惯》','番茄工作法相关工具/文章','周报/汇报模板（网上开源）'],
+  pitfalls:['闷头苦干不汇报，等出事才说','被批评后过度辩解或内耗','任务堆一起不区分优先级'],
+  tips:'外企崇尚 Ownership（主人翁意识）。被批评不辩解先记录，用行动回应，这是最被看重的素质之一。'},
+ {icon:'i-tool',name:'办公工具与数字素养',group:'技能',
+  intro:'外企大量时间花在工具上。熟悉协作工具全家桶 + 数据处理能力，入职即插即用，零学习成本。',
+  guide:[
+   '按「Excel 基础→透视表→图表」路径每天练 20 分钟，用一份真实数据（如账单）完成一次完整分析，第二个月升级到 VLOOKUP 与条件格式',
+   '掌握一套「会议全家桶」流程：用日历预定→共享屏幕→录制→自动字幕→会后纪要模板，把开会全程标准化，效率翻倍',
+   '为收件箱建 5 条规则（标签/归档/自动转发），每天下班前「收件箱清零」，坚持两周养成高效邮件习惯'
+  ],
+  standard:['熟练使用 Excel（公式/透视表/图表）','PPT 能做出结构清晰、视觉专业的页面','熟悉视频会议与协作工具（Zoom/Teams/Slack/飞书）','邮件客户端高效管理（分类/标签/搜索）'],
+  practice:[
+   {t:'Excel 三件套练习',d:'用一份真实数据做：VLOOKUP/SUMIF + 透视表 + 折线图。'},
+   {t:'做一页专业 PPT',d:'用 3 页讲清一个话题，练习母版、排版、图表使用。'},
+   {t:'开会全流程模拟',d:'用 Zoom/腾讯会议模拟：共享屏幕、录制、聊天、举手。'},
+   {t:'邮件收件箱整理',d:'给收件箱建 5 个规则（标签/自动归档），坚持一周。'},
+   {t:'AI 办公提效',d:'用 AI 工具完成一份周报/邮件/数据摘要，对比手工效率。'}
+  ],
+  process:[
+   {s:'第一步',d:'定清单：明确目标岗位最常用的工具（查 JD + 行业惯例）。'},
+   {s:'第二步',d:'专项速成：Excel 和 PPT 各跟一套教程（2 周）。'},
+   {s:'第三步',d:'全家桶上手：把协作工具（会议/IM/文档）用真实任务过一遍。'},
+   {s:'第四步',d:'持续迭代：入职后按团队习惯补齐细节（模板、快捷键、规范）。'}
+  ],
+  resources:['Excel 教程（B站/网易云课堂）','《用图表说话》（PPT 图表）','各协作工具官方帮助中心'],
+  pitfalls:['只学工具不学场景，脱离真实任务','追求高级技巧忽略基础规范（命名/版本）','忽略信息安全：重要文件习惯性加密/备份'],
+  tips:'外企大量时间花在工具上。熟悉一套协作工具全家桶 + 一门数据处理技能（Excel 起步），即插即用。'},
+ {icon:'i-network',name:'团队协作',group:'软实力',
+  intro:'team player 是外企高频词。主动帮忙、给建设性反馈、会议上不沉默，比单打独斗更容易被看见。',
+  guide:[
+   '把 3 句批评改写成 constructive feedback 句式：先具体肯定一件事，再描述具体行为与影响，最后给一个可执行的建议',
+   '每次会议前准备 1 个观点，主动发言至少 1 次；发言模板：我同意+补充一个证据 / 我有不同看法+原因+替代方案',
+   '每周主动帮助一位同伴完成一件小事，并复盘：我帮了什么、对方反馈如何、下次怎样帮得更到位'
+  ],
+  standard:['主动 help peers，不越界替别人做主','反馈对事不对人，用 constructive feedback 句式','会议上主动发言表达观点','跨部门协作时信息透明、同步及时'],
+  practice:[
+   {t:'反馈句式练习',d:'把 3 句批评改写成 constructive feedback（先肯定+再具体+给建议）。'},
+   {t:'会议发言打卡',d:'下次小组/课堂讨论刻意发言至少 1 次，记录感受。'},
+   {t:'协作工具演练',d:'和其他人用共享文档同时协作完成一个小任务，练习评论与同步。'},
+   {t:'帮别人一次',d:'这周主动帮一位同学/同事完成一件小事，并复盘沟通。'},
+   {t:'跨角色视角练习',d:'站在"对方部门"角度写一段你的需求，检验换位思考。'}
+  ],
+  process:[
+   {s:'第一步',d:'学反馈：掌握 constructive feedback 公式（具体行为-影响-建议）。'},
+   {s:'第二步',d:'主动发声：从小场景开始（会议、群聊、小组讨论）练习发言。'},
+   {s:'第三步',d:'协作实战：用共享文档/项目管理工具完成一次小组任务。'},
+   {s:'第四步',d:'持续贡献：把"主动帮忙+透明同步"变成日常习惯。'}
+  ],
+  resources:['《Crucial Conversations》（关键对话）','Constructive Feedback 模板（网上搜）','Notion/Trello 协作工具教程'],
+  pitfalls:['怕说错就永不发言','反馈变成指责：对人不対事','信息不透明，等别人来问'],
+  tips:'外企文化强调"team player"。会议上主动发言、任务上互助补位，比单打独斗更容易被看见。'},
+ {icon:'i-globe',name:'跨文化视野',group:'视野',
+  intro:'跨文化力决定你能走多远。理解不同文化沟通风格、尊重差异、有全球商业常识，是外企进阶的分水岭。',
+  guide:[
+   '每周读 1 篇 BBC/FT 商业或文化报道，用 3 句话总结：事实是什么、为什么发生、对我的启示是什么',
+   '做一个「中英美日商务对照表」（时间观/称呼/决策方式/谈判风格），每接触一个真实案例就更新一格',
+   '用「双视角练习」：同一件事分别用美国同事和日本客户的视角写 2 段理解，锻炼跨文化共情与应变'
+  ],
+  standard:['理解高语境/低语境文化差异','了解目标地区（欧美/日韩等）商务习惯','能解释一个国际商业新闻事件','跨文化场景下沟通不冒犯、能应变'],
+  practice:[
+   {t:'文化阅读打卡',d:'读《The Culture Map》相关章节，写一条"我原来理解错了"的笔记。'},
+   {t:'国际新闻精读',d:'每周读 1 篇 BBC/FT/The Economist 商业新闻，3 句话概括。'},
+   {t:'文化差异清单',d:'整理中欧美日商务习惯对照表（时间观/称呼/决策方式）。'},
+   {t:'模拟跨文化沟通',d:'和朋友角色扮演：对方是日本客户 vs 美国客户，你如何开场与谈事。'},
+   {t:'听一场英文讲座',d:'听 1 场 TED/行业峰会英文演讲，关注文化相关的表达。'}
+  ],
+  process:[
+   {s:'第一步',d:'打底：读《The Culture Map》或类似教材，建立文化维度框架。'},
+   {s:'第二步',d:'输入：每周国际商业新闻精读，积累全球化语境词汇。'},
+   {s:'第三步',d:'对比：做中英美日商务习惯对照表，标记易踩坑点。'},
+   {s:'第四步',d:'实战：在校内外活动中接触不同文化背景的人，练习跨文化沟通。'}
+  ],
+  resources:['《The Culture Map》（Erin Meyer）','BBC / FT / The Economist','跨文化沟通公开课（Coursera）'],
+  pitfalls:['拿中国习惯套外国同事','回避差异问题怕冒犯','只看新闻不建立文化分析框架'],
+  tips:'跨文化力决定你能走多远。读《The Culture Map》+ 关注目标国家商业新闻，形成自己的文化观察。'},
+ {icon:'i-trend',name:'销售思维',group:'商业素养',
+  intro:'销售不只是卖东西，更是一种理解需求、传递价值、达成共识的能力，在任何岗位都通用。',
+  guide:[
+   '每周用 SPIN 法设计 3 组提问（背景/难点/暗示/需求），找真实场景练习：向朋友了解需求、向店员请教产品',
+   '每次想说服别人前先写「价值主张一句话」：为谁、解决什么、带来什么结果，说给 3 个人听看反应',
+   '把「异议处理三步法」贴在显眼处：认同对方的顾虑→澄清真实原因→给出新的选择或补偿，遇到反对意见就默念三步'
+  ],
+  standard:['能清晰描述产品/服务的价值主张','掌握提问技巧，能挖掘客户真实需求','能处理异议并推动成交','有基本的销售流程与客户管理概念'],
+  practice:[
+   {t:'价值主张练习',d:'选一个你熟悉的产品，用 1 分钟讲清它的价值主张（为谁解决什么问题）。'},
+   {t:'SPIN 提问练习',d:'用 SPIN 法（背景-难点-暗示-需求）设计 8 个问题，模拟销售对话。'},
+   {t:'异议处理演练',d:'列出 5 个常见客户异议，练习用「认同-澄清-转机」三步回应。'},
+   {t:'自我销售',d:'把自己的经历包装成 3 条卖点，练习向目标公司推销自己。'},
+   {t:'成交信号识别',d:'看 3 段销售视频，记录客户的语言/行为成交信号。'}
+  ],
+  process:[
+   {s:'第一步',d:'学框架：理解价值主张与 SPIN 提问法，建立销售思维基本功。'},
+   {s:'第二步',d:'练流程：掌握「开拓-需求-方案-异议-成交-维护」六步流程。'},
+   {s:'第三步',d:'场景实战：用模拟对话练习挖掘需求与异议处理。'},
+   {s:'第四步',d:'迁移应用：把销售思维用于求职面试、工作汇报与人际沟通。'}
+  ],
+  resources:['《影响力》（西奥迪尼）','《销售巨人》（SPIN 销售法）','B站销售话术/成交技巧视频'],
+  pitfalls:['只讲产品功能不讲客户价值','急于成交不挖掘真实需求','把销售理解成话术，忽略真诚与信任'],
+  tips:'销售思维的本质是「帮对方做决策」。先理解需求，再给方案，成交是水到渠成。'},
+ {icon:'i-dollar',name:'个人理财',group:'商业素养',
+  intro:'理财是职场人的必修课。会管钱、会投资、会做财务决策，才能安心发展事业。',
+  guide:[
+   '先记账 21 天摸清现金流，然后按「50 需要 /30 想要 /20 储蓄」分配收入，每月初做预算、月底复盘偏差',
+   '按「应急金（3-6 月支出）→保障（社保+百万医疗）→增值（指数基金定投）」三笔钱顺序配置，别跳步',
+   '每月读 20 页理财书并写 3 条践行笔记，一年后你会发现自己对钱的态度完全改变'
+  ],
+  standard:['能编制个人/家庭月度收支预算','理解并实践资产的配置（应急/保障/增值）','了解主流投资工具的风险收益特征','有长期复利与风险分散的基本观念'],
+  practice:[
+   {t:'记账打卡',d:'连续记账 30 天，月底复盘支出结构，找出可优化项。'},
+   {t:'编制预算表',d:'用收入-固定支出-储蓄-弹性支出结构制作月度预算。'},
+   {t:'三笔钱配置',d:'按「应急金-保障-增值」三笔钱逻辑，给当前资产做配置方案。'},
+   {t:'指数基金定投模拟',d:'选 1 只宽基指数做 3 个月定投模拟，记录收益与波动。'},
+   {t:'理财书籍笔记',d:'读 1 本理财入门书并做 10 条践行笔记。'}
+  ],
+  process:[
+   {s:'第一步',d:'打地基：记账两周，摸清自己的现金流。'},
+   {s:'第二步',d:'建框架：学「三笔钱」配置法和预算管理，建立储蓄习惯。'},
+   {s:'第三步',d:'学投资：理解指数基金/债券/存款等工具的风险收益，从小额定投开始。'},
+   {s:'第四步',d:'持续优化：每季度复盘资产配置，控制负债，长期复利。'}
+  ],
+  resources:['《小狗钱钱》','《穷爸爸富爸爸》','《指数基金投资指南》（银行螺丝钉）'],
+  pitfalls:['先消费后储蓄，月光无应急金','追求高收益忽视风险，跟风炒作','理财=投资股票，忽略保险与现金流管理'],
+  tips:'理财第一步不是投资收益，而是「先储蓄再消费」和「三笔钱配置」。'},
+ {icon:'i-chart',name:'商业通识',group:'商业素养',
+  intro:'懂商业才能看懂公司为什么存在、怎么赚钱、怎么竞争，是外企向上走的底层视野。',
+  guide:[
+   '每周拆一家公司：用商业模式画布 9 格（客户/价值/渠道/收入/成本等）画一遍，再回答「它凭什么赚钱」',
+   '读一家上市公司的年报摘要，找出营收、利润、现金流三行数字，再想：利润增长靠什么驱动、靠得住吗',
+   '每季度选一个行业（如新能源/AI/消费），跟踪 3 个月头部公司动态，形成自己的行业观察笔记'
+  ],
+  standard:['能看懂一家公司的商业模式（怎么赚钱）','理解行业竞争格局与护城河概念','了解财务三表的基本含义','能分析一家公司或行业的商业新闻'],
+  practice:[
+   {t:'商业模式画布练习',d:'为一家你熟悉的公司画商业模式画布（9 个格子）。'},
+   {t:'护城河分析',d:'分析一家公司靠什么保持竞争优势（品牌/成本/网络效应等）。'},
+   {t:'读财报入门',d:'读一家上市公司的年报摘要，找出营收/利润/现金流三行数字。'},
+   {t:'行业观察',d:'跟踪一个行业 3 个月，做竞争格局笔记（头部公司/趋势/风险）。'},
+   {t:'商业案例拆解',d:'选一家公司的成功/失败案例，拆解关键决策与结果。'}
+  ],
+  process:[
+   {s:'第一步',d:'学语言：理解商业模式、利润、现金流、护城河等基础概念。'},
+   {s:'第二步',d:'练分析：用商业模式画布拆解 5 家公司。'},
+   {s:'第三步',d:'读报告：开始读年报摘要与行业研报，建立数据敏感度。'},
+   {s:'第四步',d:'形成框架：建立自己的商业分析框架，能独立输出公司分析。'}
+  ],
+  resources:['《商业模式新生代》','《竞争战略》（波特）','《经济学人》商业版 / 36氪 / 虎嗅'],
+  pitfalls:['只看产品不看商业模式','把营收当利润，忽略现金流','只看财报数字不看竞争与行业环境'],
+  tips:'商业通识的核心是「看懂价值如何被创造和分配」。从画一张商业模式画布开始。'},
+ {icon:'i-grid',name:'心理学素养',group:'人文素养',
+  intro:'心理学帮助我们理解自己与他人：情绪、动机、偏见、沟通、决策，全面提升人际与自我管理。',
+  guide:[
+   '每天记录 1 个「认知偏差实例」：今天我有没有锚定/确认偏误/从众？连续 21 天，你会开始看见自己的思维盲区',
+   '情绪上头时执行「6 秒暂停」：深呼吸 6 秒，写下此刻感受是什么、触发事件是什么、自己最在乎什么，再决定行动',
+   '每周用「非暴力沟通」句式练 1 次关键对话：事实→感受→需要→请求，先从安全对话练起'
+  ],
+  standard:['理解基本认知偏差（确认偏误/锚定等）','掌握情绪识别与调节的基本方法','理解动机与习惯形成的机制','能用心理学视角分析日常人际现象'],
+  practice:[
+   {t:'认知偏差打卡',d:'一周内记录自己 5 次认知偏差实例（锚定/确认偏误等）。'},
+   {t:'情绪日记',d:'连续 21 天记录情绪触发事件与反应，找出模式。'},
+   {t:'习惯改造',d:'选一个坏习惯，用「提示-行为-奖励」机制设计改造方案。'},
+   {t:'非暴力沟通练习',d:'把 3 次冲突沟通改写成非暴力沟通句式。'},
+   {t:'心理实验研读',d:'读 3 个经典心理学实验（斯坦福监狱/棉花糖等）并写感悟。'}
+  ],
+  process:[
+   {s:'第一步',d:'入门：读 1 本心理学入门书（《心理学与生活》等）建立框架。'},
+   {s:'第二步',d:'自我应用：用情绪日记与行为分析理解自己。'},
+   {s:'第三步',d:'人际应用：学沟通与归因心理学，改善与他人的互动。'},
+   {s:'第四步',d:'持续觉察：把心理学变成日常思维习惯，避免偏见下决策。'}
+  ],
+  resources:['《心理学与生活》（津巴多）','《思考，快与慢》（卡尼曼）','《非暴力沟通》（马歇尔·卢森堡）'],
+  pitfalls:['用心理学标签给别人贴标签','把「读心术」当心理学，忽略科学方法与实证','只知概念不实践，不转化行为'],
+  tips:'心理学的价值在「解释自己、理解他人」。学一个概念，就找 3 个生活案例验证它。'},
+ {icon:'i-book',name:'历史学素养',group:'人文素养',
+  intro:'历史提供长周期的参照系：理解文明的兴衰、制度的演化、人性的恒常，训练纵深思维。',
+  guide:[
+   '用时间轴工具（A4 纸或软件）画一条通史主线，先画朝代/世纪框架，再填充关键事件与因果箭头',
+   '读历史人物传记时随时做「决策笔记」：他当时面临什么选择、依据什么判断、结果如何、换作我会怎么做',
+   '看历史类内容坚持「问题意识」：不满足于记住了什么，而要能回答「为什么是这个结果」'
+  ],
+  standard:['能梳理一条历史主线（如中国通史/世界近现代史）','理解历史事件的因果链而非孤立记忆','能从历史中提炼对当下问题的启发','具备基本史料辨析意识'],
+  practice:[
+   {t:'历史通读打卡',d:'用历史地图/时间轴梳理一个朝代或一个世纪的关键事件。'},
+   {t:'因果链分析',d:'选一场战争或革命，画出 5 层因果链（远因-近因-导火索）。'},
+   {t:'人物传记精读',d:'读 1 本历史人物传记，提炼其决策逻辑与成败教训。'},
+   {t:'古今对照笔记',d:'把一个当下议题与一个历史案例对照，写 500 字思考。'},
+   {t:'史料辨析练习',d:'对同一历史事件找 2 种不同叙述版本，比较差异与原因。'}
+  ],
+  process:[
+   {s:'第一步',d:'搭骨架：通读一条主线的通史（中国史或世界史），建立时间框架。'},
+   {s:'第二步',d:'学方法：理解「原因-经过-影响」分析法和史料辨析意识。'},
+   {s:'第三步',d:'深挖兴趣：选 2-3 个感兴趣的时代/人物精读专著。'},
+   {s:'第四步',d:'迁移思考：用历史纵深思维分析当下商业与社会现象。'}
+  ],
+  resources:['《万历十五年》（黄仁宇）','《人类简史》（赫拉利）','B站历史脉络类视频课（如王立群/易中天）'],
+  pitfalls:['死记年代人物，不建立因果逻辑','用现代标准苛责古人，缺乏时代语境','偏听单一叙述，不做多方核实'],
+  tips:'历史学培养的不是记忆力，而是「长周期因果思维」。先建时间轴，再填细节。'},
+ {icon:'i-users',name:'社会学素养',group:'人文素养',
+  intro:'社会学帮你理解个体与社会结构的关系：阶层、组织、文化、权力，看懂职场与社会的运行规则。',
+  guide:[
+   '用「角色期待」分析自己：作为学生/员工/子女，别人期待我做什么？我从哪里学来的？有没有不合理期待',
+   '每周选一个社会热点，用「结构-文化-个体」三层框架写 200 字分析，防止只停留在表面的情绪评价',
+   '观察一个组织的「潜规则」：哪些没写但大家都会做？为什么？写进你的观察笔记，训练社会学嗅觉'
+  ],
+  standard:['理解社会化、角色、规范等基础概念','能分析一个社会现象背后的结构因素','理解组织行为与职场规则','具备基本的调查研究意识'],
+  practice:[
+   {t:'概念应用练习',d:'用「角色期待」等社会学概念分析自己的职场角色。'},
+   {t:'社会现象分析',d:'选一个社会热点，从「结构-文化-个体」三层面写分析。'},
+   {t:'组织观察笔记',d:'观察一个组织（公司/社团）的规则与潜规则，写观察笔记。'},
+   {t:'田野访谈',d:'访谈 3 位不同背景的人关于同一问题的看法，做差异比较。'},
+   {t:'读书输出',d:'读 1 本社会学著作，输出 10 条核心概念的应用笔记。'}
+  ],
+  process:[
+   {s:'第一步',d:'入门：读 1 本社会学入门书，理解核心概念（结构/角色/规范）。'},
+   {s:'第二步',d:'观察：把日常现象用社会学视角重新解读，练习「陌生化」观察。'},
+   {s:'第三步',d:'分析：学用「结构-文化-个体」框架分析社会与组织现象。'},
+   {s:'第四步',d:'应用：把社会学思维用于理解职场、客户与市场。'}
+  ],
+  resources:['《社会学入门系列》（如《见树又见林》）','《乡土中国》（费孝通）','《工作、消费主义和新穷人》（鲍曼）'],
+  pitfalls:['用宏大结构解释掩盖个人责任','概念堆砌不联系实际','把「观察」变成「贴标签」和刻板印象'],
+  tips:'社会学思维的好处是「跳出个人视角看结构」。遇到困惑先问：是个人问题还是结构问题？'},
+ {icon:'i-flag',name:'政治时势',group:'人文素养',
+  intro:'关注政治与国际时事，理解政策如何影响商业与生活，是全球化时代职场人的必备素养。',
+  guide:[
+   '每天固定 20 分钟读 2 个高质量信源，用「事实-观点-影响」三段式做 1 条拆解，周末汇总成周报',
+   '看到政策新闻先追问：这条政策影响哪个行业？怎么影响？周期多长？用这个公式练 10 篇',
+   '对同一事件主动找 2 个立场不同的信源对比，练习多角度思考，避免信息茧房'
+  ],
+  standard:['能读懂主流新闻的政策与商业含义','了解主要国际关系格局与重点议题','能从行业视角解读政策变化的影响','能理性区分事实与观点'],
+  practice:[
+   {t:'新闻精读打卡',d:'每天精读 1 篇时政要闻，用「事实-观点-影响」三段式拆解。'},
+   {t:'政策影响分析',d:'选一条近期政策，分析对其行业/公司/个人的三层影响。'},
+   {t:'国际关系地图',d:'梳理中美欧等主要经济体关系现状与关键议题。'},
+   {t:'多源对照',d:'对同一事件读 2-3 个信源（中外/立场不同），比较叙事差异。'},
+   {t:'时事周报输出',d:'每周写一篇 200 字时事简报，坚持 1 个月。'}
+  ],
+  process:[
+   {s:'第一步',d:'搭信息源：固定 2-3 个高质量时政信源（新闻联播/参考消息/FT等）。'},
+   {s:'第二步',d:'会拆解：练习把新闻拆成「事实-观点-影响」三层。'},
+   {s:'第三步',d:'连自己：把时事连接到自己的生活与行业，理解政策距离感。'},
+   {s:'第四步',d:'成体系：建立自己的国际关系与政策分析框架。'}
+  ],
+  resources:['新闻联播 / 参考消息','FT中文网 / 经济学人','《经济学人·政治》（英文原版精读）'],
+  pitfalls:['情绪化立场先行，不核实事实','只看热闹不看门道（政策影响）','信息茧房：只关注单一立场信源'],
+  tips:'时政素养的关键是「事实-观点分离」与「政策-商业连接」。每周固定时间精读 2 篇。'}
+];
+
+/* 艾宾浩斯复习间隔（天） */
+var EBBINGHAUS=[1,2,4,7,15];
+
+/* SECTION: state */
+var PREFIX='ewb2_'; /* v6 起更换存储键，清空历史演示数据，从用户开始使用起重新记录 */
+function iso(d){var p=function(n){return String(n).padStart(2,'0');};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());}
+function addDays(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x;}
+function todayISO(){return iso(new Date());}
+function S_get(k,d){try{var v=localStorage.getItem(PREFIX+k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function S_set(k,v){try{localStorage.setItem(PREFIX+k,JSON.stringify(v));}catch(e){}}
+/* v6 起默认 2-3 年周期；默认开始日期=今天（从今天开始记录） */
+var DEFAULT_SETTINGS={level:'zero',target:'interview',dailyMin:40,weeks:156,start:todayISO()};
+function freshState(){
+  return {settings:{level:'zero',target:'interview',dailyMin:40,weeks:156,start:todayISO()},days:{},tasksDone:{},learned:[],errors:[],scenes:[],ability:{lis:0,spe:0,rea:0,wri:0,voc:0,bus:0},wordLog:{},careerDone:{},monthDone:{},weekTasks:{},weekPrac:{}};
+}
+function loadState(){
+  var s=S_get('state',null);
+  if(!s){s=freshState();S_set('state',s);}
+  if(!s.settings){s.settings=DEFAULT_SETTINGS;}
+  s.days=s.days||{};s.tasksDone=s.tasksDone||{};s.learned=s.learned||[];s.errors=s.errors||[];s.scenes=s.scenes||[];
+  if(!s.ability){s.ability={lis:0,spe:0,rea:0,wri:0,voc:0,bus:0};}
+  if(!s.wordLog){s.wordLog={};}
+  if(!s.careerDone){s.careerDone={};}
+  if(!s.monthDone){s.monthDone={};}
+  if(!s.weekTasks){s.weekTasks={};}
+  if(!s.weekPrac){s.weekPrac={};}
+  return s;
+}
+var S=loadState();
+var RATIO=[2,3,3,2,2,3]; /* 六阶段按 3 年周期比例分配 */
+function totalWeeks(){return parseInt(S.settings.weeks,10)||156;}
+function phaseBoundaries(){
+  var total=totalWeeks(),sum=0,i;
+  for(i=0;i<RATIO.length;i++){sum+=RATIO[i];}
+  var out=[],acc=0;
+  for(i=0;i<RATIO.length;i++){acc+=RATIO[i]/sum*total;out.push(Math.max(1,Math.round(acc)));}
+  var last=out[out.length-1];
+  for(i=0;i<out.length-1;i++){if(out[i]>=last)out[i]=last-1;}
+  return out;
+}
+function dayIndex(){
+  var t0=new Date(S.settings.start+'T00:00:00');
+  return Math.max(0,Math.floor((new Date(todayISO()+'T00:00:00')-t0)/86400000));
+}
+function weekOf(){return Math.floor(dayIndex()/7)+1;}
+function phaseIndex(){
+  var w=weekOf(),b=phaseBoundaries();
+  for(var i=0;i<b.length;i++){if(w<=b[i])return i;}
+  return b.length-1;
+}
+var PHASE_CN=['一','二','三','四','五','六'];
+
+/* SECTION: utils */
+function el(id){return document.getElementById(id);}
+function toast(msg,type){
+  var box=el('toastBox'),t=document.createElement('div');
+  t.className='toast'+(type?' '+type:'');t.textContent=msg;box.appendChild(t);
+  setTimeout(function(){t.style.opacity='0';t.style.transition='opacity .4s';},2200);
+  setTimeout(function(){t.remove();},2700);
+}
+
+/* SECTION: today */
+var currentOff=0;
+function currentGoal(){return currentMilestone();}
+var GOAL_WORDS={kaoyan:15,ielts:15,career:10};
+function genTasks(off){
+  var pi=phaseIndex(),wk=weekOf(),scene=SCENE_POOL[(wk+off)%SCENE_POOL.length];
+  var goal=currentGoal();
+  var lib=GOAL_TASKS[goal]||TASK_LIB[['zero','starter','inter','advanced','polish','sprint'][pi]];
+  var nWords=goal&&GOAL_WORDS[goal]?GOAL_WORDS[goal]:N_NEW[pi];
+  var dailyMin=Math.max(15,parseInt(S.settings.dailyMin,10)||40);
+  /* 动态任务量：随每日时长调整（保证 16 板块每周至少轮一遍） */
+  var engCount = dailyMin>=120?3:(dailyMin>=60?2:(dailyMin>=30?2:1));
+  var boardCount = dailyMin>=120?5:(dailyMin>=60?4:(dailyMin>=30?3:3));
+  var out=[];
+  /* 英语核心任务：按时长取 1-3 项 */
+  var engUsed=Math.min(engCount,lib.length);
+  for(var i=0;i<engUsed;i++){
+    var t=lib[i];
+    out.push({id:todayISO()+':'+t.t+':'+off,type:t.t,label:t.label,desc:t.desc.replace('{n}',nWords).replace('{scene}',scene),min:t.min});
+  }
+  /* 其余板块任务：按星期轮换，确保全部板块同步推进（boardCount>=3，每周覆盖16板块） */
+  var dayOfWeek=new Date().getDay(); /* 0=周日 */
+  var startIdx=(dayOfWeek*boardCount+off*boardCount)%DAILY_POOL.length;
+  for(var j=0;j<boardCount;j++){
+    var d=DAILY_POOL[(startIdx+j)%DAILY_POOL.length];
+    var id=todayISO()+':'+d.tab+':'+off;
+    var already=out.some(function(o){return o.id===id;});
+    if(already){id=id+':'+j;}
+    out.push({id:id,type:'x'+d.tab,label:d.label,desc:d.desc,min:d.min});
+  }
+  return out;
+}
+/* 本周任务：结合本周每日任务自动细化，周级目标与日任务联动 */
+function weekKey(){var w=weekOf();return 'w'+w;}
+function weekBoardSet(){
+  /* 算出本周 7 天日任务会轮到的板块集合（与 genTasks 同规则） */
+  var dailyMin=Math.max(15,parseInt(S.settings.dailyMin,10)||40);
+  var boardCount=dailyMin>=120?5:(dailyMin>=60?4:3);
+  var set=[],i;
+  for(var dow=0;dow<7;dow++){
+    var startIdx=(dow*boardCount)%DAILY_POOL.length;
+    for(i=0;i<boardCount;i++){
+      var d=DAILY_POOL[(startIdx+i)%DAILY_POOL.length];
+      if(set.indexOf(d.tab)<0)set.push(d.tab);
+    }
+  }
+  return set;
+}
+/* 所在学习月份（按计划开始日推算，0-11） */
+function studyMonthIndex(){
+  var di=dayIndex();
+  return Math.min(11,Math.floor(di/30));
+}
+function genWeekTasks(){
+  var wk=weekOf(),goal=currentGoal();
+  var boards=weekBoardSet();
+  var boardNames=[];
+  for(var i=0;i<boards.length;i++){
+    for(var j=0;j<COLUMNS.length;j++){if(COLUMNS[j].tab===boards[i]){boardNames.push(COLUMNS[j].name);break;}}
+  }
+  /* 当月英语路线主题：随计划时间推进自动变化 */
+  var mi=studyMonthIndex();
+  var engTheme=(ENG_YEAR&&ENG_YEAR[mi])?(ENG_YEAR[mi].t+' · '+ENG_YEAR[mi].d):'英语主线';
+  /* 当月素养板块路线主题（取本周轮到的第一个板块的当月主题） */
+  var boardTheme='';
+  if(boards.length>0){
+    for(var b2=0;b2<COLUMNS.length;b2++){
+      if(COLUMNS[b2].tab===boards[0]&&COLUMNS[b2].year&&COLUMNS[b2].year[mi]){
+        boardTheme=COLUMNS[b2].name+'：'+COLUMNS[b2].year[mi].t;
+        break;
+      }
+    }
+  }
+  if(!boardTheme)boardTheme='按各板块当月路线推进';
+  var base=[
+   {id:'wk_words',label:'本周词汇攻坚',desc:function(){var w=Math.max(20,(GOAL_WORDS[goal]||N_NEW[phaseIndex()]))*7;return '本周日任务累计学习 '+w+' 个新词，并全部纳入艾宾浩斯复习';}(),keep:'words'},
+   {id:'wk_eng',label:'英语路线周目标',desc:'跟随当月英语路线「'+engTheme+'」，本周完成对应主题的日任务累计目标',keep:'eng'},
+   {id:'wk_board',label:'素养板块周轮替',desc:'本月素养主题：'+boardTheme+'；本周覆盖 '+boards.length+' 个板块，至少完成 3 个板块的周级练习',keep:'board'},
+   {id:'wk_review',label:'本周复盘',desc:'周日复盘：学习路线进度、日任务完成率、卡点记录、下周改进点',keep:'review'}
+  ];
+  if(goal==='kaoyan'){base.splice(1,0,{id:'wk_exam',label:'考研真题专项',desc:'本月跟随英语路线「'+engTheme+'」，本周精读 2 篇真题阅读 + 1 次限时训练',keep:'exam'});}
+  if(goal==='ielts'){base.splice(1,0,{id:'wk_ielts',label:'雅思单项强化',desc:'本月跟随英语路线「'+engTheme+'」，本周听力精听 3 篇 + 口语 2 题 + 写作 1 篇',keep:'exam'});}
+  return base;
+}
+function renderWeekTasks(){
+  var list=genWeekTasks(),doneN=0,html='',wk=weekOf();
+  var wkKey=weekKey();
+  el('wkNo').textContent=wk;
+  var wkRangeStart=(wk-1)*7+1, wkRangeEnd=wk*7;
+  el('wkRange').textContent='第 '+wkRangeStart+'–'+wkRangeEnd+' 天';
+  /* 当前学习阶段/路线标签：随计划时间推进变化 */
+  var mi=studyMonthIndex(),goal=currentGoal();
+  var goalName={kaoyan:'考研冲刺',ielts:'雅思进阶',career:'外企实战'}[goal]||'外企实战';
+  var engTag=(ENG_YEAR&&ENG_YEAR[mi])?ENG_YEAR[mi].t:'英语主线';
+  el('wkRouteTag').textContent=goalName+' · 第 '+(mi+1)+' 月 · '+engTag;
+  for(var i=0;i<list.length;i++){
+    var t=list[i],key=wkKey+'_'+t.id,isDone=!!S.weekTasks[key];
+    if(isDone)doneN++;
+    html+='<div class="wtask'+(isDone?' done':'')+'" data-wk="'+key+'">'+
+      '<div class="check">'+(isDone?'✓':'')+'</div>'+
+      '<div class="tbd"><b>'+t.label+'</b><span>'+t.desc+'</span></div></div>';
+  }
+  /* 汇总各板块「本周练习」完成度，纳入周任务区展示 */
+  var wpArr=S.weekPrac||{},wpDone=0,wpTotal=0;
+  for(var c2=0;c2<COLUMNS.length;c2++){
+    for(var w2=0;w2<3;w2++){
+      wpTotal++;
+      if(wpArr['wp'+COLUMNS[c2].ability+'_'+wk+'_'+w2])wpDone++;
+    }
+  }
+  html+='<div class="wtask'+(wpDone>0?' done':'')+'" data-wk="'+(wkKey+'_wp')+'">'+
+    '<div class="check">'+(wpDone>0?'✓':'')+'</div>'+
+    '<div class="tbd"><b>板块本周练习</b><span>已完成 '+wpDone+'/'+wpTotal+' 项板块周级练习（在任一板块勾选「本周练习」即可计入）</span></div></div>';
+  doneN+=(wpDone>0?1:0);
+  el('weekTaskList').innerHTML=html;
+  el('wkProg').textContent=doneN+'/'+(list.length+1);
+}
+function onWeekTaskClick(e){
+  var task=e.target.closest('.wtask');
+  if(!task)return;
+  var key=task.getAttribute('data-wk');
+  S.weekTasks=S.weekTasks||{};
+  if(S.weekTasks[key]){delete S.weekTasks[key];toast('已取消该周任务');}
+  else{S.weekTasks[key]=1;toast('周任务完成，继续保持','ok');}
+  S_set('state',S);
+  renderWeekTasks();
+}
+function renderTasks(){
+  var lis=genTasks(currentOff),box=el('taskList'),done=0,min=0,html='';
+  var nameMap={image:'形象',think:'思维',expr:'表达',etiq:'礼仪',drive:'自驱',tools:'工具',team:'协作',cult:'跨文化',sales:'销售',money:'理财',biz:'商业',psy:'心理',hist:'历史',soc:'社会',poli:'时政'};
+  for(var i=0;i<lis.length;i++){
+    var t=lis[i],isDone=!!S.tasksDone[t.id];
+    if(isDone){done++;min+=t.min;}
+    var tagMap={words:'词汇',listen:'听力',speak:'口语',read:'精读',write:'写作',scene:'场景'};
+    var tag=tagMap[t.type];
+    var tcls=t.type;
+    if(!tag&&t.type.indexOf('x')===0){var tkey=t.type.slice(1);tag=nameMap[tkey]||'任务';tcls='x '+(tkey);}
+    if(!tag)tag='任务';
+    html+='<div class="task'+(isDone?' done':'')+'" data-id="'+t.id+'" data-min="'+t.min+'">'+
+      '<div class="check">'+(isDone?'✓':'')+'</div>'+
+      '<span class="tag '+tcls+'">'+tag+'</span>'+
+      '<div class="tbd"><b>'+t.label+'</b><span>'+t.desc+'</span></div>'+
+      '<span class="tmin">'+t.min+' 分钟</span></div>';
+  }
+  box.innerHTML=html;
+  renderHero(done,lis.length,min);
+  return {done:done,total:lis.length,min:min};
+}
+function renderHero(done,total,min){
+  var pct=total?Math.round(done/total*100):0,C=2*Math.PI*55;
+  el('ringFg').style.strokeDasharray=C;
+  el('ringFg').style.strokeDashoffset=C*(1-pct/100);
+  el('ringPct').textContent=pct+'%';
+  var target=S.settings.dailyMin;
+  el('mbarFill').style.width=Math.min(100,Math.round(min/target*100))+'%';
+  el('mstat').textContent='已完成 '+done+' / '+total+' 项 · 投入 '+min+' / '+target+' 分钟';
+  var goal=currentGoal();
+  var goalName={kaoyan:'考研英语二',ielts:'雅思 7.5',career:'外企英语'}[goal]||'外企英语';
+  el('phaseBadge').textContent=goalName+'阶段 · 第 '+weekOf()+' 周';
+}
+function doCheckin(){
+  var r=renderTasks(),td=el('taskDate');
+  if(r.total>0&&r.done===r.total){
+    S.days[todayISO()]={min:r.min,tasks:r.done,total:r.total};
+    S_set('state',S);calcStreak();
+    toast('今日打卡成功！连续打卡 '+(S._streak||0)+' 天，很棒','ok');
+  }else if(r.done>0){
+    S.days[todayISO()]={min:r.min,tasks:r.done,total:r.total};
+    S_set('state',S);calcStreak();
+    toast('已记录 '+r.done+' 项进度，还剩 '+(r.total-r.done)+' 项就完成啦','warn');
+  }else{
+    toast('今天还没有完成任务，从第一项开始吧');
+  }
+  renderStats(false);
+}
+function calcStreak(){
+  var n=0,d=new Date();
+  while(S.days[iso(d)]&&S.days[iso(d)].tasks>0){n++;d=addDays(d,-1);}
+  S._streak=n;S_set('state',S);updateStreakUI();
+}
+function updateStreakUI(){
+  var n=S._streak||0;
+  el('streakLabel').textContent='连续打卡 '+n+' 天';
+  el('streakDot').className='dot'+(n>0?' hot':'');
+}
+
+/* SECTION: plan */
+function renderPrioOverview(){
+  var groups=[[],[],[],[]];
+  for(var i=0;i<COLUMNS.length;i++){
+    var col=COLUMNS[i];
+    var p=col.priority||2;
+    groups[p-1].push({icon:col.icon,name:col.name});
+  }
+  var titles={0:'P1 · 核心必修（先投入，产出最大）',1:'P2 · 进阶提升（地基打好后加强）',2:'P3 · 辅助成长（按兴趣与时间补充）',3:'P4 · 拓展视野（长期熏陶，不必强求）'};
+  var html='';
+  for(var g=0;g<4;g++){
+    if(!groups[g].length)continue;
+    html+='<div class="prio-group"><div class="prio-h">'+titles[g]+'</div><div class="prio-items">';
+    for(var j=0;j<groups[g].length;j++){
+      html+='<span class="prio-item"><svg class="ic"><use href="#'+groups[g][j].icon+'"/></svg>'+groups[g][j].name+'</span>';
+    }
+    html+='</div></div>';
+  }
+  el('prioOverview').innerHTML=html;
+}
+function renderPlan(){
+  var pi=phaseIndex(),b=phaseBoundaries(),html='';
+  for(var i=0;i<PHASES.length;i++){
+    var p=PHASES[i],weeks=i===0?('第 1–'+b[i]+' 周'):('第 '+(b[i-1]+1)+'–'+b[i]+' 周');
+    var chips='';
+    for(var j=0;j<p.focus.length;j++){chips+='<i>'+p.focus[j]+'</i>';}
+    html+='<div class="phase-item'+(i===pi?' cur':'')+'"><div class="pc">'+(i+1)+'</div><div class="pb">'+
+      '<div class="pt"><b>'+p.name+'</b><span>'+weeks+'</span></div>'+
+      '<p>'+p.goal+'</p><div class="chips">'+chips+'</div></div></div>';
+  }
+  el('phaseTimeline').innerHTML=html;
+  var targetName={interview:'英文面试',meeting:'英文会议',email:'商务邮件',negotiation:'谈判说服'}[S.settings.target]||'英文面试';
+  var totalW=totalWeeks();
+  el('planMeta').textContent='当前第 '+weekOf()+' 周 / 共 '+totalW+' 周（约 '+Math.round(totalW/52*10)/10+' 年）· 主攻：'+targetName;
+  /* 季度主题：以当前周为中心的 12 个季度观察窗，避免 156 周卡片溢出 */
+  var quarters=[],curQ=Math.floor((weekOf()-1)/13)+1,totalQ=Math.max(1,Math.ceil(totalW/13));
+  var startQ=Math.max(1,curQ-1),endQ=Math.min(totalQ,curQ+4);
+  for(var q=startQ;q<=endQ;q++){
+    var qStart=(q-1)*13+1,qEnd=Math.min(totalW,q*13);
+    var sc=SCENE_POOL[(q-1)%SCENE_POOL.length];
+    var qc=SCENE_POOL[(q+5)%SCENE_POOL.length];
+    quarters.push({q:q,range:qStart+'–'+qEnd,cur:q===curQ,sc:sc,qc:qc});
+  }
+  var wh='';
+  for(var t=0;t<quarters.length;t++){
+    var x=quarters[t];
+    wh+='<div class="qitem'+(x.cur?' cur':'')+'"><b>第 '+x.q+' 季度 · '+x.range+' 周</b><em>主主题：'+x.sc+'</em><span>副主题：'+x.qc+'</span></div>';
+  }
+  el('weekTopics').innerHTML=wh;
+}
+
+/* SECTION: vocab */
+var curTopic='meeting';
+var dailyReviewMode=false;
+function wordKey(ti,wi){return ti+':'+wi;}
+function allWordIds(){
+  var ids=[];
+  for(var i=0;i<VOCAB.length;i++){for(var j=0;j<VOCAB[i][1].length;j++){ids.push(wordKey(i,j));}}
+  return ids;
+}
+/* 当日随机种子：同一天固定顺序，换天自然换一批 */
+function dateSeed(){var d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();}
+function seededShuffle(arr,seed){
+  var a=arr.slice(),s=seed||1;
+  for(var i=a.length-1;i>0;i--){
+    s=(s*9301+49297)%233280;
+    var j=Math.floor(s/233280*(i+1));
+    var t=a[i];a[i]=a[j];a[j]=t;
+  }
+  return a;
+}
+/* 今日新词：按当前阶段数量，从全库随机抽取未掌握词 */
+function todayWords(){
+  var n=N_NEW[phaseIndex()]||5;
+  var ids=allWordIds();
+  var fresh=seededShuffle(ids,dateSeed()).filter(function(id){return S.learned.indexOf(id)<0;});
+  var known=seededShuffle(ids,dateSeed()+7).filter(function(id){return S.learned.indexOf(id)>-1;});
+  var out=fresh.slice(0,n);
+  for(var i=0;i<known.length&&out.length<n;i++){if(out.indexOf(known[i])<0)out.push(known[i]);}
+  return out;
+}
+/* 艾宾浩斯到期复习词：首次学习后第 1/2/4/7/15 天 */
+function reviewDue(){
+  var due=[],today=todayISO();
+  for(var id in S.wordLog){
+    var first=S.wordLog[id];
+    if(!first)continue;
+    var diff=Math.round((new Date(today+'T00:00:00')-new Date(first+'T00:00:00'))/86400000);
+    if(EBBINGHAUS.indexOf(diff)>-1)due.push(id);
+  }
+  return due;
+}
+function renderTopics(){
+  var html='';
+  for(var i=0;i<VOCAB_TOPICS.length;i++){
+    var t=VOCAB_TOPICS[i];
+    html+='<button data-t="'+t.key+'" class="'+(t.key===curTopic?'on':'')+'">'+t.name+'</button>';
+  }
+  el('topicChips').innerHTML=html;
+}
+function topicIdx(key){for(var i=0;i<VOCAB.length;i++){if(VOCAB[i][0]===key)return i;}return 0;}
+function renderDaily(){
+  var ids=dailyReviewMode?[]:todayWords(),due=reviewDue(),html='';
+  if(ids.length){
+    html+='<div class="dhead"><b>今日新词（'+ids.length+' 个 · 每日随机）</b><span>点击翻转 · 「记住了」后自动进入艾宾浩斯复习</span></div>';
+    html+='<div class="dgrid">';
+    for(var i=0;i<ids.length;i++){
+      var p=ids[i].split(':'),ti=+p[0],wi=+p[1],w=VOCAB[ti][1][wi];
+      var known=S.learned.indexOf(ids[i])>-1;
+      html+='<div class="vcard'+(known?' known':'')+'" data-id="'+ids[i]+'">'+
+        '<div class="vc">'+
+        '<div class="vface front"><b>'+w.w+'</b><span>'+w.p+'</span></div>'+
+        '<div class="vface back"><p>'+w.cn+'</p><small>'+w.m+'</small>'+
+        '<p style="font-size:12px;color:#4a5778;font-style:italic;margin-top:6px">'+w.eg+'</p>'+
+        '<div class="op"><button class="know" data-a="know">记住了</button><button class="rel" data-a="rel">再练练</button></div>'+
+        '</div></div></div>';
+    }
+    html+='</div>';
+  }
+  if(due.length){
+    html+='<div class="dhead" style="margin-top:16px"><b>今日复习（艾宾浩斯 '+due.length+' 个）</b><span>首次学习后第 '+EBBINGHAUS.join('/')+' 天自动到期</span></div>';
+    html+='<div class="dgrid">';
+    for(var j=0;j<due.length;j++){
+      var pp=due[j].split(':'),ti2=+pp[0],wi2=+pp[1],w2=VOCAB[ti2][1][wi2];
+      html+='<div class="vcard'+'" data-id="'+due[j]+'">'+
+        '<div class="vc">'+
+        '<div class="vface front"><b>'+w2.w+'</b><span>'+w2.p+'</span></div>'+
+        '<div class="vface back"><p>'+w2.cn+'</p><small>'+w2.m+'</small>'+
+        '<p style="font-size:12px;color:#4a5778;font-style:italic;margin-top:6px">'+w2.eg+'</p>'+
+        '<div class="op"><button class="know" data-a="know">记住了</button><button class="rel" data-a="rel">再练练</button></div>'+
+        '</div></div></div>';
+    }
+    html+='</div>';
+  }
+  if(!ids.length&&!due.length){html='<p style="color:var(--muted);font-size:13px">今天没有新词和到期复习，去下方「词库漫游」任选一组学习吧</p>';}
+  el('dailyBox').innerHTML=html;
+  el('reviewCount').textContent='今日到期复习 '+due.length+' 个';
+}
+function renderVocab(){
+  var ti=topicIdx(curTopic),list=VOCAB[ti][1],html='';
+  for(var i=0;i<list.length;i++){
+    var w=list[i],id=wordKey(ti,i);
+    html+='<div class="vcard'+(S.learned.indexOf(id)>-1?' known':'')+'" data-id="'+id+'">'+
+      '<div class="vc">'+
+      '<div class="vface front"><b>'+w.w+'</b><span>'+w.p+'</span></div>'+
+      '<div class="vface back"><p>'+w.cn+'</p><small>'+w.m+'</small>'+
+      '<p style="font-size:12px;color:#4a5778;font-style:italic;margin-top:6px">'+w.eg+'</p>'+
+      '<div class="op"><button class="know" data-a="know">记住了</button><button class="rel" data-a="rel">再练练</button></div>'+
+      '</div></div></div>';
+  }
+  el('vocabGrid').innerHTML=html;
+  el('vocabMeta').textContent='已掌握 '+S.learned.length+' / '+TOTAL_WORDS+' 词 · 全库随机学习，点击卡片翻转查看释义';
+}
+function onVocabClick(e){
+  var btn=e.target.closest('button[data-a]');
+  var card=e.target.closest('.vcard');
+  if(!card&&!btn)return;
+  if(btn&&card){
+    e.stopPropagation();
+    var id=card.getAttribute('data-id');
+    if(btn.getAttribute('data-a')==='know'){
+      if(S.learned.indexOf(id)<0){S.learned.push(id);toast('已加入掌握词库 ✓，已纳入艾宾浩斯复习','ok');}
+      if(!S.wordLog[id]){S.wordLog[id]=todayISO();}
+    }else{
+      if(S.errors.indexOf(id)<0)S.errors.push(id);
+      toast('已加入错词本，稍后复习吧');
+    }
+    S_set('state',S);renderDaily();renderVocab();return;
+  }
+  var x=card?card:e.target.closest('.vcard');
+  if(x)x.classList.toggle('flip');
+}
+/* quiz */
+var quizState=null;
+function startQuiz(fromErr){
+  var qs=[],ti=topicIdx(curTopic);
+  if(fromErr&&S.errors.length){
+    var pool=S.errors.map(function(id){var p=id.split(':');return {ti:+p[0],wi:+p[1]};});
+    for(var i=0;i<Math.min(4,pool.length);i++){qs.push(pool[i]);}
+  }else{
+    var list=VOCAB[ti][1],idx=[];
+    for(var j=0;j<list.length;j++){idx.push(j);}
+    idx.sort(function(){return Math.random()-.5;});
+    for(var k=0;k<Math.min(4,idx.length);k++){qs.push({ti:ti,wi:idx[k]});}
+  }
+  if(!qs.length){toast('错词本是空的，先去词卡里用「再练练」积累吧');return;}
+  quizState={qs:qs,i:0,score:0,total:qs.length,fromErr:!!fromErr,ti:ti};
+  el('quizBox').style.display='block';
+  el('quizBox').scrollIntoView({behavior:'smooth',block:'center'});
+  renderQuiz();
+}
+function renderQuiz(){
+  if(!quizState)return;
+  var q=quizState.qs[quizState.i],w=VOCAB[q.ti][1][q.wi];
+  el('quizStat').textContent='第 '+(quizState.i+1)+' / '+quizState.total+' 题 · 得分 '+quizState.score;
+  el('quizQ').textContent='「'+w.cn+'」的正确英文是？';
+  var opts=[w.w],pool=[];
+  for(var i=0;i<VOCAB.length;i++){for(var j=0;j<VOCAB[i][1].length;j++){pool.push(VOCAB[i][1][j].w);}}
+  var sh=opts.slice();
+  while(sh.length<4){var z=pool[Math.floor(Math.random()*pool.length)];if(sh.indexOf(z)<0)sh.push(z);}
+  sh.sort(function(){return Math.random()-.5;});
+  var html='';
+  for(var k=0;k<sh.length;k++){html+='<button data-ans="'+(sh[k]===w.w?'1':'0')+'">'+sh[k]+'</button>';}
+  el('quizOpts').innerHTML=html;
+  el('btnQuizNext').style.display='none';
+}
+function onQuizAnswer(e){
+  var btn=e.target.closest('button[data-ans]');
+  if(!btn||!quizState)return;
+  var correct=btn.getAttribute('data-ans')==='1';
+  var btns=el('quizOpts').querySelectorAll('button');
+  for(var i=0;i<btns.length;i++)btns[i].disabled=true;
+  var q=quizState.qs[quizState.i],w=VOCAB[q.ti][1][q.wi];
+  if(correct){
+    btn.classList.add('ok');quizState.score++;
+    var id=wordKey(q.ti,q.wi);
+    if(S.learned.indexOf(id)<0){S.learned.push(id);}
+  }else{
+    btn.classList.add('bad');
+    var badId=wordKey(q.ti,q.wi);
+    if(S.errors.indexOf(badId)<0){S.errors.push(badId);}
+    for(var j=0;j<btns.length;j++){if(btns[j].getAttribute('data-ans')==='1'){btns[j].classList.add('ok');break;}}
+  }
+  S_set('state',S);
+  quizState.i++;
+  if(quizState.i>=quizState.total){
+    el('btnQuizNext').style.display='none';
+    setTimeout(function(){
+      el('quizStat').textContent='本组完成：答对 '+quizState.score+' / '+quizState.total+' 题';
+      el('quizQ').textContent=quizState.score===quizState.total?'全对！太棒了':'答错的词已进入错词本，点击「错词复习」再战';
+      el('quizOpts').innerHTML='';
+    },700);
+    quizState=null;renderVocab();return;
+  }
+  el('btnQuizNext').style.display='inline-flex';
+}
+/* scenes */
+function renderScenes(){
+  var html='';
+  for(var i=0;i<SCENES.length;i++){
+    var s=SCENES[i],mastered=S.scenes.indexOf(i)>-1,lines='';
+    for(var j=0;j<s.lines.length;j++){
+      lines+='<div class="ln"><em>'+s.lines[j].en+'</em><span>'+s.lines[j].cn+'</span></div>';
+    }
+    var tips='<div class="tips"><b>要点：</b>'+s.tips.join(' · ')+'</div>';
+    var how='';
+    if(s.how&&s.how.length){
+      how='<div class="how"><div class="how-h">练习方法 · 三步走</div>';
+      for(var h=0;h<s.how.length;h++){
+        how+='<div class="cstep"><span>步骤 '+(h+1)+'</span>'+s.how[h]+'</div>';
+      }
+      how+='</div>';
+    }
+    html+='<div class="scn'+(mastered?' mastered':'')+'" data-i="'+i+'">'+
+      '<div class="sh"><span class="st">'+s.tag+'</span><b>'+s.t+'</b>'+
+      '<span class="scnmaster">✓ 已掌握</span><span class="arr">▾</span></div>'+
+      '<div class="body">'+lines+tips+how+'</div></div>';
+  }
+  el('sceneGrid').innerHTML=html;
+  el('sceneMeta').textContent='已掌握 '+S.scenes.length+' / '+SCENES.length+' 个场景 · 展开即标记为已掌握';
+}
+function onSceneClick(e){
+  var card=e.target.closest('.scn');
+  if(!card)return;
+  var i=+card.getAttribute('data-i');
+  var open=card.classList.contains('open');
+  var all=document.querySelectorAll('.scn.open');
+  for(var j=0;j<all.length;j++)all[j].classList.remove('open');
+  if(!open){
+    if(S.scenes.indexOf(i)<0){S.scenes.push(i);S_set('state',S);}
+    renderScenes();
+    var cards=document.querySelectorAll('.scn');
+    if(cards.length){cards[i].classList.add('open');}
+  }
+}
+
+/* SECTION: stats */
+function renderStats(charts){
+  var days=S.days,dk=Object.keys(days),daysCnt=0,minSum=0;
+  for(var i=0;i<dk.length;i++){var dv=days[dk[i]];if(dv&&dv.tasks>0){daysCnt++;minSum+=(dv.min||0);}}
+  el('kpiDays').textContent=daysCnt;
+  el('kpiMin').textContent=minSum;
+  el('kpiWords').textContent=S.learned.length;
+  el('kpiStreak').textContent=S._streak||0;
+  /* 学习路线完成度：英语12月 + 16板块各12月，以 monthDone 标记为准 */
+  var routeTotal=0,routeDone=0;
+  routeTotal+=ENG_YEAR.length;
+  for(var r1=0;r1<ENG_YEAR.length;r1++){if(S.monthDone&&S.monthDone['eng_'+r1])routeDone++;}
+  for(var c1=0;c1<COLUMNS.length;c1++){
+    var colY=COLUMNS[c1].year||[];
+    routeTotal+=colY.length;
+    for(var y1=0;y1<colY.length;y1++){if(S.monthDone&&S.monthDone[COLUMNS[c1].tab+'_'+y1])routeDone++;}
+  }
+  el('kpiRoute').textContent=routeDone+'/'+routeTotal;
+  el('kpiRoute').title='已完成 '+routeDone+' / '+routeTotal+' 个月份学习路线';
+  var hh='',startD=new Date(S.settings.start?S.settings.start+'T00:00:00':new Date());
+  var ed=new Date(todayISO()+'T00:00:00');
+  var d=new Date(startD),guard=0;
+  while(d<=ed&&guard<400){
+    var ds=iso(d),dv=days[ds],isToday=(ds===todayISO());
+    var m=dv?(dv.min||0):0;
+    var cls=(m<=0?'':(m<30?'l1':(m<60?'l2':(m<90?'l3':'l4'))))+(isToday?' today':'');
+    hh+='<div class="cell '+cls+'" title="'+ds+'"></div>';
+    d=addDays(d,1);guard++;
+  }
+  el('heatGrid').innerHTML=hh;
+  /* 图表始终刷新最新数据：参数 charts 为 true 或已加载 echarts 时重绘 */
+  if(charts!==false||window.echarts){chartDeferredInit();}
+}
+var chartsInited=false;
+function ensureCharts(){chartDeferredInit();}
+function chartDeferredInit(){
+  if(!window.echarts){
+    loadECharts(function(){chartsInited=true;drawBar();drawRadar();});
+    return;
+  }
+  /* 图表实时刷新：每次调用都重绘最新数据（不锁定 chartsInited） */
+  drawBar();drawRadar();
+}
+function loadECharts(cb){
+  if(window.echarts){cb();return;}
+  if(document.getElementById('echarts-lib')){return;}
+  var s=document.createElement('script');
+  s.id='echarts-lib';
+  s.src='https://image.uc.cn/s/uae/g/3n/mos-production/0915/echarts.min.js';
+  s.onload=function(){cb();};
+  s.onerror=function(){chartFallback();toast('图表库加载失败，统计数字仍可正常查看','warn');};
+  document.head.appendChild(s);
+}
+function chartFallback(){
+  var h='<div style="padding:44px;text-align:center;color:#9aa6c0;font-size:13px">图表组件未加载（需联网）<br>刷新或联网后自动重试</div>';
+  el('chartBar').innerHTML=h;el('chartRadar').innerHTML=h;
+}
+function chartTheme(){return {brand:'#2454e0',brand2:'#7f5af0',ok:'#18b37a',line:'#e8ecf3',ink:'#17233f',muted:'#6b7a99'};}
+function drawBar(){
+  var c=el('chartBar');if(!window.echarts||!c)return;
+  var days=[],labels=[],d=new Date();
+  /* 时间正序：从最早到「今天」，今天固定在右端 */
+  for(var i=6;i>=0;i--){
+    var ds2=iso(addDays(d,-i)),dv=S.days[ds2];
+    days.push(dv?(dv.min||0):0);
+    labels.push((i===0?'今天':ds2.slice(5)));
+  }
+  var t=chartTheme(),isMobile=window.innerWidth<768;
+  var chart=echarts.getInstanceByDom(c)||echarts.init(c);
+  chart.setOption({
+    title:{text:'近 7 日学习投入（分钟）',left:'center',top:isMobile?4:8,textStyle:{fontSize:isMobile?13:14,color:t.ink,fontWeight:700}},
+    tooltip:{trigger:'axis',formatter:function(ps){
+      var p=ps[0];if(!p)return '';
+      var v=typeof p.value==='number'?p.value:(Array.isArray(p.value)?p.value[1]:0);
+      return p.name+'<br/>学习时长: '+Number(v).toFixed(0)+' 分钟';
+    }},
+    grid:{top:isMobile?'15%':'13%',bottom:'24%',left:'8%',right:'6%',containLabel:true},
+    xAxis:{type:'category',data:labels,axisLine:{lineStyle:{color:t.line}},axisLabel:{color:t.muted,fontSize:isMobile?10:12,interval:0}},
+    yAxis:{type:'value',name:'分钟',nameTextStyle:{color:t.muted},splitLine:{lineStyle:{color:'#f1f3f9'}},axisLabel:{color:t.muted}},
+    series:[{type:'bar',name:'学习时长',itemStyle:{color:t.brand,borderRadius:[6,6,0,0]},
+      label:{show:true,position:'top',fontSize:isMobile?10:11,color:t.ink,formatter:function(p){return p.value>0?Number(p.value).toFixed(0):'';}},
+      data:days}],
+    legend:{bottom:0,left:'center',data:['学习时长'],itemWidth:14,itemHeight:8}
+  });
+  window.addEventListener('resize',function(){chart.resize();});
+}
+/* 板块练习完成度 -> 当前能力值(0-100) */
+function colPct(abilityIdx){
+  var c=CAREER_ABILITIES[abilityIdx];
+  if(!c||!c.practice||!c.practice.length)return 0;
+  var doneArr=S.careerDone||{},key='c'+abilityIdx,n=0;
+  for(var k=0;k<c.practice.length;k++){if(doneArr[key+'_'+k])n++;}
+  return Math.round(n/c.practice.length*100);
+}
+/* 综合能力全景：英语 + 素养板块聚合维度，各维度都有达标线 */
+var RANGE_DIMS=[
+ {name:'英语听说',get:function(){var a=S.ability;return Math.min(100,Math.round(((a.lis||0)+(a.spe||0))/2));},target:87},
+ {name:'英语读写',get:function(){var a=S.ability;return Math.min(100,Math.round(((a.rea||0)+(a.wri||0)+(a.voc||0))/3));},target:88},
+ {name:'商务应用',get:function(){return Math.min(100,Math.round(S.ability.bus||0));},target:86},
+ {name:'形象礼仪',get:function(){return Math.round((colPct(0)+colPct(3))/2);},target:80},
+ {name:'思维表达',get:function(){return Math.round((colPct(1)+colPct(2))/2);},target:78},
+ {name:'管理协作',get:function(){return Math.round((colPct(4)+colPct(5)+colPct(7))/3);},target:76},
+ {name:'工具数据',get:function(){return colPct(6);},target:72},
+ {name:'商业视野',get:function(){var ids=[8,9,10,11,12,13,14,15],sum=0;for(var i=0;i<ids.length;i++){sum+=colPct(ids[i]);}return Math.round(sum/ids.length);},target:70}
+];
+function drawRadar(){
+  var c=el('chartRadar');if(!window.echarts||!c)return;
+  var mine=RANGE_DIMS.map(function(x){return x.get();});
+  var target=RANGE_DIMS.map(function(x){return x.target;});
+  var t=chartTheme(),isMobile=window.innerWidth<768;
+  var chart=echarts.getInstanceByDom(c)||echarts.init(c);
+  chart.setOption({
+    title:{text:'综合能力全景 vs 外企达标线',left:'center',top:isMobile?4:8,textStyle:{fontSize:isMobile?13:14,color:t.ink,fontWeight:700}},
+    tooltip:{formatter:function(params){
+      if(!params||!Array.isArray(params.value))return '';
+      var s=params.name+'<br/>';
+      for(var i=0;i<RANGE_DIMS.length;i++){s+=RANGE_DIMS[i].name+': '+Number(params.value[i]).toFixed(0)+'<br/>';}
+      return s;
+    }},
+    legend:{bottom:0,left:'center',data:['当前能力','外企达标线'],itemWidth:14,itemHeight:8},
+    radar:{center:isMobile?['50%','52%']:['50%','55%'],radius:isMobile?'58%':'68%',
+      indicator:RANGE_DIMS.map(function(x){return {name:x.name,max:100};}),
+      axisName:{color:t.muted,fontSize:isMobile?9:11},
+      splitArea:{areaStyle:{color:['#fbfcff','#f4f7ff']}},
+      splitLine:{lineStyle:{color:t.line}}},
+    series:[{type:'radar',data:[
+      {value:mine,name:'当前能力',lineStyle:{color:t.brand,width:2},itemStyle:{color:t.brand},areaStyle:{color:t.brand,opacity:0.2}},
+      {value:target,name:'外企达标线',lineStyle:{color:t.brand2,width:2,type:'dashed'},itemStyle:{color:t.brand2},areaStyle:{color:t.brand2,opacity:0.05}}
+    ]}]
+  });
+  window.addEventListener('resize',function(){chart.resize();});
+}
+
+/* SECTION: milestone route */
+function currentMilestone(){
+  var today=new Date('2026-12-15T00:00:00'); /* 演示基准：考研考前 */
+  var now=new Date();
+  if(now<today)return 'kaoyan';
+  var ieltsEnd=new Date('2027-06-30T00:00:00');
+  if(now<ieltsEnd)return 'ielts';
+  return 'career';
+}
+function renderRoute(){
+  var cur=currentMilestone(),html='';
+  for(var i=0;i<MILESTONES.length;i++){
+    var m=MILESTONES[i];
+    var cls=m.id===cur?'cur':((m.id==='kaoyan')?'done':'');
+    html+='<div class="route-item '+cls+'">'+
+      '<div class="ri-top"><span class="ico"><svg class="ic"><use href="#'+m.icon+'"/></svg></span><b>'+m.name+'</b><span class="st">'+m.target+'</span></div>'+
+      '<div class="ri-level">'+m.level+'</div><div class="ri-desc">'+m.desc+'</div>';
+    for(var j=0;j<m.needs.length;j++){html+='<span class="ri-chip">'+m.needs[j]+'</span>';}
+    html+='</div>';
+  }
+  el('routeTimeline').innerHTML=html;
+}
+/* SECTION: resources */
+var RES_TYPE_ICON={'书籍':'i-book','视频':'i-video','工具':'i-monitor','播客':'i-mic'};
+var RES_TYPE_NAME={'书籍':'书籍','视频':'视频','工具':'工具','播客':'播客'};
+function renderResources(){
+  var html='';
+  for(var i=0;i<RESOURCES.length;i++){
+    var r=RESOURCES[i];
+    var micon=MILESTONES.filter(function(m){return m.id===r.id;})[0].icon;
+    var itemsHtml='';
+    for(var j=0;j<r.items.length;j++){
+      var it=r.items[j];
+      var tp=it.type;
+      var ic=RES_TYPE_ICON[tp]||'i-book';
+      var tn=RES_TYPE_NAME[tp]||'资料';
+      itemsHtml+='<div class="res-item"><div class="rt"><svg class="ic"><use href="#'+ic+'"/></svg>'+tn+'</div><b>'+it.name+'</b><span>'+it.why+'</span></div>';
+    }
+    html+='<div class="acc'+(i===0?' open':'')+'"><div class="acc-h" data-acc><span class="ico has"><svg class="ic"><use href="#'+micon+'"/></svg></span>'+r.name+'<span class="res-count">'+r.items.length+' 项</span><svg class="ic"><use href="#i-chev"/></svg></div><div class="acc-b"><div class="res-grid">'+itemsHtml+'</div></div></div>';
+  }
+  el('resSeries').innerHTML=html;
+  bindAcc();
+}
+/* SECTION: 英语 12 个月路线 */
+function renderEngYear(){
+  var html='<div class="acc open"><div class="acc-h" data-acc>行程总览 · 全年 12 个月<svg class="ic"><use href="#i-chev"/></svg></div><div class="acc-b"><div class="yearline">';
+  for(var i=0;i<ENG_YEAR.length;i++){
+    var mo=ENG_YEAR[i];
+    var mk=S.monthDone&&S.monthDone['eng_'+i];
+    html+='<button type="button" class="ymo'+(mk?' done':'')+'" data-m="'+i+'" data-g="eng"><b>'+mo.m+'</b><em>'+mo.t+'</em><span>'+mo.d+'</span></button>';
+  }
+  html+='</div><p class="acc-note">点击月份卡片可标记该月已完成</p></div></div>';
+  el('engYearline').innerHTML=html;
+  bindAcc();bindMonthMark(document.getElementById('engYearline'));
+}
+function bindAcc(){
+  var hs=document.querySelectorAll('.acc-h[data-acc]');
+  for(var i=0;i<hs.length;i++){
+    if(hs[i].dataset.bound)continue;
+    hs[i].dataset.bound='1';
+    hs[i].addEventListener('click',function(){
+      var p=this.parentNode;
+      p.classList.toggle('open');
+    });
+  }
+}
+function bindMonthMark(root){
+  var btns=root?root.querySelectorAll('.ymo[data-m]'):[];
+  for(var i=0;i<btns.length;i++){
+    if(btns[i].dataset.bound)continue;
+    btns[i].dataset.bound='1';
+    btns[i].addEventListener('click',function(){
+      var g=this.getAttribute('data-g'),m=this.getAttribute('data-m');
+      S.monthDone=S.monthDone||{};
+      var k=g+'_'+m;
+      if(S.monthDone[k]){delete S.monthDone[k];this.classList.remove('done');toast('已取消该月标记');}
+      else{S.monthDone[k]=1;this.classList.add('done');toast('已标记：本月主题达成','ok');}
+      S_set('state',S);
+      /* 学习路线完成度变化 → 立即刷新成长统计 */
+      renderStats(false);
+    });
+  }
+}
+/* SECTION: 并列栏目渲染（折叠引用式 + SVG 图标） */
+function renderSingleColumn(tab){
+  var col=null;
+  for(var i=0;i<COLUMNS.length;i++){if(COLUMNS[i].tab===tab){col=COLUMNS[i];break;}}
+  if(!col)return;
+  var c=CAREER_ABILITIES[col.ability];
+  var doneArr=S.careerDone||{};
+  var key='c'+col.ability;
+  var doneN=0;
+  for(var k=0;k<c.practice.length;k++){if(doneArr[key+'_'+k])doneN++;}
+  var pct=c.practice.length?Math.round(doneN/c.practice.length*100):0;
+  var priTxt={1:'核心必修',2:'进阶提升',3:'辅助成长',4:'拓展视野'}[col.priority]||'进阶提升';
+  var priCls=col.priority?('p'+col.priority):'p2';
+  var html='<div class="col-head"><span class="ico"><svg class="ic"><use href="#'+col.icon+'"/></svg></span><div class="col-t"><h3>'+col.name+'</h3><p>'+c.intro+'</p></div><span class="pribadge '+priCls+'" title="优先级">'+priTxt+'</span><span class="cg">'+c.group+'</span></div>';
+  html+='<div class="colprog"><span class="cprogbar"><i style="width:'+pct+'%"></i></span><em>专项练习 '+doneN+'/'+c.practice.length+'</em></div>';
+  html+='<div class="cols">';
+  html+='<div class="acc open"><div class="acc-h" data-acc>全年 12 个月学习路线<svg class="ic"><use href="#i-cal"/></svg></div><div class="acc-b"><div class="yearline">';
+  for(var y=0;y<col.year.length;y++){
+    var mo=col.year[y];
+    var mk=S.monthDone&&S.monthDone[tab+'_'+y];
+    html+='<button type="button" class="ymo'+(mk?' done':'')+'" data-m="'+y+'" data-g="'+tab+'"><b>'+mo.m+'</b><em>'+mo.t+'</em><span>'+mo.d+'</span></button>';
+  }
+  html+='</div><p class="acc-note">点击月份卡片可标记该月已完成</p></div></div>';
+  html+='<div class="acc open"><div class="acc-h" data-acc>深度实操指南 · 具体怎么做<svg class="ic"><use href="#i-pen"/></svg></div><div class="acc-b"><div class="cguide">';
+  if(c.guide&&c.guide.length){
+    for(var g=0;g<c.guide.length;g++){
+      html+='<div class="cstep"><span>做法 '+(g+1)+'</span>'+c.guide[g]+'</div>';
+    }
+  }else{
+    html+='<p style="color:var(--muted);font-size:13px">逐步操作指南整理中，先看下方分步流程与专项练习。</p>';
+  }
+  html+='</div></div></div>';
+  html+='<div class="acc"><div class="acc-h" data-acc>达标标准<svg class="ic"><use href="#i-check"/></svg></div><div class="acc-b"><ul>';
+  for(var s=0;s<c.standard.length;s++){html+='<li>'+c.standard[s]+'</li>';}
+  html+='</ul></div></div>';
+  html+='<div class="acc"><div class="acc-h" data-acc>分步提升流程<svg class="ic"><use href="#i-map"/></svg></div><div class="acc-b"><div class="csteps">';
+  for(var p=0;p<c.process.length;p++){
+    html+='<div class="cstep"><span>'+c.process[p].s+'</span>'+c.process[p].d+'</div>';
+  }
+  html+='</div></div></div>';
+  /* 本周练习：从板块练习池按周轮换取 3 项，勾选计入本周进度 */
+  var wpArr=S.weekPrac||{},wkNo=weekOf();
+  var wpStart=(wkNo*3)%c.practice.length,wpN=0,wpHtml='';
+  for(var wp=0;wp<3;wp++){
+    var pi=(wpStart+wp)%c.practice.length;
+    var wpk='wp'+col.ability+'_'+wkNo+'_'+pi;
+    var wpDone=!!wpArr[wpk];
+    if(wpDone)wpN++;
+    wpHtml+='<label class="cdo'+(wpDone?' done':'')+'"><input type="checkbox" data-c="'+col.ability+'" data-wk="'+pi+'" '+(wpDone?'checked':'')+'>'+
+      '<b>周练 '+(wp+1)+'</b><span>'+c.practice[pi].d+'</span></label>';
+  }
+  html+='<div class="acc open"><div class="acc-h" data-acc>本周练习（'+wpN+'/3）· 随周轮换<svg class="ic"><use href="#i-refresh"/></svg></div><div class="acc-b"><div class="cprac">'+wpHtml+'</div><p class="acc-note">每周自动从本板块专项练习中轮换 3 项，完成可标记，纳入周进度</p></div></div>';
+  html+='<div class="acc"><div class="acc-h" data-acc>专项练习（'+doneN+'/'+c.practice.length+'）<svg class="ic"><use href="#i-pen"/></svg></div><div class="acc-b"><div class="cprac">';
+  for(var q=0;q<c.practice.length;q++){
+    var dk=key+'_'+q;
+    var done=doneArr[dk];
+    html+='<label class="cdo'+(done?' done':'')+'"><input type="checkbox" data-c="'+col.ability+'" data-k="'+q+'" '+(done?'checked':'')+'>'+
+      '<b>练习 '+(q+1)+'</b><span>'+c.practice[q].d+'</span></label>';
+  }
+  html+='</div></div></div>';
+  html+='<div class="acc"><div class="acc-h" data-acc>推荐资源<svg class="ic"><use href="#i-book"/></svg></div><div class="acc-b"><div class="cres">';
+  for(var r=0;r<c.resources.length;r++){html+='<span>'+c.resources[r]+'</span>';}
+  html+='</div></div></div>';
+  html+='<div class="acc"><div class="acc-h" data-acc>常见避坑<svg class="ic"><use href="#i-alert"/></svg></div><div class="acc-b"><div class="cres bad">';
+  for(var b=0;b<c.pitfalls.length;b++){html+='<span>'+c.pitfalls[b]+'</span>';}
+  html+='</div></div></div>';
+  html+='</div>';
+  html+='<div class="ctip"><svg class="ic"><use href="#i-bulb"/></svg><span>'+c.tips+'</span></div>';
+  el('col-'+tab).innerHTML=html;
+  bindAcc();bindMonthMark(document.getElementById('col-'+tab));
+}
+function renderColumns(){
+  for(var i=0;i<COLUMNS.length;i++){renderSingleColumn(COLUMNS[i].tab);}
+}
+function onColumnCheck(e){
+  var ck=e.target.closest('input[type=checkbox][data-c]');
+  if(!ck)return;
+  var ci=ck.getAttribute('data-c');
+  /* 本周练习：data-wk 存在时记录到 weekPrac（按周独立计数） */
+  if(ck.hasAttribute('data-wk')){
+    var wkNo=weekOf(),wpi=ck.getAttribute('data-wk');
+    var wkey='wp'+ci+'_'+wkNo+'_'+wpi;
+    S.weekPrac=S.weekPrac||{};
+    if(ck.checked){S.weekPrac[wkey]=1;toast('本周练习完成，已计入周进度','ok');}
+    else{delete S.weekPrac[wkey];}
+    S_set('state',S);
+    var wcard=ck.closest('.card');
+    if(wcard){var wtab=wcard.id.replace('col-','');renderSingleColumn(wtab);}
+    renderWeekTasks();
+    return;
+  }
+  var ki=ck.getAttribute('data-k');
+  var key='c'+ci+'_'+ki;
+  S.careerDone=S.careerDone||{};
+  if(ck.checked){S.careerDone[key]=1;toast('练习完成，已记录','ok');}
+  else{delete S.careerDone[key];}
+  S_set('state',S);
+  var card=ck.closest('.card');
+  if(card){var tab=card.id.replace('col-','');renderSingleColumn(tab);}
+  /* 专项练习变化同步刷新达标图 */
+  if(window.echarts){chartDeferredInit();}
+}
+
+/* SECTION: settings */
+function openSettings(){
+  el('fLevel').value=S.settings.level;
+  el('fTarget').value=S.settings.target;
+  el('fDaily').value=String(S.settings.dailyMin);
+  el('fWeeks').value=String(S.settings.weeks);
+  el('fStart').value=S.settings.start;
+  el('mask').classList.add('on');
+}
+function closeSettings(){el('mask').classList.remove('on');}
+function saveSettings(){
+  S.settings.level=el('fLevel').value;
+  S.settings.target=el('fTarget').value;
+  S.settings.dailyMin=parseInt(el('fDaily').value,10)||40;
+  S.settings.weeks=parseInt(el('fWeeks').value,10)||156;
+  S.settings.start=el('fStart').value||todayISO();
+  S_set('state',S);closeSettings();init();
+  toast('设置已保存，任务与计划已重新生成','ok');
+}
+function resetAll(){
+  var b1=el('btnReset'),b2=el('btnReset2'),b3=el('btnCancelReset');
+  if(!b2)return;
+  if(b2.style.display==='none'){
+    b1.style.display='none';
+    b2.style.display='inline-flex';
+    b3.style.display='inline-flex';
+  }else{
+    S=freshState();S_set('state',S);closeSettings();init();
+    b1.style.display='inline-flex';b2.style.display='none';b3.style.display='none';
+    toast('已清空全部记录，从今天重新开始','warn');
+  }
+}
+function cancelReset(){
+  el('btnReset').style.display='inline-flex';
+  el('btnReset2').style.display='none';
+  el('btnCancelReset').style.display='none';
+}
+
+/* SECTION: init */
+var TIP_INDEX=0;
+function renderTip(){
+  el('tipBox').textContent='今日学习贴士：'+TIPS[TIP_INDEX%TIPS.length];
+  TIP_INDEX++;
+}
+function setTodayUI(){
+  var h=new Date(),hr=h.getHours();
+  var g=hr<6?'夜深了，注意休息':(hr<12?'早上好':(hr<18?'下午好':'晚上好'));
+  var en=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][h.getDay()];
+  el('greetTitle').textContent=g+'，今天也要加油';
+  el('dateLabel').textContent=iso(h)+' · '+en;
+  el('taskDate').textContent='今日 '+iso(h);
+}
+function init(){
+  setTodayUI();
+  calcStreak();
+  renderTasks();
+  renderWeekTasks();
+  renderPlan();
+  bindAcc();
+  renderPrioOverview();
+  renderRoute();
+  renderResources();
+  renderEngYear();
+  renderColumns();
+  renderTopics();
+  renderDaily();
+  renderVocab();
+  renderScenes();
+  renderStats(false);
+  renderTip();
+}
+/* nav */
+function initNav(){
+  var nav=el('nav');
+  nav.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-tab]');
+    if(!b)return;
+    var tab=b.getAttribute('data-tab');
+    document.querySelectorAll('nav button').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active');
+    document.querySelectorAll('section').forEach(function(x){x.classList.remove('on');});
+    el('sec-'+tab).classList.add('on');
+    if(tab==='stats'){renderStats();ensureCharts();}
+    if(tab==='today'){renderTasks();renderWeekTasks();calcStreak();}
+    if(tab==='eng'){renderEngYear();renderDaily();renderVocab();}
+    if(tab==='plan'){renderRoute();renderPrioOverview();renderPlan();}
+    for(var i=0;i<COLUMNS.length;i++){
+      if(tab===COLUMNS[i].tab){renderSingleColumn(COLUMNS[i].tab);break;}
+    }
+  });
+}
+/* global click */
+document.addEventListener('click',function(e){
+  var t=e.target;
+  if(t.closest('#nav button[data-tab]'))return;
+  if(t.closest('#btnSettings'))openSettings();
+  else if(t.closest('#btnClose'))closeSettings();
+  else if(t.closest('#btnSave'))saveSettings();
+  else if(t.closest('#btnReset'))resetAll();
+  else if(t.closest('#btnCancelReset'))cancelReset();
+  else if(t.closest('#btnRefresh')){currentOff++;renderTasks();toast('已为你换一批任务');}
+  else if(t.closest('#btnCheckin'))doCheckin();
+  else if(t.closest('.wtask'))onWeekTaskClick(e);
+  else if(t.closest('#btnReview')){dailyReviewMode=!dailyReviewMode;toast(dailyReviewMode?'已切换到「仅显示到期复习」':'已显示今日全部词卡');renderDaily();}
+  else if(t.closest('#topicChips button')){curTopic=t.closest('#topicChips button').getAttribute('data-t');renderTopics();renderVocab();}
+  else if(t.closest('#btnQuiz'))startQuiz(false);
+  else if(t.closest('#btnErrReview'))startQuiz(true);
+  else if(t.closest('#btnQuizNext')){renderQuiz();}
+  else if(t.closest('#quizOpts button'))onQuizAnswer(e);
+  else if(t.closest('.task')){
+    var task=t.closest('.task'),id=task.getAttribute('data-id');
+    /* 同步当天累计时长：勾选完成加分钟，取消减分钟 */
+    var dayRec=S.days[todayISO()]||{min:0,tasks:0,total:0};
+    var tmin=parseInt(task.getAttribute('data-min'),10)||0;
+    if(S.tasksDone[id]){
+      delete S.tasksDone[id];
+      if(tmin){dayRec.min=Math.max(0,(dayRec.min||0)-tmin);}
+    }
+    else{
+      S.tasksDone[id]=1;
+      var type=id.split(':')[1],gain=ABILITY_GAIN[type];
+      if(type&&gain){for(var k in gain){S.ability[k]=(S.ability[k]||0)+gain[k];}}
+      if(tmin){dayRec.min=(dayRec.min||0)+tmin;}
+    }
+    S.days[todayISO()]=dayRec;
+    S_set('state',S);renderTasks();renderStats(false);
+    /* 图表实时刷新：时长图与达标图立即反映最新数据 */
+    if(window.echarts){chartDeferredInit();}
+  }
+  else if(t.closest('#vocabGrid'))onVocabClick(e);
+  else if(t.closest('#dailyBox'))onVocabClick(e);
+  else if(t.closest('#sceneGrid'))onSceneClick(e);
+  else if(t.closest('input[type=checkbox][data-c]'))onColumnCheck(e);
+});
+initNav();
+init();
+</script>
+</body>
+</html>
